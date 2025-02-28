@@ -12,3 +12,9 @@ function criarUrlParaObterDadosDosEnvolvidos(id) {
     let url = `https://spp.pc.pe.gov.br/b/api/pessoa-fisicas/${id}?_=${new Date().getTime()}`;
     return url
 }
+
+function criarUrlParaObterDadosPessoaJuridica(id) {
+    // Monta a URL com o ID extraído e um parâmetro único para evitar cache
+    let url = `https://spp.pc.pe.gov.br/b/api/pessoa-juridicas-pesquisa?&id=${id}`;
+    return url
+}

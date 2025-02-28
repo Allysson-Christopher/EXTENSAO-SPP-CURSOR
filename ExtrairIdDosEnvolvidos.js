@@ -96,7 +96,7 @@ function fetchParaObterIdDosEnvolvidos(apiUrl, token) {
   
         try {
           const data = JSON.parse(xhr.responseText);
-          console.log("Resposta da API:", data);
+        //   console.log("Resposta da API:", data);
           resolve(data);
         } catch (error) {
           reject(error);
