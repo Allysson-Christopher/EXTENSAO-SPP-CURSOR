@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "Automação de Peças e Kits CURSOR",
+  "version": "1.0",
+  "description": "Extensão para automatizar a geração de peças e kits no sistema de polícia.",
+  "permissions": [
+    "scripting",
+    "activeTab",
+    "tabs",
+    "webRequest",
+    "webRequestBlocking", 
+    "https://spp.pc.pe.gov.br/"
+
+  ],
+  "host_permissions": ["https://spp.pc.pe.gov.br/*"],
+  
+
+  "content_scripts": [
+    {
+      "matches": ["https://spp.pc.pe.gov.br/*"],
+      "js": ["token.js", "criarUrl.js", "ExtrairIdDosEnvolvidos.js", "main.js"],
+      "run_at": "document_end"
+    }
+  ]
+}
