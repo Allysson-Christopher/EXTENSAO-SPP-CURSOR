@@ -1,4 +1,4 @@
-function fetchProcedimentoSincrono(apiUrl, token) {
+function fetchParaObterIdDosEnvolvidos(apiUrl, token) {
     // Se o token não iniciar com "Bearer ", adiciona o prefixo
     var tokenWithBearer = token.startsWith("Bearer ") ? token : "Bearer " + token;
   
@@ -53,7 +53,7 @@ function fetchProcedimentoSincrono(apiUrl, token) {
   }
 
 
-  function fetchProcedimento(apiUrl, token) {
+  function fetchParaObterDadosDosEnvolvidos(apiUrl, token) {
     return new Promise((resolve, reject) => {
       // Se o token não iniciar com "Bearer ", adiciona o prefixo
       const tokenWithBearer = token.startsWith("Bearer ") ? token : `Bearer ${token}`;
@@ -76,13 +76,13 @@ function fetchProcedimentoSincrono(apiUrl, token) {
       xhr.setRequestHeader("Authorization", tokenWithBearer);
       xhr.setRequestHeader("If-None-Match", 'W/"5f2-nXTqonU9Hfx6HKQRGxT8vUEXtSY"');
       xhr.setRequestHeader("Procedimento-Id", procedimentoId);
-      xhr.setRequestHeader("Referer", "https://spp.pc.pe.gov.br/");
-      xhr.setRequestHeader("Sec-CH-UA", '"Not(A:Brand";v="99", "Google Chrome";v="133", "Chromium";v="133"');
-      xhr.setRequestHeader("Sec-CH-UA-Mobile", "?0");
-      xhr.setRequestHeader("Sec-CH-UA-Platform", '"Windows"');
-      xhr.setRequestHeader("Sec-Fetch-Dest", "empty");
-      xhr.setRequestHeader("Sec-Fetch-Mode", "cors");
-      xhr.setRequestHeader("Sec-Fetch-Site", "same-origin");
+    //   xhr.setRequestHeader("Referer", "https://spp.pc.pe.gov.br/");
+    //   xhr.setRequestHeader("Sec-CH-UA", '"Not(A:Brand";v="99", "Google Chrome";v="133", "Chromium";v="133"');
+    //   xhr.setRequestHeader("Sec-CH-UA-Mobile", "?0");
+    //   xhr.setRequestHeader("Sec-CH-UA-Platform", '"Windows"');
+    //   xhr.setRequestHeader("Sec-Fetch-Dest", "empty");
+    //   xhr.setRequestHeader("Sec-Fetch-Mode", "cors");
+    //   xhr.setRequestHeader("Sec-Fetch-Site", "same-origin");
   
       xhr.onload = function() {
         if (xhr.status < 200 || xhr.status >= 300) {
