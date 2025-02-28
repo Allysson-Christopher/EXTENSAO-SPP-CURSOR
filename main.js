@@ -1,24 +1,31 @@
-token = extrairTokenNaPagina()
-let dadosEnvolvidos;
-
-fetchProcedimento(criarUrlParaObterIdDosEnvolvidos(), token)
-.then(data => {
-    dadosEnvolvidos = data
-  });
-
-function extrairIdDosEnvolvidos() {
-    let idsDosEnvolvidos = [];
-  setTimeout(() => {
-    for (let i = 0; i < dadosEnvolvidos.length; i++) {
-        idsDosEnvolvidos.push(dadosEnvolvidos[i].pessoaFisica.id);
+async function main() {
+    try {
+      // Extrai o token da página
+      const token = extrairTokenNaPagina();
+  
+      // Obtém os dados iniciais (IDs dos envolvidos)
+      const dados = await fetchProcedimentoSincrono(criarUrlParaObterIdDosEnvolvidos(), token);
+      console.log("Dados recebidos:", dados);
+  
+      // Extrai os IDs (usa pessoaFisicaId se existir, senão usa pessoaJuridicaId)
+      const idsDosEnvolvidos = dados.map(item => item.pessoaFisicaId ? item.pessoaFisicaId : item.pessoaJuridicaId);
+      console.log("IDs extraídos:", idsDosEnvolvidos);
+  
+      // Para cada ID, busca os dados completos do envolvido
+      const dadosEnvolvidosCompletos = [];
+      for (const id of idsDosEnvolvidos) {
+        const dadosEnvolvido = await fetchProcedimento(criarUrlParaObterDadosDosEnvolvidos(id), token);
+        dadosEnvolvidosCompletos.push(dadosEnvolvido);
+        console.log("Dados do envolvido:", dadosEnvolvido);
+      }
+  
+      // Exibe todos os dados completos dos envolvidos
+      console.log("Todos os dados completos:", dadosEnvolvidosCompletos);
+  
+    } catch (error) {
+      console.error("Erro na execução:", error);
     }
-  }, 1000);
-  return idsDosEnvolvidos;
-}
-
-for (let i = 0; i < idsDosEnvolvidos.length; i++) {
-    fetchProcedimento(criarUrlParaObterDadosDosEnvolvidos(idsDosEnvolvidos[i]), token)
-    .then(data => {
-        console.log(data);
-    });
-}
+  }
+  
+  main();
+  

@@ -1,54 +1,113 @@
-async function fetchProcedimento(apiUrl, token) {
-    try {
+function fetchProcedimentoSincrono(apiUrl, token) {
     // Se o token não iniciar com "Bearer ", adiciona o prefixo
-    const tokenWithBearer = token.startsWith("Bearer ")
-      ? token
-      : `Bearer ${token}`;
-
+    var tokenWithBearer = token.startsWith("Bearer ") ? token : "Bearer " + token;
+  
     // Adiciona um parâmetro único à URL para evitar o cache
-    const finalUrl = `${apiUrl}${
-      apiUrl.includes("?") ? "&" : "?"
-    }_=${new Date().getTime()}`;
-
+    var finalUrl = apiUrl + (apiUrl.includes("?") ? "&" : "?") + "_=" + new Date().getTime();
+  
     // Extrai o idDoProcedimento da URL
-    // Exemplo de URL: "https://spp.pc.pe.gov.br/b/api/procedimento/269551/envolvidos"
-    // O array após split: ["https:", "", "spp.pc.pe.gov.br", "b", "api", "procedimento", "269551", "envolvidos"]
-    const partesUrl = apiUrl.split("/");
-    const idDoProcedimento = partesUrl[6]; // índice 6 corresponde ao ID (neste exemplo, "269551")
-
-    const response = await fetch(finalUrl, {
-      method: "GET",
-      cache: "no-store", // Força a não utilizar cache
-      headers: {
-        Accept: "application/json, text/plain, */*",
-        "Accept-Encoding": "gzip, deflate, br, zstd",
-        "Accept-Language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
-        Authorization: tokenWithBearer,
-        Connection: "keep-alive",
-        Host: "spp.pc.pe.gov.br",
-        // Cabeçalho If-None-Match removido para forçar nova resposta
-        "Procedimento-Id": idDoProcedimento,
-        Referer: "https://spp.pc.pe.gov.br/",
-        "Sec-CH-UA":
-          '"Not(A:Brand";v="99", "Google Chrome";v="133", "Chromium";v="133"',
-        "Sec-CH-UA-Mobile": "?0",
-        "Sec-CH-UA-Platform": '"Windows"',
-        "Sec-Fetch-Dest": "empty",
-        "Sec-Fetch-Mode": "cors",
-        "Sec-Fetch-Site": "same-origin",
-        "User-Agent": navigator.userAgent, // Usa o user agent do próprio navegador
-      },
-    });
-    if (!response.ok) {
-        throw new Error(`Erro na requisição: ${response.status}`);
-      }
+    // Exemplo: "https://spp.pc.pe.gov.br/b/api/procedimento/269551/envolvidos"
+    var partesUrl = apiUrl.split("/");
+    var idDoProcedimento = partesUrl[6];
   
-      const data = await response.json();
-      return data;
+    var xhr = new XMLHttpRequest();
+    // O terceiro parâmetro "false" torna a requisição SÍNCRONA
+    xhr.open("GET", finalUrl, false);
   
+    // Define os cabeçalhos permitidos (alguns cabeçalhos, como User-Agent, não podem ser definidos)
+    xhr.setRequestHeader("Accept", "application/json, text/plain, */*");
+    xhr.setRequestHeader("Accept-Language", "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7");
+    xhr.setRequestHeader("Cache-Control", "no-cache");
+    xhr.setRequestHeader("Pragma", "no-cache");
+    xhr.setRequestHeader("Authorization", tokenWithBearer);
+    xhr.setRequestHeader("Procedimento-Id", idDoProcedimento);
+  
+    try {
+      xhr.send(null);
     } catch (error) {
       console.error("Erro ao buscar os dados:", error);
       throw error;
     }
-}
+  
+    if (xhr.status < 200 || xhr.status >= 300) {
+      var errorMsg = "Erro na requisição: " + xhr.status;
+      console.error(errorMsg);
+      throw new Error(errorMsg);
+    }
+  
+    // Verifica se o conteúdo da resposta é JSON
+    var contentType = xhr.getResponseHeader("Content-Type");
+    if (!contentType || contentType.indexOf("application/json") === -1) {
+      var errorMsg = "Resposta inesperada da API: " + xhr.responseText;
+      console.error(errorMsg);
+      throw new Error(errorMsg);
+    }
+  
+    try {
+      var data = JSON.parse(xhr.responseText);
+      return data;
+    } catch (error) {
+      console.error("Erro ao parsear JSON:", error);
+      throw error;
+    }
+  }
 
+
+  function fetchProcedimento(apiUrl, token) {
+    return new Promise((resolve, reject) => {
+      // Se o token não iniciar com "Bearer ", adiciona o prefixo
+      const tokenWithBearer = token.startsWith("Bearer ") ? token : `Bearer ${token}`;
+  
+      // Adiciona um parâmetro único à URL para evitar o cache
+      const finalUrl = `${apiUrl}${apiUrl.includes("?") ? "&" : "?"}_=${new Date().getTime()}`;
+  
+      // Para este exemplo, o cabeçalho "Procedimento-Id" deve ser "269551" conforme os dados informados.
+      const procedimentoId = "269551";
+  
+      const xhr = new XMLHttpRequest();
+      xhr.open("GET", finalUrl, true);
+      xhr.withCredentials = true; // Envia cookies de sessão, se necessário
+  
+      // Define os cabeçalhos permitidos
+      xhr.setRequestHeader("Accept", "application/json, text/plain, */*");
+      xhr.setRequestHeader("Accept-Language", "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7");
+      xhr.setRequestHeader("Cache-Control", "no-cache");
+      xhr.setRequestHeader("Pragma", "no-cache");
+      xhr.setRequestHeader("Authorization", tokenWithBearer);
+      xhr.setRequestHeader("If-None-Match", 'W/"5f2-nXTqonU9Hfx6HKQRGxT8vUEXtSY"');
+      xhr.setRequestHeader("Procedimento-Id", procedimentoId);
+      xhr.setRequestHeader("Referer", "https://spp.pc.pe.gov.br/");
+      xhr.setRequestHeader("Sec-CH-UA", '"Not(A:Brand";v="99", "Google Chrome";v="133", "Chromium";v="133"');
+      xhr.setRequestHeader("Sec-CH-UA-Mobile", "?0");
+      xhr.setRequestHeader("Sec-CH-UA-Platform", '"Windows"');
+      xhr.setRequestHeader("Sec-Fetch-Dest", "empty");
+      xhr.setRequestHeader("Sec-Fetch-Mode", "cors");
+      xhr.setRequestHeader("Sec-Fetch-Site", "same-origin");
+  
+      xhr.onload = function() {
+        if (xhr.status < 200 || xhr.status >= 300) {
+          return reject(new Error(`Erro na requisição: ${xhr.status}`));
+        }
+  
+        const contentType = xhr.getResponseHeader("content-type");
+        if (!contentType || !contentType.includes("application/json")) {
+          return reject(new Error(`Resposta inesperada da API: ${xhr.responseText}`));
+        }
+  
+        try {
+          const data = JSON.parse(xhr.responseText);
+          console.log("Resposta da API:", data);
+          resolve(data);
+        } catch (error) {
+          reject(error);
+        }
+      };
+  
+      xhr.onerror = function() {
+        reject(new Error("Erro na requisição"));
+      };
+  
+      xhr.send();
+    });
+  }
+  
