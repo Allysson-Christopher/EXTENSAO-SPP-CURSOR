@@ -8,7 +8,7 @@ function fetchParaObterIdDosEnvolvidos(apiUrl, token) {
     // Extrai o idDoProcedimento da URL
     // Exemplo: "https://spp.pc.pe.gov.br/b/api/procedimento/269551/envolvidos"
     var partesUrl = apiUrl.split("/");
-    var idDoProcedimento = partesUrl[6];
+    var idDoProcedimento = extrairIdDoProcedimento();
   
     var xhr = new XMLHttpRequest();
     // O terceiro parâmetro "false" torna a requisição SÍNCRONA
@@ -53,7 +53,7 @@ function fetchParaObterIdDosEnvolvidos(apiUrl, token) {
   }
 
 
-  function fetchParaObterDadosDosEnvolvidos(apiUrl, token) {
+  function fetchParaObterDadosDosEnvolvidosOuProcedimento(apiUrl, token) {
     return new Promise((resolve, reject) => {
       // Se o token não iniciar com "Bearer ", adiciona o prefixo
       const tokenWithBearer = token.startsWith("Bearer ") ? token : `Bearer ${token}`;
@@ -62,7 +62,7 @@ function fetchParaObterIdDosEnvolvidos(apiUrl, token) {
       const finalUrl = `${apiUrl}${apiUrl.includes("?") ? "&" : "?"}_=${new Date().getTime()}`;
   
       // Para este exemplo, o cabeçalho "Procedimento-Id" deve ser "269551" conforme os dados informados.
-      const procedimentoId = "269551";
+      const procedimentoId = extrairIdDoProcedimento();
   
       const xhr = new XMLHttpRequest();
       xhr.open("GET", finalUrl, true);
@@ -75,15 +75,7 @@ function fetchParaObterIdDosEnvolvidos(apiUrl, token) {
       xhr.setRequestHeader("Pragma", "no-cache");
       xhr.setRequestHeader("Authorization", tokenWithBearer);
       xhr.setRequestHeader("If-None-Match", 'W/"5f2-nXTqonU9Hfx6HKQRGxT8vUEXtSY"');
-      xhr.setRequestHeader("Procedimento-Id", procedimentoId);
-    //   xhr.setRequestHeader("Referer", "https://spp.pc.pe.gov.br/");
-    //   xhr.setRequestHeader("Sec-CH-UA", '"Not(A:Brand";v="99", "Google Chrome";v="133", "Chromium";v="133"');
-    //   xhr.setRequestHeader("Sec-CH-UA-Mobile", "?0");
-    //   xhr.setRequestHeader("Sec-CH-UA-Platform", '"Windows"');
-    //   xhr.setRequestHeader("Sec-Fetch-Dest", "empty");
-    //   xhr.setRequestHeader("Sec-Fetch-Mode", "cors");
-    //   xhr.setRequestHeader("Sec-Fetch-Site", "same-origin");
-  
+      xhr.setRequestHeader("Procedimento-Id", procedimentoId);  
       xhr.onload = function() {
         if (xhr.status < 200 || xhr.status >= 300) {
           return reject(new Error(`Erro na requisição: ${xhr.status}`));

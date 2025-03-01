@@ -18,7 +18,7 @@
   "content_scripts": [
     {
       "matches": ["https://spp.pc.pe.gov.br/*"],
-      "js": ["token.js", "criarUrl.js", "ExtrairIdDosEnvolvidos.js", "main.js"],
+      "js": ["token.js", "extrairIdDoProcedimento.js", "criarUrl.js", "requisicoes.js", "extrairChavesValoresEnvolvidos.js", "controllerDadosDosEnvolvidos.js", "main.js"],
       "run_at": "document_end"
     }
   ]
