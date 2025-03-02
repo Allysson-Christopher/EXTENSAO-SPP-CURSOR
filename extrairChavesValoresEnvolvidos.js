@@ -102,3 +102,103 @@ function extrairChavesValores(dados, listaDeKeys) {
         });
     });
 }
+
+function extrairMapaNomeEnvolvimento(dados) {
+    return dados.reduce((acc, item) => {
+        if (item.nome) {
+            acc[item.nome] = item.envolvimentoTipoDescricao;
+        }
+        return acc;
+    }, {});
+}
+
+function extrairIdsPessoaFisica(dados) {
+    return dados
+        .filter((item) => item.pessoaFisicaId != null)
+        .map((item) => item.pessoaFisicaId);
+}
+
+function extrairIdsPessoaJuridica(dados) {
+    return dados
+        .filter((item) => item.pessoaJuridicaId != null)
+        .map((item) => item.pessoaJuridicaId);
+}
+
+async function buscarDadosEnvolvidosFisica(ids, token) {
+    const dadosEnvolvidosCompletos = [];
+    for (const id of ids) {
+        const dadosEnvolvido = await fetchParaObterDadosDosEnvolvidosOuProcedimento(
+            criarUrlParaObterDadosDosEnvolvidos(id),
+            token
+        );
+        dadosEnvolvidosCompletos.push(dadosEnvolvido);
+    }
+    return dadosEnvolvidosCompletos;
+}
+
+async function buscarDadosEnvolvidosJuridica(ids, token) {
+    const dadosEnvolvidosCompletos = [];
+    for (const id of ids) {
+        const dadosEnvolvido = await fetchParaObterDadosDosEnvolvidosOuProcedimento(
+            criarUrlParaObterDadosPessoaJuridica(id),
+            token
+        );
+        dadosEnvolvidosCompletos.push(dadosEnvolvido);
+    }
+    return dadosEnvolvidosCompletos;
+}
+
+function listaDeObjetosParaStrings(listaDeObjetos) {
+    // Verifica se o primeiro nível é um array aninhado e ajusta
+    if (Array.isArray(listaDeObjetos) && Array.isArray(listaDeObjetos[0])) {
+        listaDeObjetos = listaDeObjetos.flat();
+    }
+    
+    return listaDeObjetos.map(obj => 
+        Object.entries(obj)
+            .map(([key, value]) => `${key}: ${value}`)
+            .join(", ")
+    );
+}
+
+function filtrarNomePorEnvolvimento(listaFormatada, mapaEnvolvimento, tipo) {
+    return listaFormatada.reduce((acc, item) => {
+        const partes = item.split(", ");
+        let nomeExtraido = "";
+        
+        if (partes[0].startsWith("nome: ")) {
+            nomeExtraido = partes[0].replace("nome: ", "").trim();
+        } else if (partes[0].startsWith("nomeFantasia: ")) {
+            nomeExtraido = partes[0].replace("nomeFantasia: ", "").trim();
+        }
+        
+        if (mapaEnvolvimento[nomeExtraido] === tipo) {
+            acc.push(nomeExtraido);
+        }
+        return acc;
+    }, []);
+}
+
+function formatarListaComE(lista) {
+    if (lista.length === 0) return "";
+    if (lista.length === 1) return lista[0];
+    return lista.slice(0, -1).join(", ") + " e " + lista[lista.length - 1];
+}
+
+function extrairQualificacaoPorEnvolvimento(listaFormatada, mapaEnvolvimento, tipo) {
+    return listaFormatada.reduce((acc, item) => {
+        const partes = item.split(", ");
+        let nomeExtraido = "";
+        
+        if (partes[0].startsWith("nome: ")) {
+            nomeExtraido = partes[0].replace("nome: ", "").trim();
+        } else if (partes[0].startsWith("nomeFantasia: ")) {
+            nomeExtraido = partes[0].replace("nomeFantasia: ", "").trim();
+        }
+        
+        if (mapaEnvolvimento[nomeExtraido] === tipo) {
+            acc.push(item);
+        }
+        return acc;
+    }, []);
+}

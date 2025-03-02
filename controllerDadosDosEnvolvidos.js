@@ -8,65 +8,92 @@ async function controllerDadosDosEnvolvidos() {
       criarUrlParaObterIdDosEnvolvidos(),
       token
     );
-    // console.log("Dados recebidos:", dados);
 
-    // Extrai os IDs: pessoa física e pessoa jurídica
-    const idsPessoaFisica = dados
-      .filter((item) => item.pessoaFisicaId != null)
-      .map((item) => item.pessoaFisicaId);
-
-    const idsPessoaJuridica = dados
-      .filter((item) => item.pessoaJuridicaId != null)
-      .map((item) => item.pessoaJuridicaId);
-
-    // Para cada ID de pessoa física, busca os dados completos do envolvido
-    const dadosEnvolvidosCompletosFisica = [];
-    for (const id of idsPessoaFisica) {
-      const dadosEnvolvido =
-        await fetchParaObterDadosDosEnvolvidosOuProcedimento(
-          criarUrlParaObterDadosDosEnvolvidos(id),
-          token
-        );
-      dadosEnvolvidosCompletosFisica.push(dadosEnvolvido);
-    }
-    console.log(dadosEnvolvidosCompletosFisica);
-
-    // Para cada ID de pessoa jurídica, busca os dados completos do envolvido
-    const dadosEnvolvidosCompletosJuridica = [];
-    for (const id of idsPessoaJuridica) {
-      const dadosEnvolvido =
-        await fetchParaObterDadosDosEnvolvidosOuProcedimento(
-          criarUrlParaObterDadosPessoaJuridica(id),
-          token
-        );
-      dadosEnvolvidosCompletosJuridica.push(dadosEnvolvido);
-    }
-    console.log(dadosEnvolvidosCompletosJuridica);
-
-    // Exemplo: extrai algumas chaves dos dados completos
-    const extraidoFisica = extrairChavesValores(
-      dadosEnvolvidosCompletosFisica,
-      [
-        "nome",
-        "cpf",
-        "nomeMae",
-        "contato",
-        "dataNascimento",
-        "endereco",
-        "estadoCivil",
-        "instrucao",
-        "naturalidadeMunicipio",
-        "nomePai",
-        "profissao",
-      ]
+    // Cria o objeto que mapeia nome com tipo de envolvimento
+    const mapaNomeEnvolvimento = extrairMapaNomeEnvolvimento(dados);
+    const idsPessoaFisica = extrairIdsPessoaFisica(dados);
+    const idsPessoaJuridica = extrairIdsPessoaJuridica(dados);
+    const dadosEnvolvidosFisica = await buscarDadosEnvolvidosFisica(
+      idsPessoaFisica,
+      token
     );
-    const extraidoJuridica = extrairChavesValores(
-      dadosEnvolvidosCompletosJuridica,
-      ["nomeFantasia"]
+    const dadosEnvolvidosJuridica = await buscarDadosEnvolvidosJuridica(
+      idsPessoaJuridica,
+      token
     );
 
-    console.log("Extraído Pessoa Física:", extraidoFisica);
-    console.log("Extraído Pessoa Jurídica:", extraidoJuridica);
+    // Exemplo de uso
+    const extraidoFisica = extrairChavesValores(dadosEnvolvidosFisica, [
+      "nome",
+      "nomeMae",
+      "dataNascimento",
+      "nomePai",
+      "cpf",
+      "naturalidadeMunicipio",
+      "estadoCivil",
+      "instrucao",
+      "profissao",
+      "endereco",
+      "contato",
+    ]);
+
+    const extraidoJuridica = extrairChavesValores(dadosEnvolvidosJuridica, [
+      "nomeFantasia",
+    ]);
+
+    const listaUnificada = [...extraidoFisica, ...extraidoJuridica];
+
+    const extraidoFisicaJuridica = listaDeObjetosParaStrings(listaUnificada);
+    const autor = formatarListaComE(
+      filtrarNomePorEnvolvimento(
+        extraidoFisicaJuridica,
+        mapaNomeEnvolvimento,
+        "Autor"
+      )
+    );
+    const vitima = formatarListaComE(
+      filtrarNomePorEnvolvimento(
+        extraidoFisicaJuridica,
+        mapaNomeEnvolvimento,
+        "Vítima"
+      )
+    );
+
+    const qualificacaoAutor = extrairQualificacaoPorEnvolvimento(
+      extraidoFisicaJuridica,
+      mapaNomeEnvolvimento,
+      "Autor"
+    );
+
+    const qualificacaoVitima = extrairQualificacaoPorEnvolvimento(
+      extraidoFisicaJuridica,
+      mapaNomeEnvolvimento,
+      "Vítima"
+    );
+
+    const qualificacaoTestemunha = extrairQualificacaoPorEnvolvimento(
+      extraidoFisicaJuridica,
+      mapaNomeEnvolvimento,
+      "Testemunha"
+    );
+
+    const qualificacaoNoticiante = extrairQualificacaoPorEnvolvimento(
+      extraidoFisicaJuridica,
+      mapaNomeEnvolvimento,
+      "Noticiante"
+    );
+
+    console.log("Mapa de Nome de Envolvimento:", mapaNomeEnvolvimento);
+    console.log(
+      "Extraído Pessoa Física e Jurídica Formatado:",
+      extraidoFisicaJuridica
+    );
+    console.log("Autor:", autor);
+    console.log("Vítima:", vitima);
+    console.log("Qualificação do Autor:", qualificacaoAutor);
+    console.log("Qualificação da Vítima:", qualificacaoVitima);
+    console.log("Qualificação da Testemunha:", qualificacaoTestemunha);
+    console.log("Qualificação do Noticiante:", qualificacaoNoticiante);
 
     const dadosProcedimento =
       await fetchParaObterDadosDosEnvolvidosOuProcedimento(
@@ -90,7 +117,34 @@ async function controllerDadosDosEnvolvidos() {
         "procedimentoInstauracao",
       ]
     );
+
+    const predefinidos = {
+      dataInstauracao: extraidoProcedimento[0][0].dataInstauracao,
+      delegadoAtual: extraidoProcedimento[0][0].delegadoAtual,
+      escrivaoAtual: extraidoProcedimento[0][0].escrivaoAtual,
+      unidadeAtual: extraidoProcedimento[0][0].unidadeAtual,
+      numeroDoBO: extraidoProcedimento[0][0].procedimentoNoticia[0].numeroNoticia,
+      conteudoDoBO: extraidoProcedimento[0][0].procedimentoNoticia[0].conteudo,
+      dataDoFato: extraidoProcedimento[0][0].naturezaProcedimento[0].data,
+      horaDoFato: extraidoProcedimento[0][0].naturezaProcedimento[0].hora,
+      enderecoDoFato: extraidoProcedimento[0][0].naturezaProcedimento[0].endereco,
+      tipoProcedimentoExtenso:
+        extraidoProcedimento[0][0].procedimentoInstauracao.descricao,
+      tipoProcedimentoSigla:
+        extraidoProcedimento[0][0].procedimentoInstauracao.sigla,
+      numeroTombo: extraidoProcedimento[0][0].numeroTombo,
+      comarca: extraidoProcedimento[0][0].comarca,
+      incidenciaPenal: extraidoProcedimento[0][0].incidenciaPenal,
+      autor: autor,
+      vitima: vitima,
+      qualificacaoAutor: qualificacaoAutor,
+      qualificacaoVitima: qualificacaoVitima,
+      qualificacaoTestemunha: qualificacaoTestemunha,
+      qualificacaoNoticiante: qualificacaoNoticiante,
+    };
+    
     console.log("Extraído Procedimento:", extraidoProcedimento);
+    console.log("Extraído Predefinidos:", predefinidos);
   } catch (error) {
     console.error("Erro na execução:", error);
   }
