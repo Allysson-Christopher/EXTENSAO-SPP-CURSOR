@@ -8,6 +8,3 @@ function extrairTokenNaPagina() {
     throw error;
   }
 }
-
-// Exportação para uso em outros arquivos
-window.extrairTokenNaPagina = extrairTokenNaPagina;

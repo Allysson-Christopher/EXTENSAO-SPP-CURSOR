@@ -5,30 +5,25 @@ async function controllerDadosDosEnvolvidos() {
       const apiRepository = new ApiRepository(token);
   
       // Obter dados dos envolvidos
-      const dadosEnvolvidos = await apiRepository.fetchEnvolvidos(procedimentoId);
-      const mapaNomeEnvolvimento = DataAdapter.extrairMapaNomeEnvolvimento(dadosEnvolvidos);
+      const dadosEnvolvidos = apiRepository.fetchEnvolvidos(procedimentoId);
+      const mapaNomeEnvolvimento = extrairMapaNomeEnvolvimento(dadosEnvolvidos);
   
-      // Extrair IDs
       const idsPessoaFisica = dadosEnvolvidos.filter(item => item.pessoaFisicaId).map(item => item.pessoaFisicaId);
       const idsPessoaJuridica = dadosEnvolvidos.filter(item => item.pessoaJuridicaId).map(item => item.pessoaJuridicaId);
   
-      // Buscar dados detalhados
-      const dadosFisica = await DataAdapter.buscarDadosEnvolvidos(idsPessoaFisica, "fisica", apiRepository);
-      const dadosJuridica = await DataAdapter.buscarDadosEnvolvidos(idsPessoaJuridica, "juridica", apiRepository);
+      const dadosFisica = await buscarDadosEnvolvidos(idsPessoaFisica, "fisica", apiRepository);
+      const dadosJuridica = await buscarDadosEnvolvidos(idsPessoaJuridica, "juridica", apiRepository);
   
-      // Extrair e formatar dados
-      const extraidoFisica = dadosFisica.map(d => DataAdapter.extrairDadosPessoaFisica(d));
-      const extraidoJuridica = dadosJuridica.map(d => DataAdapter.extrairDadosPessoaJuridica(d));
+      const extraidoFisica = dadosFisica.map(d => extrairDadosPessoaFisica(d));
+      const extraidoJuridica = dadosJuridica.map(d => extrairDadosPessoaJuridica(d));
       const listaUnificada = [...extraidoFisica, ...extraidoJuridica];
-      const listaFormatada = DataAdapter.listaDeObjetosParaStrings(listaUnificada);
+      const listaFormatada = listaDeObjetosParaStrings(listaUnificada);
   
-      // Filtrar por tipo de envolvimento
-      const autores = DataAdapter.filtrarPorEnvolvimento(listaFormatada, mapaNomeEnvolvimento, "Autor");
-      const vitimas = DataAdapter.filtrarPorEnvolvimento(listaFormatada, mapaNomeEnvolvimento, "Vítima");
+      const autores = filtrarPorEnvolvimento(listaFormatada, mapaNomeEnvolvimento, "Autor");
+      const vitimas = filtrarPorEnvolvimento(listaFormatada, mapaNomeEnvolvimento, "Vítima");
   
-      // Formatar listas
-      const autorFormatado = DataAdapter.formatarListaComE(autores.map(a => a.split(", ")[0].split(": ")[1]));
-      const vitimaFormatado = DataAdapter.formatarListaComE(vitimas.map(v => v.split(", ")[0].split(": ")[1]));
+      const autorFormatado = formatarListaComE(autores.map(a => a.split(", ")[0].split(": ")[1]));
+      const vitimaFormatado = formatarListaComE(vitimas.map(v => v.split(", ")[0].split(": ")[1]));
   
       // Obter dados do procedimento
       const dadosProcedimento = await apiRepository.fetchProcedimento(procedimentoId);
@@ -36,10 +31,26 @@ async function controllerDadosDosEnvolvidos() {
   
       // Montar predefinidos
       const predefinidos = {
-        dataInstauracao: extraidoProcedimento.dataInstauracao,
-        delegadoAtual: extraidoProcedimento.delegadoAtual,
+        dataInstauracao: extraidoProcedimento.dataInstauracao || null,
+        delegadoAtual: extraidoProcedimento.delegadoAtual || null,
+        escrivaoAtual: extraidoProcedimento.escrivaoAtual || null,
+        unidadeAtual: extraidoProcedimento.unidadeAtual || null,
+        numeroDoBO: extraidoProcedimento.numeroDoBO || null,
+        conteudoDoBO: extraidoProcedimento.conteudoDoBO || null,
+        dataDoFato: extraidoProcedimento.dataDoFato || null,
+        horaDoFato: extraidoProcedimento.horaDoFato || null,
+        enderecoDoFato: extraidoProcedimento.enderecoDoFato || null,
+        tipoProcedimentoExtenso: extraidoProcedimento.procedimentoInstauracao?.descricao || null,
+        tipoProcedimentoSigla: extraidoProcedimento.procedimentoInstauracao?.sigla || null,
+        numeroTombo: extraidoProcedimento.numeroTombo || null,
+        comarca: extraidoProcedimento.comarca || null,
+        incidenciaPenal: extraidoProcedimento.incidenciaPenal || null,
         autor: autorFormatado,
         vitima: vitimaFormatado,
+        qualificacaoAutor: autores,
+        qualificacaoVitima: vitimas,
+        qualificacaoTestemunha: filtrarPorEnvolvimento(listaFormatada, mapaNomeEnvolvimento, "Testemunha"),
+        qualificacaoNoticiante: filtrarPorEnvolvimento(listaFormatada, mapaNomeEnvolvimento, "Noticiante"),
       };
   
       console.log("Predefinidos:", predefinidos);
@@ -51,9 +62,17 @@ async function controllerDadosDosEnvolvidos() {
   }
   
   function extrairDadosProcedimento(dados) {
-    const keys = ["dataInstauracao", "delegadoAtual", "escrivaoAtual", "unidadeAtual", "procedimentoNoticia", "naturezaProcedimento", "procedimentoInstauracao"];
+    const keys = [
+      "dataInstauracao",
+      "delegadoAtual",
+      "escrivaoAtual",
+      "unidadeAtual",
+      "procedimentoNoticia",
+      "naturezaProcedimento",
+      "procedimentoInstauracao",
+      "numeroTombo",
+      "comarca",
+      "incidenciaPenal"
+    ];
     return DataAdapter.adapt(dados, keys);
   }
-  
-  // Exportação para uso em outros arquivos
-  window.controllerDadosDosEnvolvidos = controllerDadosDosEnvolvidos;

@@ -16,6 +16,3 @@ class UrlFactory {
       }
     }
   }
-  
-  // Exportação para uso em outros arquivos
-  window.UrlFactory = UrlFactory;
