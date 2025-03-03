@@ -1,17 +1,13 @@
 function extrairTokenNaPagina() {
   try {
-    let token = sessionStorage.getItem("token");
-
-    if (!token) {
-      console.warn(
-        "⚠️ Token não encontrado na sessionStorage, tentando localStorage..."
-      );
-      token = localStorage.getItem("token");
-    }
-
-    return token || null; // Retorna null se não encontrar o token
+    let token = sessionStorage.getItem("token") || localStorage.getItem("token");
+    if (!token) throw new Error("Token não encontrado.");
+    return token;
   } catch (error) {
-    console.error("❌ Erro ao tentar acessar o token:", error);
-    return null; // Evita falhas na execução do script
+    console.error("Erro ao extrair token:", error);
+    throw error;
   }
 }
+
+// Exportação para uso em outros arquivos
+window.extrairTokenNaPagina = extrairTokenNaPagina;

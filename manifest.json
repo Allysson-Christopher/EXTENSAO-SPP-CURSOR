@@ -4,21 +4,24 @@
   "version": "1.0",
   "description": "Extensão para automatizar a geração de peças e kits no sistema de polícia.",
   "permissions": [
-    "scripting",
     "activeTab",
     "tabs",
     "webRequest",
-    "webRequestBlocking", 
-    "https://spp.pc.pe.gov.br/"
-
+    "https://spp.pc.pe.gov.br/*"
   ],
   "host_permissions": ["https://spp.pc.pe.gov.br/*"],
-  
-
   "content_scripts": [
     {
       "matches": ["https://spp.pc.pe.gov.br/*"],
-      "js": ["token.js", "extrairIdDoProcedimento.js", "criarUrl.js", "requisicoes.js", "extrairChavesValoresEnvolvidos.js", "controllerDadosDosEnvolvidos.js", "main.js"],
+      "js": [
+        "token.js",
+        "extrairIdDoProcedimento.js",
+        "urlFactory.js",
+        "apiRepository.js",
+        "dataAdapter.js",
+        "controller.js",
+        "main.js"
+      ],
       "run_at": "document_end"
     }
   ]
