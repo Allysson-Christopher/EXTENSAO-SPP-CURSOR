@@ -8,7 +8,7 @@ class UrlFactory {
         case "pessoaFisica":
           return `${baseUrl}/pessoa-fisicas/${id}${cacheBuster}`;
         case "pessoaJuridica":
-          return `${baseUrl}/pessoa-juridicas-pesquisa?&id=${id}${cacheBuster}`;
+          return `https://spp.pc.pe.gov.br/b/api/pessoa-juridicas-pesquisa?&id=${id}`;
         case "procedimento":
           return `${baseUrl}/procedimento-informacoes/${procedimentoId}?includes=naturezaMotivacao${cacheBuster}`;
         default:
