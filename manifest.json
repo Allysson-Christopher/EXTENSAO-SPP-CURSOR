@@ -26,7 +26,8 @@
         "utils/pecas.js",
         "main.js",
         "front/dropDown.js",
-        "front/modal.js"
+        "front/modal.js",
+        "front/extrairPlaceholders.js"
       ],
       "css": ["front/styles.css"],
       "run_at": "document_end",

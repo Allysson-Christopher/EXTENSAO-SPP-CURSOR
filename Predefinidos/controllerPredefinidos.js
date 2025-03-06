@@ -58,8 +58,8 @@ async function controllerDadosDosEnvolvidos() {
       qualificacaoTestemunha: qualificacaoTestemunha || null,
       qualificacaoNoticiante: qualificacaoNoticiante || null,
     };
-
-    console.log("Predefinidos:", predefinidos);
+    //COMO COLOCAR GLOBALMENTE?
+    window.predefinidos = predefinidos;
     return predefinidos;
   } catch (error) {
     console.error("Erro no controlador:", error);

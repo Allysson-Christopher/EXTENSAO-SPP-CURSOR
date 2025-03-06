@@ -1,16 +1,17 @@
 async function handleKitSelection() {
   const kits = await fetchKits(); // Função fictícia que retorna os kits
-  console.log("Kits carregados:", kits);
 
+  // Cria uma cópia dos kits originais para preservar o estado inicial
+  const originalKits = JSON.parse(JSON.stringify(kits));
   const sidebar = document.querySelector(".minha-sidebar");
 
   // Adiciona elementos à sidebar
   sidebar.appendChild(document.createElement("h4")).textContent = "Automação";
   sidebar.appendChild(createDropdown(kits)); // Função fictícia que cria o dropdown
   sidebar.appendChild(
-    createButton("add-more-pieces", "Adicionar Mais Peças ao Kit") // Função fictícia que cria o botão
+    createButton("add-more-pieces", "Adicionar Mais Peças ao Kit")
   );
-  sidebar.appendChild(createStatusElement()); // Função fictícia que cria o elemento de status
+  sidebar.appendChild(createStatusElement());
   sidebar.appendChild(createButton("start-button", "Iniciar"));
 
   const kitSelect = sidebar.querySelector("#kit-select");
@@ -18,23 +19,53 @@ async function handleKitSelection() {
   if (!kitSelect || !status) return;
 
   let selectedKitName = null;
+  // Torna kits disponíveis globalmente
+  window.kits = kits;
 
-  // Listener para mudança no dropdown
   kitSelect.addEventListener("change", function () {
-    selectedKitName = kitSelect.value; // Usa o value do dropdown, que deve corresponder às chaves em kits
-    console.log("Kit selecionado:", selectedKitName);
-    if (selectedKitName === "criar-kit") {
+    const selectedKit = kitSelect.value;
+    if (selectedKit === "criar-kit") {
+      selectedKitName = "criar-kit";
+      kits[selectedKitName] = [];
       status.textContent =
-        "Clique em Adicionar Mais Peças ao Kit para criar um novo kit.";
+        "Criando novo kit. Clique em 'Adicionar Mais Peças ao Kit' para definir as peças.";
+    } else if (selectedKit in originalKits) {
+      selectedKitName = selectedKit;
+      // Não redefinimos kits[selectedKitName], usando os dados originais
+      status.textContent = `${selectedKitName} selecionado. Clique em 'Iniciar' para começar ou em 'Adicionar Mais Peças ao Kit' para adicionar peças ao kit.`;
     } else {
-      status.textContent = `${selectedKitName} selecionado. Clique em Iniciar para preencher algumas informações. Se precisar, você pode adicionar mais peças ao kit.`;
+      status.textContent = "Kit não encontrado.";
     }
+    // Torna o nome do kit selecionado disponível globalmente
+    window.selectedKitName = selectedKitName;
   });
 
   const addMorePiecesButton = document.querySelector("#add-more-pieces");
   addMorePiecesButton.addEventListener("click", () => {
+    if (!selectedKitName) {
+      status.textContent = "Selecione um kit para adicionar peças.";
+      return;
+    }
     const piecesModal = createPiecesModal(selectedKitName, kits, status);
     piecesModal.style.display = "block";
+  });
+
+  const startButton = document.querySelector("#start-button");
+  startButton.addEventListener("click", () => {
+    console.log("Iniciando o processo com o kit:", selectedKitName);
+    // Se não houver peças selecionadas, exibe uma mensagem de erro
+    if (!kits[selectedKitName] || kits[selectedKitName].length === 0) {
+      status.textContent =
+        "Nenhuma peça selecionada. Por favor, adicione peças ao kit antes de iniciar.";
+      return;
+    }
+
+    // Cria a variável global com as peças finais selecionadas
+    window.finalSelectedPieces = kits[selectedKitName];
+
+    // Agora, extrairPlaceholders (ou outra função) pode usar window.finalSelectedPieces
+    extrairPlaceholders();
+    // Exemplo: console.log("Final Selected Pieces:", window.finalSelectedPieces);
   });
 }
 
