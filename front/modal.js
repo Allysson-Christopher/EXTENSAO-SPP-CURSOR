@@ -1,6 +1,4 @@
 function createPiecesModal(selectedKitName, kits, status) {
-  console.log("Kit no modal:", selectedKitName);
-  console.log("Kits disponíveis:", kits);
 
   // Reseta o modal caso já exista para limpar os checkbox previamente marcados
   const existingModal = document.getElementById("pieces-modal");
@@ -34,7 +32,6 @@ function createPiecesModal(selectedKitName, kits, status) {
 
   // Usa as peças já salvas para marcar os checkboxes
   const selectedKitPieces = kits[selectedKitName] || [];
-  console.log("Peças originais do kit:", selectedKitPieces);
 
   // Supondo que 'pecas' seja uma lista global de peças disponíveis
   pecas.forEach((peca) => {
@@ -71,7 +68,6 @@ function createPiecesModal(selectedKitName, kits, status) {
     e.preventDefault();
     const selectedPieces = Array.from(form.querySelectorAll("input[name='peças']:checked"))
       .map(checkbox => parseInt(checkbox.value));
-    console.log("Peças totais selecionadas no modal:", selectedPieces);
 
     // Para o cálculo, usamos as peças atuais do kit (que podem ser as originais ou modificadas)
     const originalPieces = kits[selectedKitName] || [];

@@ -35,31 +35,39 @@ async function controllerDadosDosEnvolvidos() {
     const qualificacaoTestemunha = formatarStringsDasQualificacoes(filtrarPorEnvolvimento(listaFormatada, mapaNomeEnvolvimento, "Testemunha"));
     const qualificacaoNoticiante = formatarStringsDasQualificacoes(filtrarPorEnvolvimento(listaFormatada, mapaNomeEnvolvimento, "Noticiante"));
 
+    const hora_atual = getCurrentTime();
+    const data_mes_e_ano = getCurrentDate();
+    const data_e_hora_do_fato = `${extraidoProcedimento.dataDoFato} - ${extraidoProcedimento.horaDoFato}`;
+
+
     // Montar predefinidos
     const predefinidos = {
-      dataInstauracao: extraidoProcedimento.dataInstauracao || null,
-      delegadoAtual: extraidoProcedimento.delegadoAtual || null,
-      escrivaoAtual: extraidoProcedimento.escrivaoAtual || null,
+      data_de_instauracao: extraidoProcedimento.dataInstauracao || null,
+      nome_do_delegado: extraidoProcedimento.delegadoAtual || null,
+      nome_do_escrivao: extraidoProcedimento.escrivaoAtual || null,
       unidadeAtual: extraidoProcedimento.unidadeAtual || null,
-      numeroDoBO: extraidoProcedimento.numeroDoBO || null,
-      conteudoDoBO: extraidoProcedimento.conteudoDoBO || null,
-      dataDoFato: extraidoProcedimento.dataDoFato || null,
-      horaDoFato: extraidoProcedimento.horaDoFato || null,
-      enderecoDoFato: extraidoProcedimento.enderecoDoFato || null,
-      tipoProcedimentoExtenso: extraidoProcedimento.procedimentoInstauracao?.descricao || null,
+      numero_do_bo: extraidoProcedimento.numeroDoBO || null,
+      cole_aqui_a_descricao_do_bo: extraidoProcedimento.conteudoDoBO || null,
+      data_do_fato: extraidoProcedimento.dataDoFato || null,
+      hora_do_fato: extraidoProcedimento.horaDoFato || null,
+      endereco_onde_ocorreu_o_fato: extraidoProcedimento.enderecoDoFato || null,
+      tipo_de_procedimento: extraidoProcedimento.procedimentoInstauracao?.descricao || null,
       tipoProcedimentoSigla: extraidoProcedimento.procedimentoInstauracao?.sigla || null,
-      numeroTombo: numeroTombo || null,
-      comarca: extraidoProcedimento.comarca || null,
-      incidenciaPenal: extraidoProcedimento.incidenciaPenal || null,
-      autor: autorFormatado || null,
-      vitima: vitimaFormatado || null,
-      qualificacaoAutor: autoresQualificacoes || null,
-      qualificacaoVitima: vitimasQualificacoes || null,
-      qualificacaoTestemunha: qualificacaoTestemunha || null,
-      qualificacaoNoticiante: qualificacaoNoticiante || null,
+      numero_do_procedimento: numeroTombo || null,
+      cidade_onde_o_procedimento_esta_sendo_realizado_: extraidoProcedimento.comarca || null,
+      incidencia_penal: extraidoProcedimento.incidenciaPenal || null,
+      nome_do_imputado: autorFormatado || null,
+      nome_da_vitima: vitimaFormatado || null,
+      qualificacao_completa_do_imputado_: autoresQualificacoes || null,
+      qualificacao_da_vitima: vitimasQualificacoes || null,
+      qualificacao_da_primeira_testemunha_: qualificacaoTestemunha || null,
+      qualificacao_do_condutor_: qualificacaoNoticiante || null,
+      hora_atual: hora_atual || null,
+      data_mes_e_ano: data_mes_e_ano || null,
+      data_e_hora_do_fato: data_e_hora_do_fato || null,
+
     };
     //COMO COLOCAR GLOBALMENTE?
-    window.predefinidos = predefinidos;
     return predefinidos;
   } catch (error) {
     console.error("Erro no controlador:", error);
@@ -81,4 +89,36 @@ function extrairDadosProcedimento(dados) {
     "incidenciaPenal"
   ];
   return DataAdapter.adapt(dados, keys);
+}
+
+/**
+   * Função para obter o horário atual no formato hh:mm
+   * @returns {string} - Horário atual
+   */
+getCurrentTime: function getCurrentTime() {
+  const now = new Date();
+  let hours = now.getHours();
+  let minutes = now.getMinutes();
+
+  // Adiciona zero à esquerda se necessário
+  hours = hours < 10 ? "0" + hours : hours;
+  minutes = minutes < 10 ? "0" + minutes : minutes;
+
+  return `${hours}:${minutes}`;
+}
+/**
+ * Função para obter a data atual no formato "dd de mês de aaaa"
+ * @returns {string} - Data atual formatada
+ */
+getCurrentDate: function getCurrentDate() {
+  const now = new Date();
+
+  const options = {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+  };
+
+  // Define o idioma para português do Brasil
+  return now.toLocaleDateString("pt-BR", options);
 }

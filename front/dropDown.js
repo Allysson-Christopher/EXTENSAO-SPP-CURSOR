@@ -15,7 +15,8 @@ async function handleKitSelection() {
   sidebar.appendChild(createButton("start-button", "Iniciar"));
 
   const kitSelect = sidebar.querySelector("#kit-select");
-  const status = sidebar.querySelector("#status");
+  const status = sidebar.querySelector("#status"); // quero colocar status no win
+  
   if (!kitSelect || !status) return;
 
   let selectedKitName = null;
@@ -52,7 +53,6 @@ async function handleKitSelection() {
 
   const startButton = document.querySelector("#start-button");
   startButton.addEventListener("click", () => {
-    console.log("Iniciando o processo com o kit:", selectedKitName);
     // Se não houver peças selecionadas, exibe uma mensagem de erro
     if (!kits[selectedKitName] || kits[selectedKitName].length === 0) {
       status.textContent =
@@ -62,9 +62,10 @@ async function handleKitSelection() {
 
     // Cria a variável global com as peças finais selecionadas
     window.finalSelectedPieces = kits[selectedKitName];
+    userProvidedValues = [102, 24, 3, 160, 22];
 
     // Agora, extrairPlaceholders (ou outra função) pode usar window.finalSelectedPieces
-    extrairPlaceholders();
+    Placeholders(userProvidedValues);
     // Exemplo: console.log("Final Selected Pieces:", window.finalSelectedPieces);
   });
 }
