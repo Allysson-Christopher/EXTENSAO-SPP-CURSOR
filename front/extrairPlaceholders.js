@@ -1,13 +1,9 @@
 function Placeholders() {
   // Usa a variável global finalSelectedPieces
   const selectedPiecesId = window.finalSelectedPieces;
-  console.log("Final selected pieces:", selectedPiecesId);
   const placeholders = extrairPlaceholders(selectedPiecesId);
-  console.log("Placeholders:", placeholders);
   const predefinidos = window.predefinidos;
-  console.log("Predefinidos:", predefinidos);
   let placeholdersToFill = filtrarPlaceholders(placeholders);
-  console.log("Placeholders to fill:", placeholdersToFill);
   const multiAuthorPlaceholders = [
     "qualificacao_completa_do_imputado",
     "nome_da_pessoa_da_familia_do_preso_que_vai_receber_a_comunicacao",
@@ -18,11 +14,8 @@ function Placeholders() {
       (placeholder) => !multiAuthorPlaceholders.includes(placeholder)
     );
   }
-  console.log("Placeholders to fill:", placeholdersToFill);
   const placeholdersMultiplos = extrairPlaceholdersMultiplos();
-  console.log("Placeholders multiplos:", placeholdersMultiplos);
   const listaParaInputs = placeholdersToFill.concat(placeholdersMultiplos);
-  console.log("Lista para inputs:", listaParaInputs);
   criarFormulario(listaParaInputs, predefinidos);
 }
 
@@ -50,7 +43,8 @@ function filtrarPlaceholders(placeholders) {
 
   const placeholdersToFill = [...placeholders].filter((placeholder) => {
     return (
-      !predefinidos.hasOwnProperty(placeholder) || !predefinidos[placeholder]
+      !predefinidos.hasOwnProperty(placeholder) ||
+      !window.predefinidos[placeholder]
     );
   });
 
@@ -58,22 +52,8 @@ function filtrarPlaceholders(placeholders) {
     status.textContent =
       "Todos os placeholders já estão preenchidos. Nenhum input necessário. Clique em Iniciar e depois em Enviar";
   }
-    console.log("Placeholders to fill de dentro de filtrarPlaceholders:", placeholdersToFill);
   return placeholdersToFill;
 }
-
-// function filtrarPlaceholdersQuandoHouverMaisDeUmImputado() {
-//   if (predefinidos.qualificacao_completa_do_imputado.length > 1) {
-// // Arrays de configuração
-//     // Array com os nomes dos placeholders que devem ter inputs separados para cada autor
-//     const multiAuthorPlaceholders = [
-//       "qualificacao_completa_do_imputado",
-//       "nome_da_pessoa_da_familia_do_preso_que_vai_receber_a_comunicacao",
-//     ];
-//     // Array com os IDs das peças que deverão gerar um documento para cada autor (inputs usados separadamente)
-//     const piecesSeparateIds = [102, 24, 3, 160, 22];
-//   }
-// }
 
 function extrairPlaceholdersMultiplos() {
   const piecesSeparateIds = [102, 24, 3, 160, 22];
@@ -113,6 +93,8 @@ function extrairPlaceholdersMultiplos() {
 }
 
 function criarFormulario(listaParaInputs, predefinidos) {
+  let indiceQualificacao = 0;
+
   let dynamicFormContainer = sidebar.querySelector("#dynamic-form");
   if (!dynamicFormContainer) {
     dynamicFormContainer = document.createElement("div");
@@ -138,31 +120,44 @@ function criarFormulario(listaParaInputs, predefinidos) {
     input.name = placeholder;
     if (placeholder.includes("qualificacao_do_condutor")) {
       input.value = predefinidos.qualificacao_do_condutor_[0].toUpperCase();
+    } else if (placeholder.includes("qualificacao_da_primeira_testemunha")) {
+      input.value =
+        predefinidos.qualificacao_da_primeira_testemunha_[0].toUpperCase();
+    } else if (
+      placeholder.includes("cidade_onde_o_procedimento_esta_sendo_realizado")
+    ) {
+      input.value =
+        predefinidos.cidade_onde_o_procedimento_esta_sendo_realizado_.toUpperCase();
     }
-    else if (placeholder.includes("qualificacao_da_primeira_testemunha")) {
-      input.value = predefinidos.qualificacao_da_primeira_testemunha_[0].toUpperCase();
-    }
-    else if (placeholder.includes("cidade_onde_o_procedimento_esta_sendo_realizado")) {
-      input.value = predefinidos.cidade_onde_o_procedimento_esta_sendo_realizado_.toUpperCase();
-    }
-    // else if (placeholder.includes("qualificacao_completa_do_imputado")) {
-    //   input.value = predefinidos.qualificacao_completa_do_imputado_.toUpperCase();
-    // }
-    else if (placeholder.includes("qualificacao_completa_do_imputado")) {
-      let qualificacoes = [...predefinidos.qualificacao_completa_do_imputado_]; // Faz uma cópia da lista
-    
-      if (qualificacoes.length > 1) {
-        input.value = qualificacoes.pop().toUpperCase(); // Remove e usa o último item
-        predefinidos.qualificacao_completa_do_imputado_ = qualificacoes; // Atualiza a lista original
+    // Variável global para rastrear qual item foi usado
+    // let indiceQualificacao = 0;
+    else if (placeholder.includes("qualificacao_da_vitima")) {
+      input.value = predefinidos.qualificacao_da_vitima_
+        .join(", ")
+        .toUpperCase();
+    } else if (placeholder.includes("qualificacao_completa_do_imputado")) {
+      let qualificacoes = [...predefinidos.qualificacao_completa_do_imputado_]; // Copia o array
+      console.log("Lista de qualificações:", qualificacoes);
+
+      // Se ainda houver elementos no array, pegamos o próximo
+      if (indiceQualificacao < qualificacoes.length) {
+        input.value = qualificacoes[indiceQualificacao].toUpperCase();
+        indiceQualificacao++; // Avança para o próximo índice
       } else {
-        input.value = qualificacoes[0]?.toUpperCase() || ""; // Usa o único item disponível ou uma string vazia
+        input.value = ""; // Se não houver mais elementos, define vazio
+        console.warn("⚠️ Nenhuma qualificação restante para ser atribuída!");
       }
     }
-    
-    console.log("placeholder = ", placeholder);
 
     form.appendChild(label);
     form.appendChild(input);
+
     dynamicFormContainer.appendChild(form);
+  });
+  dynamicFormContainer.appendChild(createButton("execute-button", "Executar"));
+  const botaoExecutar = document.getElementById("execute-button");
+  botaoExecutar.addEventListener("click", function (e) {
+    e.preventDefault();
+    extrairListaFinalDePlaceholders();
   });
 }

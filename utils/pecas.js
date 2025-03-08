@@ -972,9 +972,7 @@ const pecas = [
       htmlContent: `
             <div style="width: 70%; border: solid 1px black; padding: 15px; padding-bottom: 10px; margin: auto; margin-top: 30px;">
             <p style="text-align: center; font-size: 14pt;"><strong>REMESSA</strong></p>
-            <p style="text-align: center;">Ao(s) {data_mes_e_ano}, fa&ccedil;o remessa destes autos &agrave;</p>
-            <div>
-            <div>{delegacia_para_onde_o_procedimento_sera_remetido}, para as provid&ecirc;ncias de praxe.</div>
+            <p style="text-align: center;">Ao(s) {data_mes_e_ano}, fa&ccedil;o remessa destes autos &agrave; {delegacia_para_onde_o_procedimento_sera_remetido}, para as provid&ecirc;ncias de praxe.</div>
             </div>
             <p style="text-align: center;">Eu,&nbsp; _________________________ {nome_do_escrivao}, Escriv&atilde;o(&atilde;) que o digitei.</p>
             </div>
@@ -1736,7 +1734,7 @@ const pecas = [
       id: 214,
       nomePeca: "Portaria de nomeação e termo de compromisso de peritos",
       htmlContent: `
-            <p style="text-align: justify;">O(a) Bel(a). {nome_do_delegado}, Delegado(a) de Pol&iacute;cia Titular desta Delegacia, no uso de suas atribui&ccedil;&otilde;es, na falta de Peritos Oficiais e ocorrendo a necessidade de se proceder a(o) {TIPO_DO_EXAME_PERITOS_NOMEADOS}, nomeia para atuar como Peritos, de acordo com o disposto no Art. 159, &sect;&sect; 1&ordm; e 2&ordm;, do C&oacute;digo de Processo Penal, os Senhores <strong>{qualificacoes_dos_peritos_nomeados}</strong>, os quais dever&atilde;o prestar o compromisso legal de estilo.</p>
+            <p style="text-align: justify;">O(a) Bel(a). {nome_do_delegado}, Delegado(a) de Pol&iacute;cia Titular desta Delegacia, no uso de suas atribui&ccedil;&otilde;es, na falta de Peritos Oficiais e ocorrendo a necessidade de se proceder a(o) {tipo_do_exame_peritos_nomeados}, nomeia para atuar como Peritos, de acordo com o disposto no Art. 159, &sect;&sect; 1&ordm; e 2&ordm;, do C&oacute;digo de Processo Penal, os Senhores <strong>{qualificacoes_dos_peritos_nomeados}</strong>, os quais dever&atilde;o prestar o compromisso legal de estilo.</p>
             <p>&nbsp;</p>
             <p style="text-align: center;">C U M P R A - S E</p>
             <p>&nbsp;</p>
@@ -1746,7 +1744,7 @@ const pecas = [
             <p>&nbsp;</p>
             <p style="text-align: center;"><strong>TERMO DE COMPROMISSO</strong></p>
             <p>&nbsp;</p>
-            <p style="text-align: justify;">Aos {data_mes_e_ano}, nesta Cidade de {cidade_onde_o_procedimento_esta_sendo_realizado}, Estado de Pernambuco, no Cart&oacute;rio desta Delegacia de Pol&iacute;cia, onde presente se encontrava o(a) Bel(a). {nome_do_delegado}, respectivo(a) Delegado(a), comigo {nome_do_escrivao}, Escriv&atilde;o(&atilde;) de seu cargo, ao final assinado(a), a&iacute; compareceram os Peritos nomeados <strong>{qualificacoes_dos_peritos_nomeados}</strong>, a quem a Autoridade deferiu o compromisso legal de bem e fielmente desempenharem o encargo, incumbindo-os de procederem a(o) {TIPO_DO_EXAME_PERITOS_NOMEADOS}, descrevendo com verdade, sem dolo ou mal&iacute;cia, o que encontrarem.</p>
+            <p style="text-align: justify;">Aos {data_mes_e_ano}, nesta Cidade de {cidade_onde_o_procedimento_esta_sendo_realizado}, Estado de Pernambuco, no Cart&oacute;rio desta Delegacia de Pol&iacute;cia, onde presente se encontrava o(a) Bel(a). {nome_do_delegado}, respectivo(a) Delegado(a), comigo {nome_do_escrivao}, Escriv&atilde;o(&atilde;) de seu cargo, ao final assinado(a), a&iacute; compareceram os Peritos nomeados <strong>{qualificacoes_dos_peritos_nomeados}</strong>, a quem a Autoridade deferiu o compromisso legal de bem e fielmente desempenharem o encargo, incumbindo-os de procederem a(o) {tipo_do_exame_peritos_nomeados}, descrevendo com verdade, sem dolo ou mal&iacute;cia, o que encontrarem.</p>
             <p style="text-align: justify;">E, como aceitassem o encargo, mandou a Autoridade lavrar este Termo, que lido e achado conforme, o assina juntamente com os Peritos e comigo, Escriv&atilde;o(&atilde;), que o digitei.</p>
             <p>&nbsp;</p>
             <p>AUTORIDADE: ____________________________________________________________</p>

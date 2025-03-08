@@ -9,6 +9,7 @@ class DataAdapter {
       ) {
         if (key === "delegadoAtual" || key === "escrivaoAtual") {
           acc[key] = obj[key].nome || null;
+          acc[`${key}Id`] = obj[key].id || null;
         } else if (key === "naturezaProcedimento" && Array.isArray(obj[key])) {
           const natureza = obj[key][0];
           if (natureza) {

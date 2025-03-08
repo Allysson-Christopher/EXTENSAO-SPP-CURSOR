@@ -27,7 +27,10 @@
         "main.js",
         "front/dropDown.js",
         "front/modal.js",
-        "front/extrairPlaceholders.js"
+        "front/extrairPlaceholders.js",
+        "preencherPlaceholders/listaFinalDePlaceholders.js",
+        "preencherPlaceholders/MudarHtmlDaPeca.js",
+        "preencherPlaceholders/CriarEAtualizarDocumentos.js"
       ],
       "css": ["front/styles.css"],
       "run_at": "document_end",

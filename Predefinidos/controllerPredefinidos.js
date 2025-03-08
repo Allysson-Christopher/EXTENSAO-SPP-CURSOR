@@ -6,6 +6,7 @@ async function controllerDadosDosEnvolvidos() {
 
     // Obter dados dos envolvidos
     const dadosEnvolvidos = apiRepository.fetchEnvolvidos(procedimentoId);
+    console.log("dadosEnvolvidos", dadosEnvolvidos);
     const mapaNomeEnvolvimento = extrairMapaNomeEnvolvimento(dadosEnvolvidos);
 
     const idsPessoaFisica = dadosEnvolvidos.filter(item => item.pessoaFisicaId).map(item => item.pessoaFisicaId);
@@ -30,7 +31,7 @@ async function controllerDadosDosEnvolvidos() {
     // Obter dados do procedimento
     const dadosProcedimento = await apiRepository.fetchProcedimento(procedimentoId);
     const extraidoProcedimento = extrairDadosProcedimento(dadosProcedimento);
-
+    console.log("extraidoProcedimento", extraidoProcedimento);
     const numeroTombo = formatarNumero16Digitos(extraidoProcedimento.numeroTombo);
     const qualificacaoTestemunha = formatarStringsDasQualificacoes(filtrarPorEnvolvimento(listaFormatada, mapaNomeEnvolvimento, "Testemunha"));
     const qualificacaoNoticiante = formatarStringsDasQualificacoes(filtrarPorEnvolvimento(listaFormatada, mapaNomeEnvolvimento, "Noticiante"));
@@ -45,6 +46,8 @@ async function controllerDadosDosEnvolvidos() {
       data_de_instauracao: extraidoProcedimento.dataInstauracao || null,
       nome_do_delegado: extraidoProcedimento.delegadoAtual || null,
       nome_do_escrivao: extraidoProcedimento.escrivaoAtual || null,
+      delegadoId: extraidoProcedimento.delegadoAtualId || null,
+      escrivaoId: extraidoProcedimento.escrivaoAtualId || null,
       unidadeAtual: extraidoProcedimento.unidadeAtual || null,
       numero_do_bo: extraidoProcedimento.numeroDoBO || null,
       cole_aqui_a_descricao_do_bo: extraidoProcedimento.conteudoDoBO || null,
@@ -59,7 +62,7 @@ async function controllerDadosDosEnvolvidos() {
       nome_do_imputado: autorFormatado || null,
       nome_da_vitima: vitimaFormatado || null,
       qualificacao_completa_do_imputado_: autoresQualificacoes || null,
-      qualificacao_da_vitima: vitimasQualificacoes || null,
+      qualificacao_da_vitima_: vitimasQualificacoes || null,
       qualificacao_da_primeira_testemunha_: qualificacaoTestemunha || null,
       qualificacao_do_condutor_: qualificacaoNoticiante || null,
       hora_atual: hora_atual || null,
