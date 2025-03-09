@@ -1,8 +1,8 @@
 const pecas = [
   {
     id: 1,
-      nomePeca: "APFD-1ª Testemunha (Art. 304 do CPP)",
-      htmlContent: `
+    nomePeca: "APFD-1ª Testemunha (Art. 304 do CPP)",
+    htmlContent: `
             <p style="text-align: center;"><strong>AUTO DE PRIS&Atilde;O EM FLAGRANTE DELITO<br /> (Art. 304 do CPP)</strong></p>
             <p style="text-align: center;"><strong>&nbsp;</strong></p>
             <p>Em seguida, passou a Autoridade a inquirir as testemunhas na forma que se segue:</p>
@@ -13,13 +13,13 @@ const pecas = [
             <p>ESCRIV&Atilde;O(&Atilde;): _______________________________________________________________________</p>
             <p>&nbsp;</p>
     `,
-      ativo: true,
-      tags: ["primeira_testemunha"],
-    },
-    {
-      id: 2,
-      nomePeca: "APFD-2ª Testemunha (Art. 304 do CPP)",
-      htmlContent: `
+    ativo: true,
+    tags: ["primeira_testemunha"],
+  },
+  {
+    id: 2,
+    nomePeca: "APFD-2ª Testemunha (Art. 304 do CPP)",
+    htmlContent: `
             <p style="text-align: center;"><strong>AUTO DE PRIS&Atilde;O EM FLAGRANTE DELITO</strong><br /> (Art. 304 do CPP)</p>
             <p>&nbsp;</p>
             <p style="text-align: justify;"><strong>SEGUNDA TESTEMUNHA:&nbsp;{qualificacao_da_segunda_testemunha}</strong>. Testemunha compromissada na forma da lei, advertida das penas cominadas ao falso testemunho, prometeu dizer a verdade do que soubesse e lhe fosse perguntado. Inquirida pela Autoridade passou a declarar&nbsp;<strong>QUE,</strong>&nbsp;___________________. Nada mais disse nem lhe foi perguntado. Lido e achado conforme, determinou a Autoridade que fosse encerrado o presente Termo, o qual assina juntamente com a Testemunha e comigo Escriv&atilde;o que digitei.</p>
@@ -29,13 +29,13 @@ const pecas = [
             <p>ESCRIV&Atilde;O(&Atilde;): _______________________________________________________________________</p>
             <p>&nbsp;</p>
            `,
-      ativo: true,
-      tags: ["segunda_testemunha"],
-    },
-    {
-      id: 3,
-      nomePeca: "APFD-Autor (Art. 304 do CPP)",
-      htmlContent: `
+    ativo: true,
+    tags: ["segunda_testemunha"],
+  },
+  {
+    id: 3,
+    nomePeca: "APFD-Autor (Art. 304 do CPP)",
+    htmlContent: `
             <p style="text-align: center;"><strong>AUTO DE PRIS&Atilde;O EM FLAGRANTE DELITO</strong><br /> (Art. 304 do CPP)</p>
             <p>&nbsp;</p>
             <p style="text-align: justify;">Prosseguindo, passou a Autoridade &agrave; qualifica&ccedil;&atilde;o do&nbsp;<strong>CONDUZIDO(A):</strong>&nbsp;{qualificacao_completa_do_imputado}, sabendo ler e escrever, o(a) qual depois de cientificado(a) das imputa&ccedil;&otilde;es que lhe eram feitas e dos direitos assegurados pelo Art. 5&ordm;, caput e Incs. LXI, LXII, LXIII, LXIV, LXV e LXVI, da Constitui&ccedil;&atilde;o Federal, do respeito &agrave; sua integridade f&iacute;sica e moral, de n&atilde;o ser preso sen&atilde;o em flagrante delito ou por ordem escrita e fundamentada de autoridade judici&aacute;ria competente, de ter sua pris&atilde;o e o local onde se encontre comunicados, imediatamente, ao juiz competente e &agrave; sua fam&iacute;lia, ou &agrave; pessoa por ele indicada, de permanecer calado, sendo-lhe assegurada a assist&ecirc;ncia da fam&iacute;lia e de advogado e a identifica&ccedil;&atilde;o dos respons&aacute;veis por sua pris&atilde;o ou por seu interrogat&oacute;rio policial, expressou a vontade de que sua pris&atilde;o seja comunicada &agrave; pessoa de {nome_da_pessoa_da_familia_do_preso_que_vai_receber_a_comunicacao}. Interrogado na forma do Art. 187, &sect;&sect; 1&ordm; e 2&ordm; do C&oacute;digo de Processo Penal, RESPONDEU:&nbsp;<strong>QUE,</strong>&nbsp;______. Nada mais disse, nem lhe foi perguntado. Depois de lido e achado conforme, determinou a Autoridade fosse encerrado o presente Interrogat&oacute;rio, assinando-o juntamente com o(a) Conduzido(a) e, comigo, Escriv&atilde;o(&atilde;), que o digitei.</p>
@@ -45,13 +45,13 @@ const pecas = [
             <p>ESCRIV&Atilde;O(&Atilde;): _______________________________________________________________________</p>
             <p>&nbsp;</p>
     `,
-      ativo: true,
-      tags: ["autuados"],
-    },
-    {
-      id: 4,
-      nomePeca: "APFD-Certidão de Assinaturas",
-      htmlContent: `
+    ativo: true,
+    tags: ["autuados"],
+  },
+  {
+    id: 4,
+    nomePeca: "APFD-Certidão de Assinaturas",
+    htmlContent: `
             <p style="text-align: center;"><strong>CERTID&Atilde;O</strong><br />&nbsp;</p>
             <p style="text-align: right;">{cidade_onde_o_procedimento_esta_sendo_realizado}, {data_mes_e_ano}</p>
             <p>Refer&ecirc;ncia:&nbsp;<strong>{tipo_de_procedimento}&nbsp;n&ordm;&nbsp;{numero_do_procedimento}</strong></p>
@@ -89,19 +89,19 @@ const pecas = [
             <p>Assinatura: _______________________&nbsp; Data/Hora&nbsp;___/__/___ ___:___</p>
             <p>&nbsp;</p>
             `,
-      ativo: true,
-      tags: [
-        "condutores",
-        "vitimas",
-        "autuados",
-        "primeira_testemunha",
-        "segunda_testemunha",
-      ],
-    },
-    {
-      id: 5,
-      nomePeca: "APFD-Certidão de Fiança",
-      htmlContent: `
+    ativo: true,
+    tags: [
+      "condutores",
+      "vitimas",
+      "autuados",
+      "primeira_testemunha",
+      "segunda_testemunha",
+    ],
+  },
+  {
+    id: 5,
+    nomePeca: "APFD-Certidão de Fiança",
+    htmlContent: `
             <p style="text-align: center;"><strong>CERTID&Atilde;O DE FIAN&Ccedil;A</strong><br /> (Art. 329 do CPP)</p>
             <p style="text-align: center;">&nbsp;</p>
             <p style="text-align: justify;">Eu, {nome_do_escrivao}, Escriv&atilde;o(&atilde;) de Pol&iacute;cia, lotado(a) nesta Delegacia de Pol&iacute;cia,</p>
@@ -109,11 +109,11 @@ const pecas = [
             <p>Eu, __________________________________ {nome_do_escrivao}, Escriv&atilde;o(&atilde;) a digitei e subscrevi.</p>
             <p>&nbsp;</p>
             `,
-    },
-    {
-      id: 6,
-      nomePeca: "APFD-Comunica Defensor Público (com fiança/+ 1 autor)",
-      htmlContent: `
+  },
+  {
+    id: 6,
+    nomePeca: "APFD-Comunica Defensor Público (com fiança/+ 1 autor)",
+    htmlContent: `
             <p style="text-align: right;"><strong>{cidade_onde_o_procedimento_esta_sendo_realizado}, {data_mes_e_ano}</strong></p>
             <p>&nbsp;</p>
             <p>&nbsp;</p>
@@ -132,13 +132,13 @@ const pecas = [
             <p style="text-align: center;"><strong>{nome_do_delegado}</strong><br /> Delegado(a) de Pol&iacute;cia</p>
             <p>&nbsp;</p>
     `,
-      ativo: true,
-      tags: ["autuados", "fianca"],
-    },
-    {
-      id: 7,
-      nomePeca: "APFD-Comunica Defensor Público (com fiança/1 autor)",
-      htmlContent: `
+    ativo: true,
+    tags: ["autuados", "fianca"],
+  },
+  {
+    id: 7,
+    nomePeca: "APFD-Comunica Defensor Público (com fiança/1 autor)",
+    htmlContent: `
             <p style="text-align: right;"><strong>{cidade_onde_o_procedimento_esta_sendo_realizado}, {data_mes_e_ano}</strong></p>
             <p>&nbsp;</p>
             <p>&nbsp;</p>
@@ -157,13 +157,13 @@ const pecas = [
             <p style="text-align: center;"><strong>{nome_do_delegado}</strong><br /> Delegado(a) de Pol&iacute;cia</p>
             <p>&nbsp;</p>
     `,
-      ativo: true,
-      tags: ["autuados", "fianca"],
-    },
-    {
-      id: 8,
-      nomePeca: "APFD-Comunica Defensor Público (sem fiança/+ 1 autor)",
-      htmlContent: `
+    ativo: true,
+    tags: ["autuados", "fianca"],
+  },
+  {
+    id: 8,
+    nomePeca: "APFD-Comunica Defensor Público (sem fiança/+ 1 autor)",
+    htmlContent: `
             <p style="text-align: right;"><strong>{cidade_onde_o_procedimento_esta_sendo_realizado}, {data_mes_e_ano}</strong></p>
             <p>&nbsp;</p>
             <p>&nbsp;</p>
@@ -183,13 +183,13 @@ const pecas = [
             <p style="text-align: center;">&nbsp;</p>
             <p style="text-align: center;">{nome_do_delegado}<br /> Delegado(a) de Pol&iacute;cia</p>
         `,
-      ativo: true,
-      tags: ["autuados", "delegacia_afeto"],
-    },
-    {
-      id: 9,
-      nomePeca: "APFD-Comunica Defensor Público (sem fiança/1 autor)",
-      htmlContent: `
+    ativo: true,
+    tags: ["autuados", "delegacia_afeto"],
+  },
+  {
+    id: 9,
+    nomePeca: "APFD-Comunica Defensor Público (sem fiança/1 autor)",
+    htmlContent: `
             <p style="text-align: right;"><strong>{cidade_onde_o_procedimento_esta_sendo_realizado}, {data_mes_e_ano}</strong></p>
             <p>&nbsp;</p>
             <p>&nbsp;</p>
@@ -209,13 +209,13 @@ const pecas = [
             <p style="text-align: center;">&nbsp;</p>
             <p style="text-align: center;">{nome_do_delegado}<br /> Delegado(a) de Pol&iacute;cia</p>
         `,
-      ativo: true,
-      tags: ["autuados", "delegacia_afeto"],
-    },
-    {
-      id: 10,
-      nomePeca: "APFD-Comunica Juiz (com fiança/+ 1 autor)",
-      htmlContent: `
+    ativo: true,
+    tags: ["autuados", "delegacia_afeto"],
+  },
+  {
+    id: 10,
+    nomePeca: "APFD-Comunica Juiz (com fiança/+ 1 autor)",
+    htmlContent: `
             <p style="text-align: right;"><strong>{cidade_onde_o_procedimento_esta_sendo_realizado}, {data_mes_e_ano}</strong></p>
             <p>&nbsp;</p>
             <p>&nbsp;</p>
@@ -236,13 +236,13 @@ const pecas = [
             <p style="text-align: center;"><strong>{nome_do_delegado}</strong><br /> Delegado(a) de Pol&iacute;cia</p>
             <p>&nbsp;</p>
     `,
-      ativo: true,
-      tags: ["autuados", "vitimas", "fianca"],
-    },
-    {
-      id: 11,
-      nomePeca: "APFD-Comunica Juiz (com fiança/1 autor)",
-      htmlContent: `
+    ativo: true,
+    tags: ["autuados", "vitimas", "fianca"],
+  },
+  {
+    id: 11,
+    nomePeca: "APFD-Comunica Juiz (com fiança/1 autor)",
+    htmlContent: `
             <p style="text-align: right;"><strong>{cidade_onde_o_procedimento_esta_sendo_realizado}, {data_mes_e_ano}</strong></p>
             <p>&nbsp;</p>
             <p>&nbsp;</p>
@@ -263,13 +263,13 @@ const pecas = [
             <p style="text-align: center;"><strong>{nome_do_delegado}</strong><br /> Delegado(a) de Pol&iacute;cia</p>
             <p>&nbsp;</p>
     `,
-      ativo: true,
-      tags: ["autuados", "vitimas", "fianca"],
-    },
-    {
-      id: 12,
-      nomePeca: "APFD-Comunica Juiz (sem fiança/+ 1 autor)",
-      htmlContent: `
+    ativo: true,
+    tags: ["autuados", "vitimas", "fianca"],
+  },
+  {
+    id: 12,
+    nomePeca: "APFD-Comunica Juiz (sem fiança/+ 1 autor)",
+    htmlContent: `
             <p style="text-align: right;"><strong>{cidade_onde_o_procedimento_esta_sendo_realizado}, {data_mes_e_ano}</strong></p>
             <p>&nbsp;</p>
             <p>&nbsp;</p>
@@ -291,13 +291,13 @@ const pecas = [
             <p style="text-align: center;">&nbsp;</p>
             <p style="text-align: center;">{nome_do_delegado}<br /> Delegado(a) de Pol&iacute;cia</p>
         `,
-      ativo: true,
-      tags: ["autuados", "vitimas", "delegacia_afeto"],
-    },
-    {
-      id: 13,
-      nomePeca: "APFD-Comunica Juiz (sem fiança/1 autor)",
-      htmlContent: `
+    ativo: true,
+    tags: ["autuados", "vitimas", "delegacia_afeto"],
+  },
+  {
+    id: 13,
+    nomePeca: "APFD-Comunica Juiz (sem fiança/1 autor)",
+    htmlContent: `
             <p style="text-align: right;"><strong>{cidade_onde_o_procedimento_esta_sendo_realizado}, {data_mes_e_ano}</strong></p>
             <p>&nbsp;</p>
             <p>&nbsp;</p>
@@ -319,13 +319,13 @@ const pecas = [
             <p style="text-align: center;">&nbsp;</p>
             <p style="text-align: center;">{nome_do_delegado}<br /> Delegado(a) de Pol&iacute;cia</p>
         `,
-      ativo: true,
-      tags: ["autuados", "vitimas", "delegacia_afeto"],
-    },
-    {
-      id: 14,
-      nomePeca: "APFD-Comunica Promotor (com fiança/+ 1 autor)",
-      htmlContent: `
+    ativo: true,
+    tags: ["autuados", "vitimas", "delegacia_afeto"],
+  },
+  {
+    id: 14,
+    nomePeca: "APFD-Comunica Promotor (com fiança/+ 1 autor)",
+    htmlContent: `
             <p style="text-align: right;"><strong>{cidade_onde_o_procedimento_esta_sendo_realizado}, {data_mes_e_ano}</strong></p>
             <p>&nbsp;</p>
             <p>&nbsp;</p>
@@ -344,13 +344,13 @@ const pecas = [
             <p style="text-align: center;"><strong>{nome_do_delegado}</strong><br /> Delegado(a) de Pol&iacute;cia</p>
             <p>&nbsp;</p>
          `,
-      ativo: true,
-      tags: ["autuados", "vitimas", "fianca"],
-    },
-    {
-      id: 15,
-      nomePeca: "APFD-Comunica Promotor (com fiança/1 autor)",
-      htmlContent: `
+    ativo: true,
+    tags: ["autuados", "vitimas", "fianca"],
+  },
+  {
+    id: 15,
+    nomePeca: "APFD-Comunica Promotor (com fiança/1 autor)",
+    htmlContent: `
             <p style="text-align: right;"><strong>{cidade_onde_o_procedimento_esta_sendo_realizado}, {data_mes_e_ano}</strong></p>
             <p>&nbsp;</p>
             <p>&nbsp;</p>
@@ -369,13 +369,13 @@ const pecas = [
             <p style="text-align: center;"><strong>{nome_do_delegado}</strong><br /> Delegado(a) de Pol&iacute;cia</p>
             <p>&nbsp;</p>
          `,
-      ativo: true,
-      tags: ["autuados", "vitimas", "fianca"],
-    },
-    {
-      id: 16,
-      nomePeca: "APFD-Comunica Promotor (sem fiança/+ 1 autor)",
-      htmlContent: `
+    ativo: true,
+    tags: ["autuados", "vitimas", "fianca"],
+  },
+  {
+    id: 16,
+    nomePeca: "APFD-Comunica Promotor (sem fiança/+ 1 autor)",
+    htmlContent: `
             <p style="text-align: right;"><strong>{cidade_onde_o_procedimento_esta_sendo_realizado}, {data_mes_e_ano}</strong></p>
             <p>&nbsp;</p>
             <p>&nbsp;</p>
@@ -395,13 +395,13 @@ const pecas = [
             <p style="text-align: center;">&nbsp;</p>
             <p style="text-align: center;">{nome_do_delegado}<br /> Delegado(a) de Pol&iacute;cia</p>
         `,
-      ativo: true,
-      tags: ["autuados", "vitimas", "delegacia_afeto"],
-    },
-    {
-      id: 17,
-      nomePeca: "APFD-Comunica Promotor (sem fiança/1 autor)",
-      htmlContent: `
+    ativo: true,
+    tags: ["autuados", "vitimas", "delegacia_afeto"],
+  },
+  {
+    id: 17,
+    nomePeca: "APFD-Comunica Promotor (sem fiança/1 autor)",
+    htmlContent: `
             <p style="text-align: right;"><strong>{cidade_onde_o_procedimento_esta_sendo_realizado}, {data_mes_e_ano}</strong></p>
             <p>&nbsp;</p>
             <p>&nbsp;</p>
@@ -421,13 +421,13 @@ const pecas = [
             <p style="text-align: center;">&nbsp;</p>
             <p style="text-align: center;">{nome_do_delegado}<br /> Delegado(a) de Pol&iacute;cia</p>
         `,
-      ativo: true,
-      tags: ["autuados", "vitimas", "delegacia_afeto"],
-    },
-    {
-      id: 18,
-      nomePeca: "APFD-Comunicação à Família",
-      htmlContent: `
+    ativo: true,
+    tags: ["autuados", "vitimas", "delegacia_afeto"],
+  },
+  {
+    id: 18,
+    nomePeca: "APFD-Comunicação à Família",
+    htmlContent: `
             <p style="text-align: right;">{cidade_onde_o_procedimento_esta_sendo_realizado}, {data_mes_e_ano}</p>
             <p>&nbsp;</p>
             <p style="text-align: center;"><strong>COMUNICA&Ccedil;&Atilde;O A FAM&Iacute;LIA OU PESSOA INDICADA PELO PRESO</strong></p>
@@ -448,13 +448,13 @@ const pecas = [
             <p>Endere&ccedil;o: _______________________________________________________________________________</p>
             <p>Assinatura: ______________________________________________________________________________</p>
             `,
-      ativo: true,
-      tags: ["autuados"],
-    },
-    {
-      id: 19,
-      nomePeca: "APFD-Condutor (Art. 304 do CPP)",
-      htmlContent: `
+    ativo: true,
+    tags: ["autuados"],
+  },
+  {
+    id: 19,
+    nomePeca: "APFD-Condutor (Art. 304 do CPP)",
+    htmlContent: `
             <p style="text-align: center;"><strong>AUTO DE PRIS&Atilde;O EM FLAGRANTE DELITO<br /> </strong>(Art. 304 do CPP)</p>
             <p>&nbsp;</p>
             <p style="text-align: justify;">&Agrave;s {hora_atual} horas, do dia {data_mes_e_ano}, nesta Cidade de&nbsp;{cidade_onde_o_procedimento_esta_sendo_realizado}, Estado de Pernambuco, no Cart&oacute;rio desta Delegacia de Pol&iacute;cia, onde presente se encontrava o(a) Bel(a). {nome_do_delegado}, respectivo(a) Delegado(a), comigo {nome_do_escrivao}, Escriv&atilde;o(&atilde;) de seu cargo, ao final assinado(a), a&iacute; compareceu, na qualidade de&nbsp;<strong>CONDUTOR(A) e 1&ordf; TESTEMUNHA:</strong>&nbsp;<strong>{qualificacao_do_condutor}</strong>. Compromissado(a) na forma da lei, advertido(a) das penas cominadas ao falso testemunho, prometeu dizer a verdade do que soubesse e lhe fosse perguntado. Inquirido(a), respondeu:&nbsp;<strong>QUE</strong>, apresenta preso em flagrante delito: <strong>{qualificacao_completa_do_imputado}</strong>, na presen&ccedil;a da(s)&nbsp;<strong>V&Iacute;TIMA(S)</strong>&nbsp;<strong>{qualificacao_da_vitima}</strong> e da <strong>1&ordf;&nbsp;TESTEMUNHA</strong> <strong>{qualificacao_da_primeira_testemunha}</strong>, pelos motivos que, a seguir, passa a expor:&nbsp;<strong>QUE</strong>,&nbsp;______________________. Nada mais disse nem lhe foi perguntado, determinou a Autoridade Policial encerrar este Termo, que, ap&oacute;s ser lido e achado conforme, o qual assina juntamente com o Condutor e comigo Escriv&atilde;o que digitei.</p>
@@ -464,20 +464,20 @@ const pecas = [
             <p><strong>ESCRIV&Atilde;O(&Atilde;): ______________________________________________________________________</strong></p>
             <p>&nbsp;</p>
     `,
-      ativo: true,
-      tags: [
-        "condutores",
-        "autuados",
-        "vitimas",
-        "primeira_testemunha",
-        "segunda_testemunha",
-      ],
-    },
+    ativo: true,
+    tags: [
+      "condutores",
+      "autuados",
+      "vitimas",
+      "primeira_testemunha",
+      "segunda_testemunha",
+    ],
+  },
 
-    {
-      id: 20,
-      nomePeca: "APFD-Conduzido (Art. 304 do CPP)",
-      htmlContent: `
+  {
+    id: 20,
+    nomePeca: "APFD-Conduzido (Art. 304 do CPP)",
+    htmlContent: `
             <p style="text-align: center;"><strong>AUTO DE PRIS&Atilde;O EM FLAGRANTE DELITO<br /></strong><span style="font-size: medium;">(Art. 307 do CPP)</span></p>
             <p>&nbsp;</p>
             <p style="text-align: justify;">Aos {data_mes_e_ano}, nesta cidade de {cidade_onde_o_procedimento_esta_sendo_realizado}, Estado de Pernambuco, no Cart&oacute;rio desta Delegacia de Pol&iacute;cia, onde presente se encontrava o(a) Bel(a). {nome_do_delegado}, respectivo(a) Delegado(a), comigo {nome_do_escrivao}, Escriv&atilde;o(&atilde;) de seu cargo, ao final assinado(a), o(a) qual em raz&atilde;o da pr&aacute;tica da infra&ccedil;&atilde;o penal capitulada no&nbsp;<strong>{incidencia_penal}</strong>&nbsp;(em sua presen&ccedil;a ou contra sua pessoa no exerc&iacute;cio de suas fun&ccedil;&otilde;es), sucedido da Voz de Pris&atilde;o em Flagrante Delito, passando a qualifica&ccedil;&atilde;o do CONDUZIDO(A):&nbsp;<strong>{qualificacao_completa_do_imputado}</strong>, sabendo ler e escrever, o qual depois de cientificado das imputa&ccedil;&otilde;es que lhe eram feitas e dos direitos assegurados pelo Art. 5&ordm;, caput e Incs. LXI, LXII, LXIII, LXIV, LXV e LXVI, da Constitui&ccedil;&atilde;o Federal, do respeito &agrave; sua integridade f&iacute;sica e moral, de n&atilde;o ser preso(a) sen&atilde;o em flagrante delito ou por ordem escrita e fundamentada de autoridade judici&aacute;ria competente, de ter sua pris&atilde;o e o local onde se encontre comunicados, imediatamente, ao juiz competente e &agrave; sua fam&iacute;lia, ou &agrave; pessoa por ele(a) indicada, de permanecer calado(a), sendo-lhe assegurada a assist&ecirc;ncia da fam&iacute;lia e de advogado e a identifica&ccedil;&atilde;o dos respons&aacute;veis por sua pris&atilde;o ou por seu interrogat&oacute;rio policial, expressou a vontade de que sua pris&atilde;o seja comunicada &agrave; pessoa de _________________<strong>. Interrogado(a) na forma do Art. 187, &sect;&sect; 1&ordm; e 2&ordm; do C&oacute;digo de Processo Penal, RESPONDEU: QUE,</strong>___________________. Nada mais disse, nem lhe foi perguntado. Ap&oacute;s consultar a Delegacia de Capturas obteve a informa&ccedil;&atilde;o por meio do(a) Agente de Pol&iacute;cia __________________, DE QUE ESTAVA A CONSTAR OU NADA CONSTAR EM RELA&Ccedil;&Atilde;O AO CONDUZIDO. Depois de lido e achado conforme, determinou a Autoridade fosse encerrado o presente Interrogat&oacute;rio, assinando-o juntamente com o(a) Conduzido(a) e, comigo, Escriv&atilde;o(&atilde;), que o digitei.</p>
@@ -486,13 +486,13 @@ const pecas = [
             <p>CONDUZIDO(A): ____________________________________________________________________</p>
             <p>ESCRIV&Atilde;O(&Atilde;): ________________________________________________________________________</p>
             `,
-      ativo: true,
-      tags: ["autuados"],
-    },
-    {
-      id: 21,
-      nomePeca: "APFD-Encaminha fiança ao Banco",
-      htmlContent: `
+    ativo: true,
+    tags: ["autuados"],
+  },
+  {
+    id: 21,
+    nomePeca: "APFD-Encaminha fiança ao Banco",
+    htmlContent: `
             <p style="text-align: right;">{cidade_onde_o_procedimento_esta_sendo_realizado}, {data_mes_e_ano}</p>
             <p><strong>Of&iacute;cio n&ordm;&nbsp;</strong><br /><strong>Ref.: {tipo_de_procedimento} n&ordm; {numero_do_procedimento}</strong></p>
             <p>&nbsp;</p>
@@ -504,13 +504,13 @@ const pecas = [
             <p style="text-align: center;">Atenciosamente,</p>
             <p style="text-align: center;"><strong>{nome_do_delegado}</strong><br />Delegado(a) de Pol&iacute;cia</p>
             `,
-      ativo: true,
-      tags: ["autuados", "fianca"],
-    },
-    {
-      id: 22,
-      nomePeca: "APFD-Encaminha preso(s) para Audiência de Custódia",
-      htmlContent: `
+    ativo: true,
+    tags: ["autuados", "fianca"],
+  },
+  {
+    id: 22,
+    nomePeca: "APFD-Encaminha preso(s) para Audiência de Custódia",
+    htmlContent: `
             <p style="text-align: right;"><strong>{cidade_onde_o_procedimento_esta_sendo_realizado}, {data_mes_e_ano}</strong></p>
             <p>Ref.: {numero_do_procedimento}</p>
             <p>&nbsp;</p>
@@ -527,13 +527,13 @@ const pecas = [
             <p style="text-align: center;"><strong>{nome_do_delegado}</strong><br /> Delegado(a) de Pol&iacute;cia</p>
             <p>&nbsp;</p>
     `,
-      ativo: true,
-      tags: ["autuados", "vitimas"],
-    },
-    {
-      id: 23,
-      nomePeca: "APFD-Encerramento (Art. 307 do CPP)",
-      htmlContent: `
+    ativo: true,
+    tags: ["autuados", "vitimas"],
+  },
+  {
+    id: 23,
+    nomePeca: "APFD-Encerramento (Art. 307 do CPP)",
+    htmlContent: `
             <p style="text-align: center;"><strong>AUTO DE PRIS&Atilde;O EM FLAGRANTE DELITO<br /> </strong>(Art. 307 do CPP)</p>
             <p>&nbsp;</p>
             <p style="text-align: justify;">Finalmente, n&atilde;o havendo mais oitiva a ser procedida, determinou a Autoridade Policial fosse encerrado o presente Auto de Pris&atilde;o em Flagrante Delito e providenciada sua remessa imediata ao juiz a quem couber tomar conhecimento do fato delituoso, na forma da parte final do Art. 307 do C&oacute;digo de Processo Penal vigente. Eu, __________________ {nome_do_escrivao}, Escriv&atilde;o(&atilde;), o digitei.</p>
@@ -541,13 +541,13 @@ const pecas = [
             <p style="text-align: center;"><strong>{nome_do_delegado}</strong><br /> Delegado(a) de Pol&iacute;cia</p>
             <p style="text-align: center;">&nbsp;</p>
         `,
-      ativo: true,
-      tags: [],
-    },
-    {
-      id: 24,
-      nomePeca: "APFD-Nota de culpa",
-      htmlContent: `
+    ativo: true,
+    tags: [],
+  },
+  {
+    id: 24,
+    nomePeca: "APFD-Nota de culpa",
+    htmlContent: `
             <p style="text-align: center;"><strong>NOTA DE CULPA</strong><br /> (Art. 306 &sect; 2&ordm; do CPP)</p>
             <p style="text-align: center;">&nbsp;</p>
             <p style="text-align: justify;">O(a) Bel(a). {nome_do_delegado}, Delegado(a) da Pol&iacute;cia Civil, Estado de Pernambuco, no uso de suas atribui&ccedil;&otilde;es legais,</p>
@@ -567,19 +567,19 @@ const pecas = [
             <p style="text-align: center;">____________________________________________________________________<br /> Assinatura do Conduzido / Recebedor</p>
             <p>&nbsp;</p>
     `,
-      ativo: true,
-      tags: [
-        "autuados",
-        "vitimas",
-        "condutores",
-        "primeira_testemunha",
-        "segunda_testemunha",
-      ],
-    },
-    {
-      id: 25,
-      nomePeca: "APFD-Ofício solicitando Folha de Antecedentes Criminais",
-      htmlContent: `
+    ativo: true,
+    tags: [
+      "autuados",
+      "vitimas",
+      "condutores",
+      "primeira_testemunha",
+      "segunda_testemunha",
+    ],
+  },
+  {
+    id: 25,
+    nomePeca: "APFD-Ofício solicitando Folha de Antecedentes Criminais",
+    htmlContent: `
             <p style="text-align: right;">{cidade_onde_o_procedimento_esta_sendo_realizado}, {data_mes_e_ano}</p>
             <p style="text-align: right;">&nbsp;</p>
             <p><strong>Of&iacute;cio n&ordm;</strong><br /><strong>Ref.: {tipo_de_procedimento} n&ordm; {numero_do_procedimento}</strong><br />SEI n&ordm; [SEI]</p>
@@ -595,13 +595,13 @@ const pecas = [
             <p style="text-align: center;">&nbsp;</p>
             <p style="text-align: center;"><strong>{nome_do_delegado}</strong><br />Delegado(a) de Pol&iacute;cia</p>
             `,
-      ativo: true,
-      tags: ["autuados"],
-    },
-    {
-      id: 26,
-      nomePeca: "APFD-Recibo de Preso",
-      htmlContent: `
+    ativo: true,
+    tags: ["autuados"],
+  },
+  {
+    id: 26,
+    nomePeca: "APFD-Recibo de Preso",
+    htmlContent: `
             <p style="text-align: center;"><strong>R E C I B O</strong></p>
             <p style="text-align: justify;">RECEBI, nesta data, da parte do(a) senhor(a) {qualificacao_do_condutor}, na qualidade de CONDUTOR(A), j&aacute; qualificado(a) nos autos, a pessoa de <strong>{qualificacao_completa_do_imputado}</strong>, detida segundo aquele, em situa&ccedil;&atilde;o de FLAGR&Acirc;NCIA pela pr&aacute;tica de delito da(o)&nbsp;<strong>{incidencia_penal}</strong>, previsto em nosso Diploma Legal vigente, conforme DECLARA&Ccedil;&Atilde;O apresentada nesse sentido por parte da pessoa do(a) condutor(a) em ep&iacute;grafe.</p>
             <p>&nbsp;</p>
@@ -616,13 +616,13 @@ const pecas = [
             <p style="text-align: center;">_________________________________________________________<br /> Condutor(a)</p>
             <p style="text-align: center;">&nbsp;</p>
     `,
-      ativo: true,
-      tags: ["condutores", "autuados"],
-    },
-    {
-      id: 27,
-      nomePeca: "APFD-Solicita Perícia Tanatoscópica (vítima)",
-      htmlContent: `
+    ativo: true,
+    tags: ["condutores", "autuados"],
+  },
+  {
+    id: 27,
+    nomePeca: "APFD-Solicita Perícia Tanatoscópica (vítima)",
+    htmlContent: `
             <p style="text-align: right;">{cidade_onde_o_procedimento_esta_sendo_realizado}, {data_mes_e_ano}</p>
             <p style="text-align: right;">&nbsp;</p>
             <p><strong>Of&iacute;cio n&ordm; 24333031821</strong><br /><strong>Ref.: {tipo_de_procedimento} n&ordm; {numero_do_procedimento}</strong><br /><strong>BOE n&ordm; {numero_do_bo}</strong></p>
@@ -641,13 +641,13 @@ const pecas = [
             <p style="text-align: center;">&nbsp;</p>
             <p style="text-align: center;"><strong>{nome_do_delegado}</strong><br />Delegado(a) de Pol&iacute;cia</p>
             `,
-      ativo: true,
-      tags: ["vitimas", "delegacia_afeto"],
-    },
-    {
-      id: 28,
-      nomePeca: "APFD-Solicita Perícia Traumatológica (autor/vítima)",
-      htmlContent: `
+    ativo: true,
+    tags: ["vitimas", "delegacia_afeto"],
+  },
+  {
+    id: 28,
+    nomePeca: "APFD-Solicita Perícia Traumatológica (autor/vítima)",
+    htmlContent: `
             <p style="text-align: right;"><strong>{cidade_onde_o_procedimento_esta_sendo_realizado}, {data_mes_e_ano}</strong></p>
             <p><br /> Ref.: {numero_do_procedimento}<br /> BOE: <strong>n&ordm; {numero_do_bo}</strong></p>
             <p>&nbsp;</p>
@@ -664,13 +664,13 @@ const pecas = [
             <p style="text-align: center;"><strong>{nome_do_delegado}</strong><br /> Delegado(a) de Pol&iacute;cia</p>
             <p>&nbsp;</p>
     `,
-      ativo: true,
-      tags: ["pessoas", "delegacia_afeto"],
-    },
-    {
-      id: 29,
-      nomePeca: "APFD-Termo de Fiança",
-      htmlContent: `
+    ativo: true,
+    tags: ["pessoas", "delegacia_afeto"],
+  },
+  {
+    id: 29,
+    nomePeca: "APFD-Termo de Fiança",
+    htmlContent: `
             <p style="text-align: center;"><strong>TERMO DE FIAN&Ccedil;A<br /> </strong>N&ordm; __________________</p>
             <p style="text-align: center;">&nbsp;</p>
             <p style="text-align: justify;">Aos {data_mes_e_ano}, nesta&nbsp;DELEGACIA DE POL&Iacute;CIA onde presente se encontrava {nome_do_delegado}, Delegado(a) de Pol&iacute;cia, comigo {nome_do_escrivao},&nbsp;Escriv&atilde;o(&atilde;) de seu cargo, ao final assinado(a), ai presente o(a) Sr(a).&nbsp;{nome_do_imputado}, j&aacute; qualificado(a) nos Autos, por haver sido Preso(a) e Autuado(a) em Flagrante Delito, por infringir o&nbsp;<strong>{incidencia_penal}</strong>, em fun&ccedil;&atilde;o de cometimento de infra&ccedil;&atilde;o cujo apenamento o(a) beneficia com o direto de prestar a cau&ccedil;&atilde;o legal, arbitrando-a em&nbsp;<strong>R$ {valor_da_fianca}</strong>, pagos em esp&eacute;cie, cujo valor dever&aacute; ser depositado na&nbsp;<strong>Ag&ecirc;ncia da Caixa Econ&ocirc;mica Federal - CEF, de {cidade_onde_o_procedimento_esta_sendo_realizado}/PE</strong>&nbsp;em nome do(a) afian&ccedil;ado(a), &agrave; disposi&ccedil;&atilde;o da Justi&ccedil;a P&uacute;blica de PE. O(a) afian&ccedil;ado(a) foi cientificado(a) das obriga&ccedil;&otilde;es prevista nos Arts. 327 e 328 do C&oacute;digo de Processo Penal em vigor, obrigando-se a comparecer em Ju&iacute;zo para instru&ccedil;&atilde;o Criminal, sob pena de haver quebrado a fian&ccedil;a, sendo em seguida posto em liberdade pela Autoridade Policial. Nada mais havendo, mandou a Autoridade encerra o presente Termo que lido e achado conforme, o assina com o(a) afian&ccedil;ado(a) e comigo Escriv&atilde;o(&atilde;) que o digitei.</p>
@@ -680,13 +680,13 @@ const pecas = [
             <p>ESCRIV&Atilde;O(&Atilde;): ___________________________________________________</p>
             <p>&nbsp;</p>
     `,
-      ativo: true,
-      tags: ["autuados", "fianca"],
-    },
-    {
-      id: 30,
-      nomePeca: "APFD-Vítima (Art. 304 do CPP)",
-      htmlContent: `
+    ativo: true,
+    tags: ["autuados", "fianca"],
+  },
+  {
+    id: 30,
+    nomePeca: "APFD-Vítima (Art. 304 do CPP)",
+    htmlContent: `
             <p style="text-align: center;"><strong>AUTO DE PRIS&Atilde;O EM FLAGRANTE DELITO<br /> </strong>(Art. 304 do CPP)</p>
             <p>&nbsp;</p>
             <p style="text-align: justify;">Na sequ&ecirc;ncia, passou a Autoridade a inquirir a&nbsp;<strong>V&Iacute;TIMA:</strong>&nbsp;{qualificacao_da_vitima}, sabendo ler e escrever, inquirida pela Autoridade passou a declarar&nbsp;<strong>QUE,</strong>&nbsp;__________________. Nada mais disse nem lhe foi perguntado. Lido e achado conforme, determinou a Autoridade que fosse encerrado o presente Termo, o qual assina juntamente com o(a) declarante, e comigo Escriv&atilde;o(&atilde;) que digitei.</p>
@@ -696,13 +696,13 @@ const pecas = [
             <p>ESCRIV&Atilde;O(&Atilde;): ______________________________________________________________________</p>
             <p>&nbsp;</p>
     `,
-      ativo: true,
-      tags: ["vitimas"],
-    },
-    {
-      id: 31,
-      nomePeca: "Auto Circunstanciado de Busca e Apreensão",
-      htmlContent: `
+    ativo: true,
+    tags: ["vitimas"],
+  },
+  {
+    id: 31,
+    nomePeca: "Auto Circunstanciado de Busca e Apreensão",
+    htmlContent: `
             <p style="text-align: center;"><strong>AUTO CIRCUNSTANCIADO DE BUSCA E APREENS&Atilde;O<br /></strong><span style="font-size: medium;">(Art. 245, &sect; 7&ordm; do CPP)</span></p>
             <p style="text-align: center;">&nbsp;</p>
             <p style="text-align: justify;">Aos {data_mes_e_ano}, nesta cidade de {cidade_onde_o_procedimento_esta_sendo_realizado}, Estado de Pernambuco, em cumprimento ao Mandado de Busca e Apreens&atilde;o n&deg; <strong>{numero_do_mandado_de_busca}</strong> expedido pelo MM. Juiz de Direito da Comarca de {nome_da_comarca_que_expediu_o_mandado}, &agrave;s {hora_do_cumprimento_do_mandado} horas, fui em dilig&ecirc;ncia &agrave; <strong>{endereco_do_cumprimento_do_mandado}</strong>, e a&iacute;, depois de exibir o referido mandado judicial, INTIMEI o cidad&atilde;o <strong>{qualificacao_da_pessoa_intimada_da_busca_e_apreensao}</strong>, propriet&aacute;rio do im&oacute;vel, no sentido de que, imediatamente, me franqueasse o acesso ao interior do ambiente, a fim de efetuar a dilig&ecirc;ncia ordenada, no que fui atendido pelo mesmo, sendo convidadas, neste momento, para assistirem a esse procedimento, as Testemunhas <strong>{qualificacao_da_primeira_testemunha_do_mandado_de_busca}, e {qualificacao_da_segunda_testemunha_do_mandado_de_busca}</strong>, abaixo assinadas. Em companhia destas, adentrando ao im&oacute;vel supracitado, foi realizada uma minuciosa busca, com o exame de todos os c&ocirc;modos, a&iacute; encontrando os itens abaixo descritos, que apreendido e depositado neste &Oacute;rg&atilde;o Policial, para os fins devidos, com base no Art. 245 &sect; 7&ordm; do CPP, para constar, determinei a lavratura deste Auto, que, depois de lido e achado conforme, o subscrevo na condi&ccedil;&atilde;o de executor do Mandado, com as Testemunhas supracitadas e o(a) Escriv&atilde;o(&atilde;) de seu cargo, que o digitou.</p>
@@ -716,14 +716,14 @@ const pecas = [
             <p style="text-align: center;">&nbsp;</p>
             <p>&nbsp;</p>
             `,
-      ativo: true,
-      tags: ["intimados", "primeira_testemunha", "segunda_testemunha"],
-    },
-    {
-      id: 36,
-      nomePeca:
-        "Auto de Apreensão em Flagrante de Ato Infracional - AAFAI (Condutor)",
-      htmlContent: `
+    ativo: true,
+    tags: ["intimados", "primeira_testemunha", "segunda_testemunha"],
+  },
+  {
+    id: 36,
+    nomePeca:
+      "Auto de Apreensão em Flagrante de Ato Infracional - AAFAI (Condutor)",
+    htmlContent: `
             <p style="text-align: center;"><strong>AUTO DE APREENS&Atilde;O EM FLAGRANTE DE ATO INFRACIONAL</strong><br /><span style="font-size: medium;">(Art. 173, I da Lei n&ordm; 8.069, de 13/07/1990)</span></p>
             <p>&nbsp;</p>
             <p style="text-align: justify;">&Agrave;s {hora_atual}, do dia {data_mes_e_ano} nesta Cidade de {cidade_onde_o_procedimento_esta_sendo_realizado}, Estado de Pernambuco, no Cart&oacute;rio desta DELEGACIA DE POL&Iacute;CIA, onde presente se encontrava o(a) Bel(a). {nome_do_delegado}, respectivo(a) Delegado(a) de Pol&iacute;cia, comigo, {nome_do_escrivao}, Escriv&atilde;o(&atilde;) de seu cargo, abaixo assinado(a), a&iacute; compareceu o CONDUTOR(A): <strong>{qualificacao_do_condutor}</strong>. Aos costumes disse ____________. Compromissado(a) na forma da lei, advertido(a) das penas cominadas ao falso testemunho, prometeu dizer a verdade do que soubesse e lhe fosse perguntado. Inquirido(a), respondeu: QUE, ___________________. Nada mais havendo a acrescentar, mandou a Autoridade Policial que fosse entregue ao Condutor(a) o Recibo de Entrega do(a) Infrator(a), bem como as c&oacute;pias do presente Auto e do Auto de Apresenta&ccedil;&atilde;o e Apreens&atilde;o (da arma se for o caso) por ele arrecadada. Em seguida, mandou encerrar este Auto, que, ap&oacute;s ser lido e achado conforme, o qual assina juntamente com o Condutor e comigo Escriv&atilde;o(&atilde;), que digitei.</p>
@@ -733,14 +733,14 @@ const pecas = [
             <p>ESCRIV&Atilde;O(&Atilde;): _________________________________________________________</p>
             <p>&nbsp;</p>
             `,
-      ativo: true,
-      tags: ["condutores"],
-    },
-    {
-      id: 37,
-      nomePeca:
-        "Auto de Apreensão em Flagrante de Ato Infracional - AAFAI (Encerramento)",
-      htmlContent: `
+    ativo: true,
+    tags: ["condutores"],
+  },
+  {
+    id: 37,
+    nomePeca:
+      "Auto de Apreensão em Flagrante de Ato Infracional - AAFAI (Encerramento)",
+    htmlContent: `
             <p style="text-align: center;"><strong>AUTO DE APREENS&Atilde;O EM FLAGRANTE DE ATO INFRACIONAL</strong><br /><span style="font-size: medium;">(Art. 173, I da Lei n&ordm; 8.069, de 13/07/1990)</span></p>
             <p>&nbsp;</p>
             <p style="text-align: justify;">Finalmente, n&atilde;o havendo mais oitivas a ser procedidas, determinou a Autoridade o encerramento do presente Auto de Apreens&atilde;o em Flagrante, comigo,&nbsp;{nome_do_escrivao} ______________, Escriv&atilde;o(&atilde;) de Pol&iacute;cia, que o digitei.</p>
@@ -748,14 +748,14 @@ const pecas = [
             <p style="text-align: center;"><strong>{nome_do_delegado}</strong><br />Delegado(a) de Pol&iacute;cia</p>
             <p>&nbsp;</p>
             `,
-      ativo: true,
-      tags: [],
-    },
-    {
-      id: 38,
-      nomePeca:
-        "Auto de Apreensão em Flagrante de Ato Infracional - AAFAI (Infrator)",
-      htmlContent: `
+    ativo: true,
+    tags: [],
+  },
+  {
+    id: 38,
+    nomePeca:
+      "Auto de Apreensão em Flagrante de Ato Infracional - AAFAI (Infrator)",
+    htmlContent: `
             <p style="text-align: center;"><strong>AUTO DE APREENS&Atilde;O EM FLAGRANTE DE ATO INFRACIONAL</strong><br /><span style="font-size: medium;">(Art. 173, I da Lei n&ordm; 8.069, de 13/07/1990)</span></p>
             <p>&nbsp;</p>
             <p style="text-align: justify;">Logo ap&oacute;s, passou a Autoridade a qualificar e inquirir o(a)&nbsp;<strong>CONDUZIDO(A): {qualificacao_completa_do_imputado}</strong>&nbsp;. Sabendo ler e escrever. A seguir, tendo a Autoridade Policial dado ci&ecirc;ncia a(o) adolescente infrator(a), do nome do(a) respons&aacute;vel pela sua apreens&atilde;o, declinou-lhe, ainda, o pr&oacute;prio nome, tornando-o conhecedor de seus direitos individuais constantes da Lei Federal n&ordm;. 8.069/90 - Estatuto da Crian&ccedil;a e do Adolescente - solicitando que fosse avisada (sua respectiva genitora, em seu endere&ccedil;o residencial.) Interrogado(a) acerca da imputa&ccedil;&atilde;o que lhe &eacute; feita, respondeu:&nbsp;<strong>QUE,</strong>&nbsp;_____________________. Nada mais disse nem lhe foi perguntado. Lido e achado conforme, determinou a Autoridade que fosse encerrado o presente Auto, assinado-o juntamente com o(a) Infrator(a), e comigo, Escriv&atilde;o(&atilde;), que o digitei.</p>
@@ -764,14 +764,14 @@ const pecas = [
             <p>INFRATOR: ____________________________________________________________________</p>
             <p>ESCRIV&Atilde;O(&Atilde;): ___________________________________________________________________</p>
             `,
-      ativo: true,
-      tags: ["menores_infratores"],
-    },
-    {
-      id: 39,
-      nomePeca:
-        "Auto de Apreensão em Flagrante de Ato Infracional - AAFAI (Primeira Testemunha)",
-      htmlContent: `
+    ativo: true,
+    tags: ["menores_infratores"],
+  },
+  {
+    id: 39,
+    nomePeca:
+      "Auto de Apreensão em Flagrante de Ato Infracional - AAFAI (Primeira Testemunha)",
+    htmlContent: `
             <p style="text-align: center;"><strong>AUTO DE APREENS&Atilde;O EM FLAGRANTE DE ATO INFRACIONAL</strong><br /><span style="font-size: medium;">(Art. 173, I da Lei n&ordm; 8.069, de 13/07/1990)</span></p>
             <p>&nbsp;</p>
             <p>Em seguida, passou a Autoridade a qualificar e inquirir as testemunhas da forma que se segue:</p>
@@ -781,14 +781,14 @@ const pecas = [
             <p>PRIMEIRA TESTEMUNHA: _____________________________________________________</p>
             <p>ESCRIV&Atilde;O(&Atilde;): ___________________________________________________________________</p>
             `,
-      ativo: true,
-      tags: ["primeira_testemunha"],
-    },
-    {
-      id: 40,
-      nomePeca:
-        "Auto de Apreensão em Flagrante de Ato Infracional - AAFAI (Segunda Testemunha)",
-      htmlContent: `
+    ativo: true,
+    tags: ["primeira_testemunha"],
+  },
+  {
+    id: 40,
+    nomePeca:
+      "Auto de Apreensão em Flagrante de Ato Infracional - AAFAI (Segunda Testemunha)",
+    htmlContent: `
             <p style="text-align: center;"><strong>AUTO DE APREENS&Atilde;O EM FLAGRANTE DE ATO INFRACIONAL</strong><br /><span style="font-size: medium;">(Art. 173, I da Lei n&ordm; 8.069, de 13/07/1990)</span></p>
             <p>&nbsp;</p>
             <p>Em seguida, passou a Autoridade a qualificar e inquirir as testemunhas da forma que se segue:</p>
@@ -798,13 +798,13 @@ const pecas = [
             <p>PRIMEIRA TESTEMUNHA: _____________________________________________________</p>
             <p>ESCRIV&Atilde;O(&Atilde;): ___________________________________________________________________</p>
             `,
-      ativo: true,
-      tags: ["segunda_testemunha"],
-    },
-    {
-      id: 41,
-      nomePeca: "Auto de Apresentação e Apreensão",
-      htmlContent: `
+    ativo: true,
+    tags: ["segunda_testemunha"],
+  },
+  {
+    id: 41,
+    nomePeca: "Auto de Apresentação e Apreensão",
+    htmlContent: `
             <p style="text-align: center; font-size: 16px;"><strong>AUTO DE APRESENTA&Ccedil;&Atilde;O E APREENS&Atilde;O</strong></p>
             <p style="text-align: center; font-size: 16px;"><br />(Art. 6&ordm;, II do CPP e Art. 173, II da Lei n&ordm; 8.069, de 13/07/1990)</p>
             <p>&nbsp;</p>
@@ -819,18 +819,18 @@ const pecas = [
             <p style="text-align: justify; font-size: 16px;">ESCRIV&Atilde;O(&Atilde;): _____________________________________________________________</p>
             <p>&nbsp;</p>
     `,
-      ativo: true,
-      tags: [
-        "apresentadores",
-        "primeira_testemunha",
-        "segunda_testemunha",
-        "apreensoes",
-      ],
-    },
-    {
-      id: 42,
-      nomePeca: "Auto de Avaliação",
-      htmlContent: `
+    ativo: true,
+    tags: [
+      "apresentadores",
+      "primeira_testemunha",
+      "segunda_testemunha",
+      "apreensoes",
+    ],
+  },
+  {
+    id: 42,
+    nomePeca: "Auto de Avaliação",
+    htmlContent: `
             <p style="text-align: center;"><strong>AUTO DE AVALIA&Ccedil;&Atilde;O</strong><br /> (Art. 172 do CPP)</p>
             <p>&nbsp;</p>
             <p style="text-align: justify;">&Agrave;s {hora_atual} horas, do dia {data_mes_e_ano}, nesta Cidade de {cidade_onde_o_procedimento_esta_sendo_realizado}, Estado de Pernambuco, no Cart&oacute;rio desta Delegacia de Pol&iacute;cia, onde presente se encontrava o(a) Bel(a). {nome_do_delegado}, respectivo(a) Delegado(a), comigo,&nbsp;{nome_do_escrivao}, Escriv&atilde;o(&atilde;) de seu cargo, ao final assinado(a), a&iacute; presentes os Peritos nomeados pela Autoridade Policial: <strong>{qualificacoes_dos_peritos_nomeados}</strong>, os quais assumiram o compromisso legal de procederem, sem dolo nem mal&iacute;cia, consoante o disposto no Art. 172, Caput e Par&aacute;grafo &uacute;nico do C&oacute;digo de Processo Penal, a avalia&ccedil;&atilde;o dos objetos constantes do Auto de Apresenta&ccedil;&atilde;o e Apreens&atilde;o e relacionados no Boletim de Ocorr&ecirc;ncia de n&ordm;.&nbsp;<strong>BOE n&ordm; {numero_do_bo}</strong>, lavrado neste&nbsp;&oacute;rg&atilde;o, conforme abaixo discriminados:</p>
@@ -843,13 +843,13 @@ const pecas = [
             <p>ESCRIV&Atilde;O(&Atilde;): ___________________________________________________</p>
             <p>&nbsp;</p>
     `,
-      ativo: true,
-      tags: ["perito1", "perito2", "apreensoes"],
-    },
-    {
-      id: 43,
-      nomePeca: "Auto de Constatação da Natureza e Quantidade da Droga",
-      htmlContent: `
+    ativo: true,
+    tags: ["perito1", "perito2", "apreensoes"],
+  },
+  {
+    id: 43,
+    nomePeca: "Auto de Constatação da Natureza e Quantidade da Droga",
+    htmlContent: `
             <p style="text-align: center;"><strong>AUTO DE CONSTATA&Ccedil;&Atilde;O DA NATUREZA E QUANTIDADE DA DROGA</strong><br /> (Art. 50 &sect; 1&ordm; da Lei n&ordm; 11.343, de 23/08/2006)</p>
             <p>&nbsp;</p>
             <p style="text-align: justify;">&Agrave;s {hora_atual} horas, do dia {data_mes_e_ano}, nesta Cidade de {cidade_onde_o_procedimento_esta_sendo_realizado}, Estado de Pernambuco, no Cart&oacute;rio desta DELEGACIA DE POL&Iacute;CIA , onde presente se encontrava o(a) Bel.(a) {nome_do_delegado}, respectivo(a) Delegado(a), comigo, {nome_do_escrivao}, Escriv&atilde;o(&atilde;) de seu cargo, ao final assinado(a), aqui presentes os Senhores&nbsp;&nbsp;<strong>{qualificacoes_dos_peritos_nomeados}</strong>&nbsp;, nomeados pela Autoridade para atuar como Perito na realiza&ccedil;&atilde;o do exame a que se refere o &sect; 1&ordm; do Art. 50 da Lei n&ordm;. 11.343/2006, de constata&ccedil;&atilde;o da natureza e quantidade da droga, relativo a&nbsp;<strong>{droga_apreendida}</strong>, apreendida em poder de <strong>{qualificacao_completa_do_imputado}</strong>. E, como aceitaram o encargo, prometendo desempenh&aacute;-lo com zelo e probidade, passaram a examinar a subst&acirc;ncia apresentada, respondendo aos quesitos formulados pela Autoridade:</p>
@@ -864,13 +864,13 @@ const pecas = [
             <p>ESCRIV&Atilde;O(&Atilde;): ____________________________________________________________________________</p>
             <p>&nbsp;</p>
          `,
-      ativo: true,
-      tags: ["perito1", "perito2", "autuados"],
-    },
-    {
-      id: 63,
-      nomePeca: "Capa Expediente Apartado de Medidas Protetivas",
-      htmlContent: `
+    ativo: true,
+    tags: ["perito1", "perito2", "autuados"],
+  },
+  {
+    id: 63,
+    nomePeca: "Capa Expediente Apartado de Medidas Protetivas",
+    htmlContent: `
             <p style="text-align: center; font-size: 14pt;"><strong>MEDIDA PROTETIVA</strong></p>
             <p style="text-align: center; font-size: 14pt;"><strong>{numero_do_procedimento}</strong></p>
             <p>&nbsp;</p>
@@ -885,13 +885,13 @@ const pecas = [
             <p><strong>DELEGADO(A):&nbsp;</strong>{nome_do_delegado}</p>
             <p><strong>ESCRIV&Atilde;O(&Atilde;):&nbsp;</strong>{nome_do_escrivao}</p>
             `,
-      ativo: true,
-      tags: ["vitimas", "autuados"],
-    },
-    {
-      id: 64,
-      nomePeca: "Capa Procedimento Especial",
-      htmlContent: `
+    ativo: true,
+    tags: ["vitimas", "autuados"],
+  },
+  {
+    id: 64,
+    nomePeca: "Capa Procedimento Especial",
+    htmlContent: `
             <p style="text-align: center; font-size: 16pt;"><strong>PROCEDIMENTO ESPECIAL</strong></p>
             <p style="text-align: center; font-size: 14pt;">N&deg;&nbsp;<strong>{numero_do_procedimento}</strong></p>
             <p>&nbsp;</p>
@@ -908,13 +908,13 @@ const pecas = [
             <p>DELEGADO: <strong>{nome_do_delegado}</strong></p>
             <p>ESCRIV&Atilde;O(&Atilde;):&nbsp;<span style="text-align: justify; text-indent: 74.88px;">{nome_do_escrivao}</span></p>
             `,
-      ativo: true,
-      tags: ["menores_infratores", "vitimas"],
-    },
-    {
-      id: 67,
-      nomePeca: "Capa do Inquérito Policial IP",
-      htmlContent: `
+    ativo: true,
+    tags: ["menores_infratores", "vitimas"],
+  },
+  {
+    id: 67,
+    nomePeca: "Capa do Inquérito Policial IP",
+    htmlContent: `
             <p style="text-align: center;"><strong>Inqu&eacute;rito Policial</strong></p>
             <p style="text-align: center;"><strong>{numero_do_procedimento}</strong></p>
             <p>&nbsp;</p>
@@ -939,13 +939,13 @@ const pecas = [
             <p>&nbsp;</p>
             <p>&nbsp;</p>
     `,
-      ativo: true,
-      tags: ["vitimas", "autuados"],
-    },
-    {
-      id: 68,
-      nomePeca: "Carimbo de Data, Juntada e Certidão",
-      htmlContent: `
+    ativo: true,
+    tags: ["vitimas", "autuados"],
+  },
+  {
+    id: 68,
+    nomePeca: "Carimbo de Data, Juntada e Certidão",
+    htmlContent: `
             <div style="width: 70%; border: solid 1px black; padding: 15px; padding-bottom: 10px; margin: auto; margin-top: 30px;">
             <p style="text-align: center; font-size: 14pt;"><strong>DATA</strong></p>
             <p style="text-align: center;">Aos {data_mes_e_ano}, recebo estes autos do(a) Delegado(a) que preside o presente Inqu&eacute;rito. Do que, para constar, lavro este termo.</p>
@@ -963,41 +963,40 @@ const pecas = [
             </div>
             <p>&nbsp;</p>
             `,
-      ativo: true,
-      tags: [],
-    },
-    {
-      id: 69,
-      nomePeca: "Carimbo de Remessa",
-      htmlContent: `
+    ativo: true,
+    tags: [],
+  },
+  {
+    id: 69,
+    nomePeca: "Carimbo de Remessa",
+    htmlContent: `
             <div style="width: 70%; border: solid 1px black; padding: 15px; padding-bottom: 10px; margin: auto; margin-top: 30px;">
             <p style="text-align: center; font-size: 14pt;"><strong>REMESSA</strong></p>
-            <p style="text-align: center;">Ao(s) {data_mes_e_ano}, fa&ccedil;o remessa destes autos &agrave; {delegacia_para_onde_o_procedimento_sera_remetido}, para as provid&ecirc;ncias de praxe.</div>
-            </div>
+            <p style="text-align: center;">Ao(s) {data_mes_e_ano}, fa&ccedil;o remessa destes autos &agrave; {delegacia_para_onde_o_procedimento_sera_remetido}, para as provid&ecirc;ncias de praxe.</p>
             <p style="text-align: center;">Eu,&nbsp; _________________________ {nome_do_escrivao}, Escriv&atilde;o(&atilde;) que o digitei.</p>
             </div>
+            <p style="text-align: center;">&nbsp;</p>
     `,
-      ativo: true,
-      tags: [],
-    },
-    {
-      id: 70,
-      nomePeca: "Carimbo de Remessa - Medidas Protetivas",
-      htmlContent: `
+    ativo: true,
+    tags: [],
+  },
+  {
+    id: 70,
+    nomePeca: "Carimbo de Remessa - Medidas Protetivas",
+    htmlContent: `
             <div style="width: 70%; border: solid 1px black; padding: 15px; padding-bottom: 10px; margin: auto; margin-top: 30px;">
             <p style="text-align: center; font-size: 14pt;"><strong>REMESSA</strong></p>
             <p style="text-align: center;">Ao(s) {data_mes_e_ano}, fa&ccedil;o remessa destes autos &agrave; VARA DE VIOL&Ecirc;NCIA DOM&Eacute;STICA E FAMILIAR, para as provid&ecirc;ncias de praxe.</p>
             <p style="text-align: center;">Eu,&nbsp; _________________________ {nome_do_escrivao}, Escriv&atilde;o(&atilde;) que o digitei.</p>
             </div>
             `,
-      ativo: true,
-      tags: [],
-    },
-    {
-      id: 85,
-      nomePeca:
-        "Comunicação Interna de Remessa de Procedimento (CI de Remessa)",
-      htmlContent: `
+    ativo: true,
+    tags: [],
+  },
+  {
+    id: 85,
+    nomePeca: "Comunicação Interna de Remessa de Procedimento (CI de Remessa)",
+    htmlContent: `
             <p style="text-align: right; font-size: 16px;">{cidade_onde_o_procedimento_esta_sendo_realizado}, {data_mes_e_ano}</p>
             <p>&nbsp;</p>
             <p style="text-align: left; font-size: 16px;"><strong>Comunica&ccedil;&atilde;o Interna n&deg;</strong><br /></p>
@@ -1012,13 +1011,13 @@ const pecas = [
             <p style="text-align: center; font-size: 16px;"><strong>{nome_do_delegado}</strong><br />Delegado(a) de Pol&iacute;cia</p>
             <p>&nbsp;</p>
       `,
-      ativo: true,
-      tags: ["autuados", "vitimas"],
-    },
-    {
-      id: 100,
-      nomePeca: "Mandado de recolhimento",
-      htmlContent: `
+    ativo: true,
+    tags: ["autuados", "vitimas"],
+  },
+  {
+    id: 100,
+    nomePeca: "Mandado de recolhimento",
+    htmlContent: `
             <p style="text-align: center;"><strong>MANDADO DE RECOLHIMENTO</strong><br /><span style="font-size: medium;">(Art. 304 &sect; 1&ordm; do CPP)</span></p>
             <p>&nbsp;</p>
             <p>&nbsp;</p>
@@ -1031,13 +1030,13 @@ const pecas = [
             <p style="text-align: center;">&nbsp;</p>
             <p style="text-align: center;">____________________________________________________<br /><strong>{nome_do_delegado}</strong><br />Delegado(a) de Pol&iacute;cia</p>
             `,
-      ativo: true,
-      tags: ["autuados"],
-    },
-    {
-      id: 101,
-      nomePeca: "Nota de Ciência da Imputação da Prática de Ato Infracional",
-      htmlContent: `
+    ativo: true,
+    tags: ["autuados"],
+  },
+  {
+    id: 101,
+    nomePeca: "Nota de Ciência da Imputação da Prática de Ato Infracional",
+    htmlContent: `
             <div>
             <p style="text-align: center;"><b style="font-size: 14pt;">NOTA DE CIÊNCIA DA IMPUTAÇÃO DA PRÁTICA DE ATO INFRACIONAL</b><br><font size="3">(Art. 111, I da Lei nº 8.069/90)</font></p>
             <p>&nbsp;</p>
@@ -1062,19 +1061,19 @@ const pecas = [
             </div>
             <p>&nbsp;</p>
             `,
-      ativo: true,
-      tags: [
-        "menores_infratores",
-        "vitimas",
-        "condutores",
-        "primeira_testemunha",
-        "segunda_testemunha",
-      ],
-    },
-    {
-      id: 102,
-      nomePeca: "Nota de Ciência das Garantias Constitucionais",
-      htmlContent: `
+    ativo: true,
+    tags: [
+      "menores_infratores",
+      "vitimas",
+      "condutores",
+      "primeira_testemunha",
+      "segunda_testemunha",
+    ],
+  },
+  {
+    id: 102,
+    nomePeca: "Nota de Ciência das Garantias Constitucionais",
+    htmlContent: `
             <p style="text-align: center;"><strong>NOTA DE CI&Ecirc;NCIA DAS GARANTIAS CONSTITUCIONAIS</strong></p>
             <p>&nbsp;</p>
             <p style="text-align: justify;">O(a) Bel(a). {nome_do_delegado}, Delegado(a) de Pol&iacute;cia, no uso de suas atribui&ccedil;&otilde;es legais, <strong>FAZ SABER</strong> a <strong>{qualificacao_completa_do_imputado}</strong><strong>,</strong> preso(a) e autuado(a) em flagrante delito, como incurso nas penas do(s) <strong>{incidencia_penal}</strong>, que lhes s&atilde;o assegurados, dentre outros, os direitos de:</p>
@@ -1095,14 +1094,14 @@ const pecas = [
             <p>&nbsp;</p>
             <p>&nbsp;</p>
         `,
-      ativo: true,
-      tags: ["autuados"],
-    },
-    {
-      id: 103,
-      nomePeca:
-        "Nota de Ciência das Medidas Protetivas e Assistenciais da Lei 11.340/06",
-      htmlContent: `
+    ativo: true,
+    tags: ["autuados"],
+  },
+  {
+    id: 103,
+    nomePeca:
+      "Nota de Ciência das Medidas Protetivas e Assistenciais da Lei 11.340/06",
+    htmlContent: `
             <p style="text-align: center; font-size: 14pt;"><strong>NOTA DE CI&Ecirc;NCIA DAS MEDIDAS PROTETIVAS E ASSISTENCIAIS <br />DA LEI N&ordm; 11.340/06 LEI MARIA DA PENHA.</strong></p>
             <p>&nbsp;</p>
             <p style="text-align: justify; text-indent: 0.78in;">O(a) Bel(a).&nbsp;<span style="text-indent: 74.88px;"><strong>{nome_do_delegado}</strong></span><span style="text-indent: 0.78in;">, Delegado(a) de Pol&iacute;cia desta DELEGACIA DE POL&Iacute;CIA, no uso de suas atribui&ccedil;&otilde;es legais,</span></p>
@@ -1144,14 +1143,14 @@ const pecas = [
             <p>&nbsp;</p>
             <p style="text-align: justify;">V&Iacute;TIMA: _________________________________________________________________________________</p>
             `,
-      ativo: true,
-      tags: ["vitimas"],
-    },
-    {
-      id: 104,
-      nomePeca:
-        "Nota de Ciência dos Direitos da Mulher em Situação de Violência Doméstia e Familiar (Medidas Protetivas)",
-      htmlContent: `
+    ativo: true,
+    tags: ["vitimas"],
+  },
+  {
+    id: 104,
+    nomePeca:
+      "Nota de Ciência dos Direitos da Mulher em Situação de Violência Doméstia e Familiar (Medidas Protetivas)",
+    htmlContent: `
             <p style="text-align: center; font-size: 14pt;"><strong>NOTA DE CI&Ecirc;NCIA DOS DIREITOS DA MULHER EM SITUA&Ccedil;&Atilde;O DE VIOL&Ecirc;NCIA DOM&Eacute;STICA E FAMILIAR</strong><br /> <strong>RELACIONADOS AO ATENDIMENTO PELA AUTORIDADE POLICIAL</strong></p>
             <p>&nbsp;</p>
             <p style="text-align: justify; text-indent: 0.78in;">O(a) Bel(a).&nbsp;<span style="text-indent: 74.88px;"><strong>{nome_do_delegado}</strong></span>, Delegado(a) de Pol&iacute;cia desta DELEGACIA DE POL&Iacute;CIA em cumprimento ao disposto na Lei N&ordm;. 11.340, de 7 de agosto de 2006:</p>
@@ -1172,13 +1171,13 @@ const pecas = [
             <p>&nbsp;</p>
             <p style="text-align: justify;">V&Iacute;TIMA: ___________________________________________________________________________________</p>
             `,
-      ativo: false,
-      tags: ["vitimas"],
-    },
-    {
-      id: 105,
-      nomePeca: "Nota de Ciência em que a Vítima não deseja Medidas Protetivas",
-      htmlContent: `
+    ativo: false,
+    tags: ["vitimas"],
+  },
+  {
+    id: 105,
+    nomePeca: "Nota de Ciência em que a Vítima não deseja Medidas Protetivas",
+    htmlContent: `
             <p style="font-size: 14pt; text-align: center;"><strong>NOTA DE CI&Ecirc;NCIA DAS MEDIDAS PROTETIVAS <br />E ASSISTENCIAIS DA LEI 11.340/2006</strong></p>
             <p>&nbsp;</p>
             <p style="text-indent: 0.78in; text-align: justify;">A autoridade policial abaixo assinada e no uso de suas atribui&ccedil;&otilde;es legais, faz ci&ecirc;ncia &agrave; senhora&nbsp;<strong>{qualificacao_da_vitima}</strong><span style="text-indent: 0.78in;">, v&iacute;tima de viol&ecirc;ncia dom&eacute;stica, do seu direito de requerer Medidas Protetivas e Assistenciais previstas na Lei acima citada, a saber:</span></p>
@@ -1223,13 +1222,13 @@ const pecas = [
             <p>&nbsp;</p>
             <p style="text-align: justify; text-indent: 0.78in;">Assinatura: _________________________________________________________________________</p>
             `,
-      ativo: true,
-      tags: ["vitimas"],
-    },
-    {
-      id: 129,
-      nomePeca: "Ofício ao IC Solicitando Perícia em arma de fogo",
-      htmlContent: `
+    ativo: true,
+    tags: ["vitimas"],
+  },
+  {
+    id: 129,
+    nomePeca: "Ofício ao IC Solicitando Perícia em arma de fogo",
+    htmlContent: `
             <p style="text-align: right;">{cidade_onde_o_procedimento_esta_sendo_realizado}, {data_mes_e_ano}</p>
             <p>&nbsp;</p>
             <p><strong>Of&iacute;cio n&ordm;</strong></p>
@@ -1252,19 +1251,19 @@ const pecas = [
             <p style="text-align: center;">&nbsp;</p>
             <p style="text-align: center;"><strong>{nome_do_delegado}</strong><br /> Delegado(a) de Pol&iacute;cia</p>
     `,
-      ativo: true,
-      tags: [
-        "autuados",
-        "condutores",
-        "autoridade_endereco",
-        "autoridade_cargo",
-        "autoridade_tratamento",
-      ],
-    },
-    {
-      id: 134,
-      nomePeca: "Ofício ao IC Solicitando Realização de Perícia em Veículo",
-      htmlContent: `
+    ativo: true,
+    tags: [
+      "autuados",
+      "condutores",
+      "autoridade_endereco",
+      "autoridade_cargo",
+      "autoridade_tratamento",
+    ],
+  },
+  {
+    id: 134,
+    nomePeca: "Ofício ao IC Solicitando Realização de Perícia em Veículo",
+    htmlContent: `
             <p style="text-align: right;">{cidade_onde_o_procedimento_esta_sendo_realizado}, {data_mes_e_ano}</p>
             <p>&nbsp;</p>
             <p><strong>Of&iacute;cio n&ordm;</strong></p>
@@ -1281,19 +1280,19 @@ const pecas = [
             <p style="text-align: center;">&nbsp;</p>
             <p style="text-align: center;"><strong>{nome_do_delegado}</strong><br /> Delegado(a) de Pol&iacute;cia</p>
     `,
-      ativo: true,
-      tags: [
-        "pessoas",
-        "autoridade_endereco",
-        "autoridade_cargo",
-        "autoridade_tratamento",
-      ],
-    },
-    {
-      id: 144,
-      nomePeca:
-        "Ofício ao Juiz comunicando apreensão e autuação de adolescente em flagrante",
-      htmlContent: `
+    ativo: true,
+    tags: [
+      "pessoas",
+      "autoridade_endereco",
+      "autoridade_cargo",
+      "autoridade_tratamento",
+    ],
+  },
+  {
+    id: 144,
+    nomePeca:
+      "Ofício ao Juiz comunicando apreensão e autuação de adolescente em flagrante",
+    htmlContent: `
             <p style="text-align: right;"><span style="text-align: justify; text-indent: 74.88px;">{cidade_onde_o_procedimento_esta_sendo_realizado}</span>,&nbsp;<span style="text-align: justify;">{data_mes_e_ano}</span></p>
             <p><strong>Of&iacute;cio n&ordm; 2533303031</strong></p>
             <p>Ref.: <strong>{tipo_de_procedimento} n&ordm;</strong> <strong>{numero_do_procedimento}</strong></p>
@@ -1309,13 +1308,13 @@ const pecas = [
             <p style="text-align: center;"><span style="text-align: justify; text-indent: 74.88px;"><strong>{nome_do_delegado}</strong></span></p>
             <p style="text-align: center;">Delegado(a) de Pol&iacute;cia</p>
             `,
-      ativo: true,
-      tags: ["adolescentes_infratores"],
-    },
-    {
-      id: 147,
-      nomePeca: "Ofício ao Juiz Comunicando Cumprimento de Mandado de Prisão",
-      htmlContent: `
+    ativo: true,
+    tags: ["adolescentes_infratores"],
+  },
+  {
+    id: 147,
+    nomePeca: "Ofício ao Juiz Comunicando Cumprimento de Mandado de Prisão",
+    htmlContent: `
             <p style="text-align: right;">{cidade_onde_o_procedimento_esta_sendo_realizado}, {data_mes_e_ano}</p>
             <p>&nbsp;</p>
             <p><strong>Of&iacute;cio n&ordm;</strong></p>
@@ -1335,13 +1334,13 @@ const pecas = [
             <p style="text-align: center;"><strong>{nome_do_delegado}</strong><br /> Delegado(a) de Pol&iacute;cia</p>
             <p>&nbsp;</p>
           `,
-      ativo: true,
-      tags: ["imputados"],
-    },
-    {
-      id: 153,
-      nomePeca: "Ofício apresentando adolescente infrator ao promotor",
-      htmlContent: `
+    ativo: true,
+    tags: ["imputados"],
+  },
+  {
+    id: 153,
+    nomePeca: "Ofício apresentando adolescente infrator ao promotor",
+    htmlContent: `
             <p style="text-align: right;">{cidade_onde_o_procedimento_esta_sendo_realizado},&nbsp;<span style="text-align: justify; text-indent: 74.88px;">{data_mes_e_ano}</span><br></p>
             <p>&nbsp;</p>
             <p><strong>Ofício nº 2533303039</strong></p>
@@ -1356,13 +1355,13 @@ const pecas = [
             <p>&nbsp;</p>
             <p style="text-align: center;"><b>{nome_do_delegado}</b></p><p style="text-align: center;">Delegado(a) Polícia</p>
             `,
-      ativo: true,
-      tags: ["menores_infratores"],
-    },
-    {
-      id: 154,
-      nomePeca: "Ofício comunicando AAFAI ao juiz",
-      htmlContent: `
+    ativo: true,
+    tags: ["menores_infratores"],
+  },
+  {
+    id: 154,
+    nomePeca: "Ofício comunicando AAFAI ao juiz",
+    htmlContent: `
             <p style="text-align: right;">{cidade_onde_o_procedimento_esta_sendo_realizado},&nbsp;<span style="text-align: justify; text-indent: 74.88px;">{data_mes_e_ano}</span></p>
             <p>&nbsp;</p>
             <p><strong>Of&iacute;cio n&ordm; 2533303039</strong></p>
@@ -1380,13 +1379,13 @@ const pecas = [
             <p style="text-align: center;"><strong>{nome_do_delegado}</strong></p>
             <p style="text-align: center;">Delegado(a) Pol&iacute;cia</p>
             `,
-      ativo: true,
-      tags: ["infratores"],
-    },
-    {
-      id: 155,
-      nomePeca: "Ofício comunicando AAFAI ao promotor",
-      htmlContent: `
+    ativo: true,
+    tags: ["infratores"],
+  },
+  {
+    id: 155,
+    nomePeca: "Ofício comunicando AAFAI ao promotor",
+    htmlContent: `
             <p style="text-align: right;">{cidade_onde_o_procedimento_esta_sendo_realizado},&nbsp;<span style="text-align: justify; text-indent: 74.88px;">{data_mes_e_ano}</span></p>
             <p>&nbsp;</p>
             <p><strong>Of&iacute;cio n&ordm; 2533303039</strong></p>
@@ -1404,13 +1403,13 @@ const pecas = [
             <p style="text-align: center;"><strong>{nome_do_delegado}</strong></p>
             <p style="text-align: center;">Delegado(a) Pol&iacute;cia</p>
             `,
-      ativo: true,
-      tags: ["infratores"],
-    },
-    {
-      id: 156,
-      nomePeca: "Ofício comunicando BOC ao juiz",
-      htmlContent: `
+    ativo: true,
+    tags: ["infratores"],
+  },
+  {
+    id: 156,
+    nomePeca: "Ofício comunicando BOC ao juiz",
+    htmlContent: `
             <p style="text-align: right;">{cidade_onde_o_procedimento_esta_sendo_realizado},&nbsp;<span style="text-align: justify; text-indent: 74.88px;">{data_mes_e_ano}</span></p>
             <p>&nbsp;</p>
             <p><strong>Of&iacute;cio n&ordm; 2533303039</strong></p>
@@ -1428,13 +1427,13 @@ const pecas = [
             <p style="text-align: center;"><strong>{nome_do_delegado}</strong></p>
             <p style="text-align: center;">Delegado(a) Pol&iacute;cia</p>
             `,
-      ativo: true,
-      tags: ["infratores"],
-    },
-    {
-      id: 157,
-      nomePeca: "Ofício comunicando BOC ao promotor",
-      htmlContent: `
+    ativo: true,
+    tags: ["infratores"],
+  },
+  {
+    id: 157,
+    nomePeca: "Ofício comunicando BOC ao promotor",
+    htmlContent: `
              <p style="text-align: right;">{cidade_onde_o_procedimento_esta_sendo_realizado},&nbsp;<span style="text-align: justify; text-indent: 74.88px;">{data_mes_e_ano}</span></p>
             <p>&nbsp;</p>
             <p><strong>Of&iacute;cio n&ordm; 2533303039</strong></p>
@@ -1452,14 +1451,14 @@ const pecas = [
             <p style="text-align: center;"><strong>{nome_do_delegado}</strong></p>
             <p style="text-align: center;">Delegado(a) Pol&iacute;cia</p>
             `,
-      ativo: true,
-      tags: [],
-    },
-    {
-      id: 158,
-      nomePeca:
-        "Ofício comunicando apreensão e autuação de adolescente à família do adolescente",
-      htmlContent: `
+    ativo: true,
+    tags: [],
+  },
+  {
+    id: 158,
+    nomePeca:
+      "Ofício comunicando apreensão e autuação de adolescente à família do adolescente",
+    htmlContent: `
             <p style="text-align: right;"><strong>{cidade_onde_o_procedimento_esta_sendo_realizado}, {data_mes_e_ano}</strong></p>
             <p>&nbsp;</p>
             <p><strong>Of&iacute;cio n&ordm;</strong></p>
@@ -1478,13 +1477,13 @@ const pecas = [
             <p style="text-align: center;"><strong>{nome_do_delegado}</strong><br /> Delegado(a) de Pol&iacute;cia</p>
             <p>&nbsp;</p>
             `,
-      ativo: true,
-      tags: [],
-    },
-    {
-      id: 159,
-      nomePeca: "Ofício comunicando prisão em flagrante à Defensoria Pública",
-      htmlContent: `
+    ativo: true,
+    tags: [],
+  },
+  {
+    id: 159,
+    nomePeca: "Ofício comunicando prisão em flagrante à Defensoria Pública",
+    htmlContent: `
             <p style="text-align: right;">{cidade_onde_o_procedimento_esta_sendo_realizado},&nbsp;<span style="text-align: justify; text-indent: 74.88px;">{data_mes_e_ano}</span></p>
             <p>&nbsp;</p>
             <p><strong>Of&iacute;cio n&ordm; 2533303039</strong></p>
@@ -1501,13 +1500,13 @@ const pecas = [
             <p style="text-align: center;"><strong>{nome_do_delegado}</strong></p>
             <p style="text-align: center;">Delegado(a) Pol&iacute;cia</p>
             `,
-      ativo: true,
-      tags: [],
-    },
-    {
-      id: 160,
-      nomePeca: "Ofício comunicando prisão em flagrante à família do preso",
-      htmlContent: `
+    ativo: true,
+    tags: [],
+  },
+  {
+    id: 160,
+    nomePeca: "Ofício comunicando prisão em flagrante à família do preso",
+    htmlContent: `
             <p style="text-align: right;"><strong>{cidade_onde_o_procedimento_esta_sendo_realizado}, {data_mes_e_ano}</strong></p>
             <p>&nbsp;</p>
             <p><strong>Of&iacute;cio n&ordm;</strong></p>
@@ -1526,13 +1525,13 @@ const pecas = [
             <p style="text-align: center;"><strong>{nome_do_delegado}</strong><br /> Delegado(a) de Pol&iacute;cia</p>
             <p>&nbsp;</p>
             `,
-      ativo: true,
-      tags: ["autuados"],
-    },
-    {
-      id: 173,
-      nomePeca: "Ofício encaminhando Medidas Protetivas - Lei 11.340/2006",
-      htmlContent: `
+    ativo: true,
+    tags: ["autuados"],
+  },
+  {
+    id: 173,
+    nomePeca: "Ofício encaminhando Medidas Protetivas - Lei 11.340/2006",
+    htmlContent: `
             <p style="text-align: right;">{cidade_onde_o_procedimento_esta_sendo_realizado}, {data_mes_e_ano}</p>
             <p>&nbsp;</p>
             <p><strong>Of&iacute;cio n&ordm; 2533303044</strong></p>
@@ -1549,13 +1548,13 @@ const pecas = [
             <p>&nbsp;</p>
             <p style="text-align: center;"><strong>{nome_do_delegado}</strong><br />Delegado(a) de Pol&iacute;cia</p>
             `,
-      ativo: true,
-      tags: [],
-    },
-    {
-      id: 191,
-      nomePeca: "Ofício solicitando exame de constatação de droga",
-      htmlContent: `
+    ativo: true,
+    tags: [],
+  },
+  {
+    id: 191,
+    nomePeca: "Ofício solicitando exame de constatação de droga",
+    htmlContent: `
             <p style="text-align: right;">{cidade_onde_o_procedimento_esta_sendo_realizado}, {data_mes_e_ano}</p>
             <p>&nbsp;</p>
             <p><strong>Of&iacute;cio n&ordm;</strong></p>
@@ -1572,19 +1571,19 @@ const pecas = [
             <p style="text-align: center;">&nbsp;</p>
             <p style="text-align: center;"><strong>{nome_do_delegado}</strong><br /> Delegado(a) de Pol&iacute;cia</p>
     `,
-      ativo: true,
-      tags: [
-        "autuados",
-        "autoridade_endereco",
-        "autoridade_cargo",
-        "autoridade_tratamento",
-      ],
-    },
+    ativo: true,
+    tags: [
+      "autuados",
+      "autoridade_endereco",
+      "autoridade_cargo",
+      "autoridade_tratamento",
+    ],
+  },
 
-    {
-      id: 193,
-      nomePeca: "Ofício solicitando exame definitivo de droga (maconha)",
-      htmlContent: `
+  {
+    id: 193,
+    nomePeca: "Ofício solicitando exame definitivo de droga (maconha)",
+    htmlContent: `
             <p style="text-align: right; font-size: 16px;"><strong>{cidade_onde_o_procedimento_esta_sendo_realizado}, {data_mes_e_ano}</strong></p>
             <p>&nbsp;</p>
             <p style="text-align: left; font-size: 16px;"><strong>Of&iacute;cio n&ordm;</strong></p>
@@ -1608,19 +1607,19 @@ const pecas = [
             <p>&nbsp;</p>
             <p style="text-align: center; font-size: 16px;"><strong>{nome_do_delegado}</strong><br />Delegado(a) de Pol&iacute;cia</p>
         `,
-      ativo: true,
-      tags: [
-        "autuados",
-        "autoridade_endereco",
-        "autoridade_cargo",
-        "autoridade_tratamento",
-      ],
-    },
-    {
-      id: 203,
-      nomePeca:
-        "Ofício à Família do Preso Comunicando Cumprimento de Mandado de Prisão",
-      htmlContent: `
+    ativo: true,
+    tags: [
+      "autuados",
+      "autoridade_endereco",
+      "autoridade_cargo",
+      "autoridade_tratamento",
+    ],
+  },
+  {
+    id: 203,
+    nomePeca:
+      "Ofício à Família do Preso Comunicando Cumprimento de Mandado de Prisão",
+    htmlContent: `
             <p style="text-align: right;"><strong>{cidade_onde_o_procedimento_esta_sendo_realizado}, {data_mes_e_ano}</strong></p>
             <p>&nbsp;</p>
             <p>Ref.: <strong>{tipo_de_procedimento} n&ordm; {numero_do_procedimento}</strong></p>
@@ -1638,13 +1637,13 @@ const pecas = [
             <p style="text-align: center;"><strong>{nome_do_delegado}</strong><br /> Delegado(a) de Pol&iacute;cia</p>
             <p>&nbsp;</p>
     `,
-      ativo: true,
-      tags: ["preso"],
-    },
-    {
-      id: 208,
-      nomePeca: "Pedido de Medidas Protetivas de Urgência (Lei 11.340/2006)",
-      htmlContent: `
+    ativo: true,
+    tags: ["preso"],
+  },
+  {
+    id: 208,
+    nomePeca: "Pedido de Medidas Protetivas de Urgência (Lei 11.340/2006)",
+    htmlContent: `
             <p style="text-align: center; font-size: 14pt;"><strong>PEDIDO DE MEDIDAS PROTETIVAS DE URG&Ecirc;NCIA</strong></p>
             <p style="text-align: center; font-size: 14pt;"><strong>{numero_do_procedimento}</strong></p>
             <p>&nbsp;</p>
@@ -1692,13 +1691,13 @@ const pecas = [
             <p>_________________________________________________________________________________<br />Assinatura da V&iacute;tima:</p>
             <p style="text-align: justify;">Segue anexo: <strong>B.O n&ordm; BOE n&ordm; {numero_do_bo}</strong>e c&oacute;pias de documentos (LEI N&ordm; 11.340/2006).</p>
             `,
-      ativo: true,
-      tags: ["vitimas", "autuados"],
-    },
-    {
-      id: 211,
-      nomePeca: "Portaria Instauradora de Inquérito Policial (de Ofício)",
-      htmlContent: `
+    ativo: true,
+    tags: ["vitimas", "autuados"],
+  },
+  {
+    id: 211,
+    nomePeca: "Portaria Instauradora de Inquérito Policial (de Ofício)",
+    htmlContent: `
             <p style="text-align: center;"><strong>PORTARIA</strong></p>
             <p style="text-align: justify;">A POL&Iacute;CIA CIVIL DO ESTADO DE PERNAMBUCO, atrav&eacute;s da Autoridade Policial que a esta subscreve, com fulcro no Art. 144, &sect;4&deg;, da Constitui&ccedil;&atilde;o Federal de 1988 c/c Art. 4&deg; e seguintes do C&oacute;digo de Processo Penal p&aacute;trio vigente, tomou conhecimento, atrav&eacute;s do Boletim de Ocorr&ecirc;ncia n&ordm;&nbsp;<strong>BOE n&ordm; {numero_do_bo}</strong>, que, no dia {data_do_fato}, no(a) {endereco_onde_ocorreu_o_fato}, ocorreu o crime tipificado no&nbsp;<strong>{incidencia_penal}</strong>, tendo como autor(es)&nbsp;<strong>{qualificacao_completa_do_imputado} </strong>e por v&iacute;tima(s)&nbsp;<strong>{qualificacao_da_vitima}</strong>, determino&nbsp;ao(&agrave;) Senhor(a) Escriv&atilde;o(&atilde;) de Pol&iacute;cia de seu cargo&nbsp;que A. e R. esta, seja instaurado o competente Inqu&eacute;rito Policial,&nbsp;prosseguindo-se nas demais dilig&ecirc;ncias at&eacute; a completa elucida&ccedil;&atilde;o do fato delituoso e de sua autoria, cujo hist&oacute;rico do boletim de ocorr&ecirc;ncia em ep&iacute;grafe explicita ind&iacute;cios de conduta t&iacute;pica, trazendo o seguinte relato:&nbsp;<em>{cole_aqui_a_descricao_do_bo}.</em></p>
             <p style="text-align: center;">&nbsp;</p>
@@ -1709,14 +1708,14 @@ const pecas = [
             <p style="text-align: center;"><strong>{nome_do_delegado}</strong><br /> Delegado(a) de Pol&iacute;cia</p>
             <p>&nbsp;</p>
     `,
-      ativo: true,
-      tags: ["autuados", "vitimas"],
-    },
-    {
-      id: 212,
-      nomePeca:
-        "Portaria Instauradora de Procedimento Especial de Adolescente Infrator",
-      htmlContent: `
+    ativo: true,
+    tags: ["autuados", "vitimas"],
+  },
+  {
+    id: 212,
+    nomePeca:
+      "Portaria Instauradora de Procedimento Especial de Adolescente Infrator",
+    htmlContent: `
             <p style="text-align: center;"><strong>PROCEDIMENTO ESPECIAL DE ADOLESCENTE INFRATOR</strong></p>
             <p style="text-align: justify;">A POL&Iacute;CIA CIVIL DO ESTADO DE PERNAMBUCO, atrav&eacute;s da Autoridade Policial que a esta subscreve, com fulcro no Art. 144, &sect;4&deg;, da Constitui&ccedil;&atilde;o Federal de 1988 c/c Art. 4&deg; e seguintes do C&oacute;digo de Processo Penal p&aacute;trio vigente, tomou conhecimento, atrav&eacute;s do Boletim de Ocorr&ecirc;ncia n&ordm;&nbsp;<strong>BOE n&ordm; {numero_do_bo}</strong>, que, no dia {data_do_fato}, no(a) {endereco_onde_ocorreu_o_fato}, ocorreu o crime tipificado no&nbsp;<strong>{incidencia_penal}</strong>, tendo como autor(es)&nbsp;<strong>{qualificacao_completa_do_imputado} </strong>e por v&iacute;tima(s)&nbsp;<strong>{qualificacao_da_vitima}</strong>, determino&nbsp;ao(&agrave;) Senhor(a) Escriv&atilde;o(&atilde;) de Pol&iacute;cia de seu cargo&nbsp;que A. e R. esta, seja instaurado o competente Procedimento Especial,&nbsp;prosseguindo-se nos demais diligenciamentos até completa elucidação do Ato Infracional, suas circunstâncias e autoria, cujo hist&oacute;rico do boletim de ocorr&ecirc;ncia em ep&iacute;grafe traz o seguinte relato:&nbsp;<em>{cole_aqui_a_descricao_do_bo}.</em></p>
             <p style="text-align: center;">&nbsp;</p>
@@ -1727,13 +1726,13 @@ const pecas = [
             <p style="text-align: center;"><strong>{nome_do_delegado}</strong><br /> Delegado(a) de Pol&iacute;cia</p>
             <p>&nbsp;</p>
     `,
-      ativo: true,
-      tags: [],
-    },
-    {
-      id: 214,
-      nomePeca: "Portaria de nomeação e termo de compromisso de peritos",
-      htmlContent: `
+    ativo: true,
+    tags: [],
+  },
+  {
+    id: 214,
+    nomePeca: "Portaria de nomeação e termo de compromisso de peritos",
+    htmlContent: `
             <p style="text-align: justify;">O(a) Bel(a). {nome_do_delegado}, Delegado(a) de Pol&iacute;cia Titular desta Delegacia, no uso de suas atribui&ccedil;&otilde;es, na falta de Peritos Oficiais e ocorrendo a necessidade de se proceder a(o) {tipo_do_exame_peritos_nomeados}, nomeia para atuar como Peritos, de acordo com o disposto no Art. 159, &sect;&sect; 1&ordm; e 2&ordm;, do C&oacute;digo de Processo Penal, os Senhores <strong>{qualificacoes_dos_peritos_nomeados}</strong>, os quais dever&atilde;o prestar o compromisso legal de estilo.</p>
             <p>&nbsp;</p>
             <p style="text-align: center;">C U M P R A - S E</p>
@@ -1753,13 +1752,13 @@ const pecas = [
             <p>ESCRIV&Atilde;O(&Atilde;): ______________________________________________________________</p>
             <p>&nbsp;</p>
     `,
-      ativo: true,
-      tags: ["perito1", "perito2"],
-    },
-    {
-      id: 215,
-      nomePeca: "Portaria e termo de compromisso de escrivão ad hoc",
-      htmlContent: `
+    ativo: true,
+    tags: ["perito1", "perito2"],
+  },
+  {
+    id: 215,
+    nomePeca: "Portaria e termo de compromisso de escrivão ad hoc",
+    htmlContent: `
             <p style="text-align: center;"><strong>P O R T A R I A</strong></p>
             <p>&nbsp;</p>
             <p style="text-align: justify;">O(a) Bel(a).&nbsp;{nome_do_delegado}, Delegado(a) de Pol&iacute;cia Titular / Adjunto(a) desta Delegacia, no uso de suas atribui&ccedil;&otilde;es, ante a falta de Escriv&atilde;o do quadro e pela necessidade de se proceder a instaura&ccedil;&atilde;o de Inqu&eacute;rito Policial para esclarecer os fatos relatados no Boletim de Ocorr&ecirc;ncia n&ordm;&nbsp;<strong>BOE n&ordm; {numero_do_bo}</strong>, lavrado nesta Delegacia, nomeia, para atuar como Escriv&atilde;o(&atilde;) Ad Hoc o(a) Agente de Pol&iacute;cia,&nbsp;<strong>{qualificacao_do_escrivao_ad_hoc}</strong>, o(a) qual dever&aacute; prestar o compromisso legal de estilo.</p>
@@ -1777,13 +1776,13 @@ const pecas = [
             <p>ESCRIV&Atilde;O(&Atilde;) AD HOC: ___________________________________________________________</p>
             <p>&nbsp;</p>
           `,
-      ativo: true,
-      tags: ["agentes_de_policia"],
-    },
-    {
-      id: 231,
-      nomePeca: "Termo Circunstanciado de Ocorrência - TCO - Flagrante",
-      htmlContent: `
+    ativo: true,
+    tags: ["agentes_de_policia"],
+  },
+  {
+    id: 231,
+    nomePeca: "Termo Circunstanciado de Ocorrência - TCO - Flagrante",
+    htmlContent: `
             <p style="text-align: center;"><strong>TERMO CIRCUNSTANCIADO DE OCORR&Ecirc;NCIA</strong></p>
             <p style="text-align: center;"><strong>TCO N&ordm; {numero_do_procedimento}</strong></p>
             <p>&nbsp;</p>
@@ -1815,13 +1814,13 @@ const pecas = [
             <p style="text-align: center;"><strong>{nome_do_delegado}</strong><br /> Delegado(a) de Pol&iacute;cia</p>
             <p style="text-align: center;">&nbsp;</p>
           `,
-      ativo: true,
-      tags: ["condutores", "autuados", "vitimas", "testemunhas"],
-    },
-    {
-      id: 240,
-      nomePeca: "Termo de Compromisso de Comparecimento em Juízo",
-      htmlContent: `
+    ativo: true,
+    tags: ["condutores", "autuados", "vitimas", "testemunhas"],
+  },
+  {
+    id: 240,
+    nomePeca: "Termo de Compromisso de Comparecimento em Juízo",
+    htmlContent: `
             <p style="text-align: center; font-size: 16px;"><strong>TERMO DE COMPROMISSO<br />DE COMPARECIMENTO EM JU&Iacute;ZO</strong></p>
             <p>&nbsp;</p>
             <p style="text-align: left; font-size: 16px;">Ref.:&nbsp;<strong>{tipo_de_procedimento}</strong> n&deg; <strong>{numero_do_procedimento}</strong></p>
@@ -1832,14 +1831,14 @@ const pecas = [
             <p style="text-align: left; font-size: 16px;">ESCRIV&Atilde;O(&Atilde;): ___________________________________________________________</p>
             <p>&nbsp;</p>
     `,
-      ativo: true,
-      tags: ["autuados"],
-    },
-    {
-      id: 249,
-      nomePeca:
-        "Termo de Liberação, Compromisso e Responsabilidade - Adolescente Infrator",
-      htmlContent: `
+    ativo: true,
+    tags: ["autuados"],
+  },
+  {
+    id: 249,
+    nomePeca:
+      "Termo de Liberação, Compromisso e Responsabilidade - Adolescente Infrator",
+    htmlContent: `
             <p style="text-align: center; font-size: 14pt;"><strong>TERMO DE LIBERA&Ccedil;&Atilde;O, COMPROMISSO E<br />RESPONSABILIDADE DE ADOLESCENTE INFRATOR</strong></p>
             <p>&nbsp;</p>
             <p style="text-align: justify; text-indent: 0.78in;"><span style="font-family: Arial, sans-serif; text-indent: 74.88px;">Aos {data_mes_e_ano}, nesta Cidade de {cidade_onde_o_procedimento_esta_sendo_realizado}, Estado de Pernambuco, no Cart&amp;oacute;rio desta Delegacia, onde presente se encontrava o(a) Bel(a). {nome_do_delegado}, respectivo(a) Delegado(a), comigo, {nome_do_escrivao}</span>L, Escriv&atilde;o(&atilde;) de seu cargo, ao final assinado(a), a&iacute; compareceu o (a) Senhor (a) <strong>{qualificacao_do_representante_legal_do_menor_infrator}</strong> representante legal do adolescente&nbsp;<strong style="text-indent: 0px;">{qualificacao_completa_do_imputado},&nbsp;</strong>apreendido por ter praticado conduta an&aacute;loga ao crime previsto no&nbsp;<strong>{incidencia_penal}</strong>, conforme Boletim de Ocorr&ecirc;ncia n&ordm; <strong>BOE n&ordm; {numero_do_bo}</strong>, a quem referido adolescente foi entregue, tendo na ocasi&atilde;o assumido o compromisso de apresent&aacute;-lo ao representante do Minist&eacute;rio P&uacute;blico, no prazo de 24 horas ou no 1&ordm; dia &uacute;til, conforme disp&otilde;e o Art. 174, da Lei n&ordm; 8.069/90, de 13 de Julho de 1990 (Estatuto da Crian&ccedil;a e do Adolescente), ficando ainda ciente de que o adolescente n&atilde;o poder&aacute;: freq&uuml;entar casa de jogo ou mal-afamada, conviver com pessoa viciosa ou de m&aacute; vida, freq&uuml;entar espet&aacute;culo capaz de pervert&ecirc;-lo ou ofender-lhe o pudor, ou participar de representa&ccedil;&atilde;o de igual natureza, residir ou trabalhar em casa de prostitui&ccedil;&atilde;o, mendigar ou servir a mendigo para excitar a comisera&ccedil;&atilde;o p&uacute;blica, sob pena de responsabilidade do adulto que assim o permitir, de conformidade com o Art. 247, do C&oacute;digo Penal Brasileiro. Nada mais havendo a ser consignado, determinou a Autoridade que fosse lavrado este Termo que, depois de lido e achado conforme, o assina com o Representante Legal do adolescente mencionado e comigo, Escriv&atilde;o(&atilde;), que o digitei.</p>
@@ -1848,13 +1847,13 @@ const pecas = [
             <p>REPRESENTANTE LEGAL: _____________________________________________________________</p>
             <p>ESCRIV&Atilde;O(&Atilde;): ___________________________________________________________________________</p>
             `,
-      ativo: true,
-      tags: ["adolescentes_infratores"],
-    },
-    {
-      id: 250,
-      nomePeca: "Termo de Liberação, Compromisso e Responsabilidade - BOC",
-      htmlContent: `
+    ativo: true,
+    tags: ["adolescentes_infratores"],
+  },
+  {
+    id: 250,
+    nomePeca: "Termo de Liberação, Compromisso e Responsabilidade - BOC",
+    htmlContent: `
             <p style="text-align: center;"><strong>TERMO DE LIBERA&Ccedil;&Atilde;O, COMPROMISSO E<br /> RESPONSABILIDADE DE ADOLESCENTE INFRATOR</strong></p>
             <p>Ref.:<strong>&nbsp;{numero_do_procedimento}</strong></p>
             <p>&nbsp;</p>
@@ -1870,13 +1869,13 @@ const pecas = [
             <p>Telefone: _______________________________________________________________</p>
             <p>&nbsp;</p>
     `,
-      ativo: true,
-      tags: ["adolescentes_infratores"],
-    },
-    {
-      id: 251,
-      nomePeca: "Termo de Qualificação Indireta",
-      htmlContent: `
+    ativo: true,
+    tags: ["adolescentes_infratores"],
+  },
+  {
+    id: 251,
+    nomePeca: "Termo de Qualificação Indireta",
+    htmlContent: `
             <p style="text-align: center; font-size: 14pt;"><strong>TERMO DE QUALIFICA&Ccedil;&Atilde;O INDIRETA</strong></p>
             <p>&nbsp;</p>
             <p style="text-align: justify;"><span style="font-family: Arial, sans-serif; text-indent: 74.88px;">Aos {data_mes_e_ano}, nesta Cidade de {cidade_onde_o_procedimento_esta_sendo_realizado}, Estado de Pernambuco, no Cart&amp;oacute;rio desta Delegacia, onde presente se encontrava o(a) Bel(a). {nome_do_delegado}, respectivo(a) Delegado(a), comigo, {nome_do_escrivao}</span>, Escriv&atilde;o(&atilde;) de seu cargo, ao final assinado(a), a&iacute; foi determinado pela Autoridade que se consignasse, neste Auto, a Qualifica&ccedil;&atilde;o Indireta do Imputado:&nbsp;<strong>{nome_do_imputado}</strong>, que, conforme revela o documento, constante nos autos &agrave;s fls. _________,o qualifica da seguinte forma:&nbsp;&nbsp;<strong>{qualificacao_completa_do_imputado}</strong>.</p>
@@ -1886,13 +1885,13 @@ const pecas = [
             <p>AUTORIDADE: ___________________________________________________________________</p>
             <p>ESCRIV&Atilde;O(&Atilde;): ______________________________________________________________________</p>
             `,
-      ativo: true,
-      tags: ["imputados"],
-    },
-    {
-      id: 252,
-      nomePeca: "Termo de Qualificação e Interrogatório",
-      htmlContent: `
+    ativo: true,
+    tags: ["imputados"],
+  },
+  {
+    id: 252,
+    nomePeca: "Termo de Qualificação e Interrogatório",
+    htmlContent: `
             <p style="text-align: center; font-size: 14pt;"><strong>TERMO DE QUALIFICA&Ccedil;&Atilde;O E INTERROGAT&Oacute;RIO</strong></p>
             <p>&nbsp;</p>
             <p style="text-align: justify;"><span style="font-family: Arial, sans-serif; text-indent: 74.88px;">Aos {data_mes_e_ano}, nesta Cidade de {cidade_onde_o_procedimento_esta_sendo_realizado}, Estado de Pernambuco, no Cart&amp;oacute;rio desta Delegacia, onde presente se encontrava o(a) Bel(a). {nome_do_delegado}, respectivo(a) Delegado(a), comigo, {nome_do_escrivao}</span>, Escriv&atilde;o(&atilde;) de seu cargo, ao final assinado(a), a&iacute; compareceu o(a) imputado(a) <strong>{qualificacao_completa_do_imputado}</strong>. Ap&oacute;s a qualifica&ccedil;&atilde;o supra, passou a ser cientificado pela Autoridade das imputa&ccedil;&otilde;es que lhe s&atilde;o feitas, bem como dos direitos que lhe s&atilde;o assegurados pelo art. 5&ordm;, Incs. LXI, LXII, LXIII e LXIV da Constitui&ccedil;&atilde;o Federal, em especial o de permanecer em sil&ecirc;ncio, sem que disso advenha preju&iacute;zo na sua defesa. Interrogado(a) nos termos do Art. 187 &sect; 1&ordm; e 2&ordm; do C&oacute;digo de Processo Penal, respondeu: <strong>QUE,</strong> ________________________.</p>
@@ -1902,13 +1901,13 @@ const pecas = [
             <p>INTERROGADO(A): ___________________________________________</p>
             <p>ESCRIV&Atilde;O(&Atilde;): ________________________________________________</p>
             `,
-      ativo: true,
-      tags: ["interrogados"],
-    },
-    {
-      id: 256,
-      nomePeca: "Termo de Representação - BOC (Menor Infrator)",
-      htmlContent: `
+    ativo: true,
+    tags: ["interrogados"],
+  },
+  {
+    id: 256,
+    nomePeca: "Termo de Representação - BOC (Menor Infrator)",
+    htmlContent: `
             <p style="text-align: center;"><strong>TERMO DE REPRESENTA&Ccedil;&Atilde;O</strong></p>
             <p>Ref.:&nbsp;<strong>{tipo_de_procedimento} N&ordm; {numero_do_procedimento}</strong></p>
             <p>&nbsp;</p>
@@ -1919,13 +1918,13 @@ const pecas = [
             <p>ESCRIV&Atilde;O(&Atilde;): ___________________________________________________________________</p>
             <p>&nbsp;</p>
            `,
-      ativo: true,
-      tags: ["vitimas", "menores_infratores"],
-    },
-    {
-      id: 257,
-      nomePeca: "Termo de Representação - Inquérito Policial",
-      htmlContent: `
+    ativo: true,
+    tags: ["vitimas", "menores_infratores"],
+  },
+  {
+    id: 257,
+    nomePeca: "Termo de Representação - Inquérito Policial",
+    htmlContent: `
             <p style="text-align: center;"><strong>TERMO DE REPRESENTA&Ccedil;&Atilde;O</strong></p>
             <p>Ref.:&nbsp;<strong>{tipo_de_procedimento} N&ordm; {numero_do_procedimento}</strong></p>
             <p>&nbsp;</p>
@@ -1936,13 +1935,13 @@ const pecas = [
             <p>ESCRIV&Atilde;O(&Atilde;): ___________________________________________________________________</p>
             <p>&nbsp;</p>
            `,
-      ativo: true,
-      tags: ["autuados", "vitimas"],
-    },
-    {
-      id: 258,
-      nomePeca: "Termo de Representação - TCO (Adulto)",
-      htmlContent: `
+    ativo: true,
+    tags: ["autuados", "vitimas"],
+  },
+  {
+    id: 258,
+    nomePeca: "Termo de Representação - TCO (Adulto)",
+    htmlContent: `
             <p style="text-align: center;"><strong>TERMO DE REPRESENTA&Ccedil;&Atilde;O</strong></p>
             <p>Ref.:&nbsp;<strong>{tipo_de_procedimento} N&ordm; {numero_do_procedimento}</strong></p>
             <p>&nbsp;</p>
@@ -1953,13 +1952,13 @@ const pecas = [
             <p>ESCRIV&Atilde;O(&Atilde;): ___________________________________________________________________</p>
             <p>&nbsp;</p>
            `,
-      ativo: true,
-      tags: ["vitimas", "autuados"],
-    },
-    {
-      id: 259,
-      nomePeca: "Termo de Representação - TCO (Menor Vítima)",
-      htmlContent: `
+    ativo: true,
+    tags: ["vitimas", "autuados"],
+  },
+  {
+    id: 259,
+    nomePeca: "Termo de Representação - TCO (Menor Vítima)",
+    htmlContent: `
             <p style="font-size: 14pt; text-align: center;"><strong>TERMO DE REPRESENTA&Ccedil;&Atilde;O</strong></p>
             <p><strong>Ref.: {tipo_de_procedimento}N&ordm; {numero_do_procedimento}</strong></p>
             <p>&nbsp;</p>
@@ -1970,14 +1969,14 @@ const pecas = [
             <p>REPRESENTANTE LEGAL: ___________________________________________</p>
             <p>ESCRIV&Atilde;O: _________________________________________________________</p>
             `,
-      ativo: true,
-      tags: ["vitimas", "autuados"],
-    },
-    {
-      id: 261,
-      nomePeca:
-        "Termo de Requerimento de Medidas Protetivas de Urgência - Lei 11.340/2006",
-      htmlContent: `
+    ativo: true,
+    tags: ["vitimas", "autuados"],
+  },
+  {
+    id: 261,
+    nomePeca:
+      "Termo de Requerimento de Medidas Protetivas de Urgência - Lei 11.340/2006",
+    htmlContent: `
             <p style="font-size: 11pt; text-align: center;"><strong>TERMO DE REQUERIMENTO DE MEDIDAS PROTETIVAS DE URG&Ecirc;NCIA</strong><br />(Lei 11.340/2006)</p>
             <p>&nbsp;</p>
             <p style="text-align: justify; text-indent: 0.78in; border-bottom: none;">Aos {data_mes_e_ano}, nesta Cidade de {cidade_onde_o_procedimento_esta_sendo_realizado}, Estado de Pernambuco, no Cart&oacute;rio desta Delegacia, onde presente se encontrava o(a) Bel(a). {nome_do_delegado}, respectivo(a) Delegado(a),&nbsp;Escriv&atilde;o(&atilde;) de seu cargo, ao final assinado(a), a&iacute; compareceu: {qualificacao_da_vitima}<strong>, <strong>REQUERENDO A CONCESS&Atilde;O DE MEDIDAS PROTETIVAS DE URG&Ecirc;NCIA</strong> na forma do disposto no <strong>Art. 12 &sect; 1&ordm;, da Lei 11.340, de 7 de agosto de 2006</strong>. Nada mais disse nem lhe foi perguntado. Lido e achado conforme mandou a Autoridade encerrar o presente Termo que assina com a requerente e comigo Escriv&atilde;o(&atilde;) que digitei.</strong></p>
@@ -1987,13 +1986,13 @@ const pecas = [
             <p><strong>ESCRIV&Atilde;O(&Atilde;): ___________________________________________</strong></p>
             <p>&nbsp;</p>
             `,
-      ativo: true,
-      tags: ["vitimas"],
-    },
-    {
-      id: 262,
-      nomePeca: "Termo de Restituição (Entrega)",
-      htmlContent: `
+    ativo: true,
+    tags: ["vitimas"],
+  },
+  {
+    id: 262,
+    nomePeca: "Termo de Restituição (Entrega)",
+    htmlContent: `
             <p style="text-align: center;"><strong>TERMO DE RESTITUI&Ccedil;&Atilde;O</strong><br /> (Art. 120 do CPP)</p>
             <p>&nbsp;</p>
             <p style="text-align: justify;">&Agrave;s {hora_atual} horas, do dia {data_mes_e_ano}, nesta Cidade de {cidade_onde_o_procedimento_esta_sendo_realizado}, Estado de Pernambuco, no Cart&oacute;rio desta Delegacia, onde presente se encontrava o(a) Bel(a). {nome_do_delegado}, respectivo(a) Delegado(a), comigo {nome_do_escrivao},&nbsp;Escriv&atilde;o(&atilde;) de seu cargo, ao final assinado(a), a&iacute; compareceu {qualificacao_da_pessoa_que_esta_recebendo_o_bem}, a quem a Autoridade determinou fosse entregue o(s) seguinte(s) objeto(s)&nbsp;constante(s) no Auto de Apresenta&ccedil;&atilde;o e Apreens&atilde;o:</p>
@@ -2007,13 +2006,13 @@ const pecas = [
             <p>ESCRIV&Atilde;O(&Atilde;): _________________________________________________________________________</p>
             <p>&nbsp;</p>
     `,
-      ativo: true,
-      tags: ["recebedores", "apreensoes"],
-    },
-    {
-      id: 270,
-      nomePeca: "Capa de Termo Circunstanciado de Ocorrência TCO",
-      htmlContent: `
+    ativo: true,
+    tags: ["recebedores", "apreensoes"],
+  },
+  {
+    id: 270,
+    nomePeca: "Capa de Termo Circunstanciado de Ocorrência TCO",
+    htmlContent: `
             <p style="text-align: center;"><strong>Termo Circunstanciado de Ocorr&ecirc;ncia</strong></p>
             <p style="text-align: center;"><strong>TCO</strong></p>
             <p style="text-align: center;"><strong>{numero_do_procedimento}</strong></p>
@@ -2047,13 +2046,13 @@ const pecas = [
             <p>&nbsp;</p>
             <p>&nbsp;</p>
           `,
-      ativo: true,
-      tags: ["vitimas", "autuados"],
-    },
-    {
-      id: 271,
-      nomePeca: "Capa de Boletim de Ocorrência Circunstanciado BOC",
-      htmlContent: `
+    ativo: true,
+    tags: ["vitimas", "autuados"],
+  },
+  {
+    id: 271,
+    nomePeca: "Capa de Boletim de Ocorrência Circunstanciado BOC",
+    htmlContent: `
             <p style="text-align: center;"><strong>Boletim de Ocorr&ecirc;ncia Circunstanciado</strong></p>
             <p style="text-align: center;"><strong>BOC</strong></p>
             <p style="text-align: center;"><strong>{numero_do_procedimento}</strong></p>
@@ -2075,13 +2074,13 @@ const pecas = [
             <p>Principal Motivo: N&Atilde;O INFORMADO</p>
             <p>Data de Instaura&ccedil;&atilde;o: <strong>{data_de_instauracao}</strong></p>
         `,
-      ativo: true,
-      tags: ["vitimas", "autuados"],
-    },
-    {
-      id: 272,
-      nomePeca: "Capa de Procedimento Especial de Menor PEM",
-      htmlContent: `
+    ativo: true,
+    tags: ["vitimas", "autuados"],
+  },
+  {
+    id: 272,
+    nomePeca: "Capa de Procedimento Especial de Menor PEM",
+    htmlContent: `
             <p style="text-align: center;"><strong>Procedimento Especial de Menor</strong></p>
             <p style="text-align: center;"><strong>BOC</strong></p>
             <p style="text-align: center;"><strong>{numero_do_procedimento}</strong></p>
@@ -2103,13 +2102,13 @@ const pecas = [
             <p>Principal Motivo: N&Atilde;O INFORMADO</p>
             <p>Data de Instaura&ccedil;&atilde;o: <strong>{data_de_instauracao}</strong></p>
         `,
-      ativo: true,
-      tags: ["vitimas", "autuados"],
-    },
-    {
-      id: 273,
-      nomePeca: "Capa do Inquérito Policial APFD",
-      htmlContent: `
+    ativo: true,
+    tags: ["vitimas", "autuados"],
+  },
+  {
+    id: 273,
+    nomePeca: "Capa do Inquérito Policial APFD",
+    htmlContent: `
             <p style="text-align: center;"><strong>Inqu&eacute;rito Policial</strong></p>
             <p style="text-align: center;"><strong>APFD</strong></p>
             <p style="text-align: center;"><strong>{numero_do_procedimento}</strong></p>
@@ -2135,13 +2134,13 @@ const pecas = [
             <p>&nbsp;</p>
             <p>&nbsp;</p>
     `,
-      ativo: true,
-      tags: ["vitimas", "autuados"],
-    },
-    {
-      id: 274,
-      nomePeca: "Capa de Verificação Preliminar de Informação VPI",
-      htmlContent: `
+    ativo: true,
+    tags: ["vitimas", "autuados"],
+  },
+  {
+    id: 274,
+    nomePeca: "Capa de Verificação Preliminar de Informação VPI",
+    htmlContent: `
             <p style="text-align: center; font-size: 16px;"><strong>Verifica&ccedil;&atilde;o Preliminar de Informa&ccedil;&atilde;o</strong></p>
             <p style="text-align: center; font-size: 16px;"><strong>VPI</strong></p>
             <p style="text-align: center; font-size: 16px;"><strong>{numero_do_procedimento}</strong></p>
@@ -2159,13 +2158,13 @@ const pecas = [
             <p style="text-align: left; font-size: 16px;">Data de Instaura&ccedil;&atilde;o: <strong>{data_de_instauracao}</strong></p>
             <p><br /><br /><br /><br /><br /></p>
     `,
-      ativo: true,
-      tags: ["vitimas", "autuados"],
-    },
-    {
-      id: 277,
-      nomePeca: "Boletim de Ocorrência Circunstanciado - BOC",
-      htmlContent: `
+    ativo: true,
+    tags: ["vitimas", "autuados"],
+  },
+  {
+    id: 277,
+    nomePeca: "Boletim de Ocorrência Circunstanciado - BOC",
+    htmlContent: `
             <p style="text-align: center;"><strong>BOLETIM DE OCORR&Ecirc;NCIA CIRCUNSTANCIADO</strong></p>
             <p style="text-align: center;"><strong>(Art. 173 Par&aacute;grafo &uacute;nico da Lei n&ordm; 8.069 de 13 de julho de 1990)</strong></p>
             <p style="text-align: center;"><strong>BOC N&ordm; {numero_do_procedimento}</strong></p>
@@ -2194,7 +2193,7 @@ const pecas = [
             <p style="text-align: center;">&nbsp;</p>
             <p style="text-align: center;"><strong>{nome_do_delegado}</strong><br /> Delegado(a) de Pol&iacute;cia</p>
             `,
-      ativo: true,
-      tags: ["condutores", "autuados", "vitimas", "testemunhas"],
-    }
-]
+    ativo: true,
+    tags: ["condutores", "autuados", "vitimas", "testemunhas"],
+  },
+];

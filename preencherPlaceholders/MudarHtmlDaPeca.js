@@ -6,17 +6,18 @@ async function mudarHtmlDaPeca(pieceIds, predefinidos) {
   console.log(quantidadeDeAutores);
   console.log(window.predefinidos.qualificacao_completa_do_imputado_);
   const haMenosDeDoisAutores = quantidadeDeAutores < 2;
+  
   if (haMenosDeDoisAutores) {
     for (const pieceId of pieceIds) {
       const peca = pecas.find((p) => p.id === pieceId);
-      let conteudoOriginal = peca.htmlContent;
       if (peca) {
-        // Substitui os inputs normais
-
-        // Substitui os dados predefinidos
+        let conteudoOriginal = peca.htmlContent;
+        // Inicializa conteudoPreenchido com o conteúdo original
+        let conteudoPreenchido = conteudoOriginal;
+        // Substitui os dados predefinidos acumulando as alterações
         for (const [chave, valor] of Object.entries(predefinidos)) {
           const regex = new RegExp(`{${chave}}`, "g");
-          conteudoPreenchido = conteudoOriginal.replace(regex, valor);
+          conteudoPreenchido = conteudoPreenchido.replace(regex, valor);
         }
         console.log(`Peça ID ${pieceId}:`, conteudoPreenchido);
         await criarEAtualizarDocumento(
@@ -47,7 +48,6 @@ async function mudarHtmlDaPeca(pieceIds, predefinidos) {
 
     // Iterar sobre as novas peças e preencher os conteúdos corretamente
     for (const pieceId of novasPecasIds) {
-      // Incrementa a contagem de ocorrência para esse id
       if (!occurrenceMap[pieceId]) {
         occurrenceMap[pieceId] = 1;
       } else {
@@ -55,7 +55,6 @@ async function mudarHtmlDaPeca(pieceIds, predefinidos) {
       }
       let occurrence = occurrenceMap[pieceId];
 
-      // Obter a peça pelo id
       const peca = pecasMap.get(pieceId);
       if (!peca) {
         console.warn(`⚠️ Peça ID ${pieceId} NÃO encontrada no mapa!`);
@@ -65,12 +64,9 @@ async function mudarHtmlDaPeca(pieceIds, predefinidos) {
       let conteudoOriginal = peca.htmlContent;
       let conteudoPreenchido = conteudoOriginal;
 
-      // Se o id da peça está em pecasParaDuplicar, aplicamos a lógica dos multi-autores
       if (pecasParaDuplicar.includes(pieceId)) {
-        // Para cada placeholder de multi-autor, substitui pelo valor correspondente com sufixo de ocorrência
         for (const placeholderKey of multiAuthorPlaceholders) {
           const regex = new RegExp(`{${placeholderKey}}`, "g");
-          // Procura no objeto predefinidos pela chave com sufixo _<ocorrencia>
           let substitution = predefinidos[`${placeholderKey}_${occurrence}`];
           if (substitution) {
             conteudoPreenchido = conteudoPreenchido.replace(
@@ -79,8 +75,6 @@ async function mudarHtmlDaPeca(pieceIds, predefinidos) {
             );
           }
         }
-        // Para os demais placeholders que não fazem parte dos multi-autores,
-        // fazemos a substituição normalmente, evitando chaves que já possuem sufixo.
         for (const [chave, valor] of Object.entries(predefinidos)) {
           if (
             !multiAuthorPlaceholders.includes(chave) &&
@@ -91,14 +85,12 @@ async function mudarHtmlDaPeca(pieceIds, predefinidos) {
           }
         }
       } else {
-        // Se o id não estiver em pecasParaDuplicar, substitui todos os placeholders normalmente
         for (const [chave, valor] of Object.entries(predefinidos)) {
           const regex = new RegExp(`{${chave}}`, "g");
           conteudoPreenchido = conteudoPreenchido.replace(regex, valor);
         }
       }
 
-      // Cria e atualiza o documento com o conteúdo preenchido
       await criarEAtualizarDocumento(
         peca.nomePeca,
         conteudoPreenchido,

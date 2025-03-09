@@ -9,6 +9,9 @@ async function criarEAtualizarDocumento(
     console.error("⚠️ Token de autenticação não encontrado na sessionStorage.");
     return;
   }
+  const delegadoUsuarioId = parseInt(window.predefinidos.delegadoId, 10);
+  const policialUsuarioId = parseInt(window.predefinidos.escrivaoId, 10);
+  const procedimentoId = parseInt(extrairIdDoProcedimento(), 10);
 
   // 1. Defina a URL da requisição POST
   const postUrl = "https://spp.pc.pe.gov.br/b/api/v1/documentos";
@@ -17,9 +20,9 @@ async function criarEAtualizarDocumento(
   // 2. Defina o payload da requisição POST
   const postData = {
     pecaTipoId: pecaTipoId,
-    delegadoUsuarioId: parseInt(window.predefinidos.delegadoId, 10),
-    policialUsuarioId: parseInt(window.predefinidos.escrivaoId, 10),
-    procedimentoId: parseInt(extrairIdDoProcedimento(), 10),
+    delegadoUsuarioId: delegadoUsuarioId,
+    policialUsuarioId: policialUsuarioId,
+    procedimentoId: procedimentoId,
     descricao: nomePeca,
     // Adicione outros campos conforme necessário
   };
@@ -140,12 +143,12 @@ async function criarEAtualizarDocumento(
       ativo: true,
       conteudoHtml: conteudoModificado,
       dataHora: dataHora, // Obtido do POST
-      delegadoUsuarioId: 1238, // Obtido da extração
+      delegadoUsuarioId: delegadoUsuarioId, // Obtido da extração
       numero: numero, // Obtido do POST
       pecaId: pecaId, // Obtido do POST
       pecaTipoId: pecaTipoId, // Pode permanecer como está ou ser obtido do POST se necessário
-      policialUsuarioId: 1876, // Obtido da extração
-      procedimentoId: 269551, // Obtido da extração
+      policialUsuarioId: policialUsuarioId, // Obtido da extração
+      procedimentoId: procedimentoId, // Obtido da extração
       unidadeId: unidadeId, // Obtido do POST
       versao: versao, // Obtido do POST; verifique se precisa ser incrementado
     };

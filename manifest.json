@@ -27,7 +27,7 @@
         "main.js",
         "front/dropDown.js",
         "front/modal.js",
-        "front/extrairPlaceholders.js",
+        "preencherPlaceholders/extrairPlaceholders.js",
         "preencherPlaceholders/listaFinalDePlaceholders.js",
         "preencherPlaceholders/MudarHtmlDaPeca.js",
         "preencherPlaceholders/CriarEAtualizarDocumentos.js"

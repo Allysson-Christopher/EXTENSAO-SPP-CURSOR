@@ -1,12 +1,16 @@
 async function handleKitSelection() {
-  const kits = await fetchKits(); // Função fictícia que retorna os kits
+  const kits = await fetchKits(); 
 
   // Cria uma cópia dos kits originais para preservar o estado inicial
   const originalKits = JSON.parse(JSON.stringify(kits));
   const sidebar = document.querySelector(".minha-sidebar");
 
   // Adiciona elementos à sidebar
-  sidebar.appendChild(document.createElement("h4")).textContent = "Automação";
+  // adicionar um id ao item abaixo
+  const title = document.createElement("h4");
+  title.id = "title-sidebar";
+  title.textContent = "Automação";
+  sidebar.appendChild(title);
   sidebar.appendChild(createDropdown(kits)); // Função fictícia que cria o dropdown
   sidebar.appendChild(
     createButton("add-more-pieces", "Adicionar Mais Peças ao Kit")

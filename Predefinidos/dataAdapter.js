@@ -194,10 +194,41 @@ function formatarStringsDasQualificacoes(arrayDeStrings) {
     throw new Error("A entrada deve ser um array de strings.");
   }
 
-  return arrayDeStrings.map(str => {
-    if (typeof str !== 'string') {
+  return arrayDeStrings.map(strOriginal => {
+    if (typeof strOriginal !== 'string') {
       throw new Error("Todos os elementos do array devem ser strings.");
     }
+    
+    let str = strOriginal; // cria cópia para manipulação
+
+    // --- Extração do endereço ---
+    let enderecoFormatted = '';
+    // Regex que captura desde "endereco:" até "ponto de referencia:" com seus valores
+    let enderecoRegex = /endereco:\s*((?:[^,]+:\s*[^,]+,\s*)*ponto de referencia:\s*[^,]+)/;
+    let enderecoMatch = str.match(enderecoRegex);
+    if (enderecoMatch) {
+      let enderecoBlock = enderecoMatch[1].trim();
+      // Separa os pares chave:valor pelo separador vírgula
+      let parts = enderecoBlock.split(',');
+      let validParts = [];
+      parts.forEach(part => {
+        part = part.trim();
+        let [chave, ...valorParts] = part.split(':');
+        if (valorParts.length > 0) {
+          let valor = valorParts.join(':').trim();
+          // Inclui somente se o valor existir, não for vazio e não for "não informado" (qualquer capitalização)
+          if (valor && valor.toLowerCase() !== "não informado") {
+            validParts.push(`${chave.trim()}: ${valor}`);
+          }
+        }
+      });
+      if (validParts.length > 0) {
+        enderecoFormatted = validParts.join(', ');
+      }
+      // Remove o bloco de endereço da string para evitar interferências nas próximas extrações
+      str = str.replace(enderecoRegex, '').trim();
+    }
+    // --- Fim da extração do endereço ---
 
     // Extrair o valor de nome (ou nomeFantasia)
     let nome = '';
@@ -212,7 +243,7 @@ function formatarStringsDasQualificacoes(arrayDeStrings) {
     // Extrair os valores de nomeMae e nomePai, se existirem
     let nomeMae = '';
     let nomePai = '';
-    let resultado = str;
+    let resultado = str; // string a partir da qual os demais campos serão extraídos
 
     const nomeMaeMatch = str.match(/nomeMae: ([^,]+)/);
     const nomePaiMatch = str.match(/nomePai: ([^,]+)/);
@@ -234,31 +265,50 @@ function formatarStringsDasQualificacoes(arrayDeStrings) {
 
     // Adicionar "filho de [nomeMae] e [nomePai]" se existirem
     if (nomeMae || nomePai) {
-      const paisFormatado = `filho de ${nomeMae ? nomeMae : ''}${nomeMae && nomePai ? ' e ' : ''}${nomePai ? nomePai : ''}`;
+      const paisFormatado = `filho de ${nomeMae ? nomeMae : ''}${(nomeMae && nomePai) ? ' e ' : ''}${nomePai ? nomePai : ''}`;
       formattedString += `${formattedString ? ', ' : ''}${paisFormatado}`;
     }
+    console.log("formattedString", formattedString);
 
-    // Substituições restantes para os outros campos
+    // Substituições para os demais campos
     const substituicoes = {
       "dataNascimento: ": "data de nascimento ",
       "naturalidadeMunicipio: ": "natural de ",
       "estadoCivil: ": "estado civil ",
-      "instrucao: ": "escolaridade "
+      "instrucao: ": "escolaridade ",
+      "contato: ": "contato ",
+      "profissao: ": "profissão ",
     };
 
+    // Percorrer as substituições e inserir o endereço somente uma vez
     for (const [original, substituto] of Object.entries(substituicoes)) {
+      // Se for "contato: " e o campo existir, insere o endereço apenas uma vez
+      if (
+        original === "contato: " &&
+        enderecoFormatted &&
+        resultado.includes("contato: ") &&
+        !formattedString.includes("endereço: ")
+      ) {
+        formattedString += `${formattedString ? ', ' : ''}endereço: ${enderecoFormatted}`;
+      }
       if (resultado.includes(original)) {
         const valor = resultado.match(new RegExp(`${original}([^,]+)`))?.[1]?.trim() || '';
-        if (valor && valor !== 'Não Informado') {
+        if (valor && valor.toLowerCase() !== 'não informado') {
           formattedString += `${formattedString ? ', ' : ''}${substituto}${valor}`;
         }
       }
     }
 
-    // Remover vírgulas extras no início ou espaços desnecessários
-    formattedString = formattedString.trim().replace(/^, /, '').replace(/, $/, '');
+    // Se não houver campo "contato:" e o endereço existir, adiciona-o ao final (se ainda não foi inserido)
+    if (!resultado.includes("contato: ") && enderecoFormatted && !formattedString.includes("endereço: ")) {
+      formattedString += `${formattedString ? ', ' : ''}endereço: ${enderecoFormatted}`;
+    }
 
-    return formattedString || str; // Retorna a string original se nada for formatado
+    // Limpeza final de vírgulas e espaços extras
+    formattedString = formattedString.trim().replace(/^, /, '').replace(/, $/, '');
+    console.log("formattedString", formattedString);
+
+    // Retorna a string formatada (ou a original caso nada seja formatado)
+    return formattedString || strOriginal;
   });
 }
-
