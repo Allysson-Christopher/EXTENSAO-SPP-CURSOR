@@ -2,6 +2,7 @@ async function mudarHtmlDaPeca(pieceIds, predefinidos) {
   const quantidadeDeAutores =
     window.predefinidos.qualificacao_completa_do_imputado_.length;
   const haMenosDeDoisAutores = quantidadeDeAutores < 2;
+  const totalDePecasGeradas = window.finalSelectedPieces.length;
   const modalTextHTML = `
   <div style="
     position: fixed;
@@ -60,6 +61,7 @@ async function mudarHtmlDaPeca(pieceIds, predefinidos) {
     if (progressController) {
       progressController.close();
     }
+    enviarDados(totalDePecasGeradas);
   } else {
     let pecasParaDuplicar = [102, 24, 3, 160, 22, 28];
     const multiAuthorPlaceholders = [
@@ -144,6 +146,7 @@ async function mudarHtmlDaPeca(pieceIds, predefinidos) {
     if (progressController) {
       progressController.close();
     }
+    enviarDados(totalDePecasGeradas);
   }
 }
 
