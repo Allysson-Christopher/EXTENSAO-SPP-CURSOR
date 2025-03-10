@@ -1,5 +1,4 @@
 function createPiecesModal(selectedKitName, kits, status) {
-
   // Reseta o modal caso já exista para limpar os checkbox previamente marcados
   const existingModal = document.getElementById("pieces-modal");
   if (existingModal) {
@@ -27,6 +26,16 @@ function createPiecesModal(selectedKitName, kits, status) {
   body.classList.add("modal-body");
   body.id = "pieces-modal-body";
 
+  // Cria a barra de pesquisa
+  const searchContainer = document.createElement("div");
+  searchContainer.classList.add("search-container");
+  const searchInput = document.createElement("input");
+  searchInput.type = "text";
+  searchInput.placeholder = "Pesquisar peças...";
+  searchInput.id = "pieces-search";
+  searchContainer.appendChild(searchInput);
+  body.appendChild(searchContainer);
+
   const form = document.createElement("form");
   form.id = "pieces-form";
 
@@ -35,6 +44,10 @@ function createPiecesModal(selectedKitName, kits, status) {
 
   // Supondo que 'pecas' seja uma lista global de peças disponíveis
   pecas.forEach((peca) => {
+    // Cria um container para o checkbox e o label
+    const container = document.createElement("div");
+    container.classList.add("peca-container");
+
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.id = `peca-${peca.id}`;
@@ -49,12 +62,38 @@ function createPiecesModal(selectedKitName, kits, status) {
     const label = document.createElement("label");
     label.htmlFor = `peca-${peca.id}`;
     label.textContent = peca.nomePeca;
-    const br = document.createElement("br");
+    label.classList.add("peca-label");
 
-    form.appendChild(checkbox);
-    form.appendChild(label);
-    form.appendChild(br);
+    container.appendChild(checkbox);
+    container.appendChild(label);
+    form.appendChild(container);
   });
+
+  // Filtra os containers de peças conforme o termo digitado
+  searchInput.addEventListener("input", function() {
+    // Normaliza e remove acentos do termo digitado
+    const filter = this.value
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase();
+  
+    const containers = form.querySelectorAll(".peca-container");
+    containers.forEach((container) => {
+      const label = container.querySelector(".peca-label");
+      // Normaliza e remove acentos do texto do label
+      const labelText = label.textContent
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase();
+      
+      if (labelText.includes(filter)) {
+        container.style.display = "";
+      } else {
+        container.style.display = "none";
+      }
+    });
+  });
+  
 
   body.appendChild(form);
 
@@ -102,7 +141,6 @@ function createPiecesModal(selectedKitName, kits, status) {
     modal.style.display = "none";
   });
 
-
   const cancelButton = document.createElement("button");
   cancelButton.id = "pieces-cancel";
   cancelButton.classList.add("button-cancel");
@@ -120,5 +158,4 @@ function createPiecesModal(selectedKitName, kits, status) {
   modal.appendChild(content);
   document.body.appendChild(modal);
   return modal;
-
 }

@@ -997,19 +997,19 @@ const pecas = [
     id: 85,
     nomePeca: "Comunicação Interna de Remessa de Procedimento (CI de Remessa)",
     htmlContent: `
-            <p style="text-align: right; font-size: 16px;">{cidade_onde_o_procedimento_esta_sendo_realizado}, {data_mes_e_ano}</p>
-            <p>&nbsp;</p>
-            <p style="text-align: left; font-size: 16px;"><strong>Comunica&ccedil;&atilde;o Interna n&deg;</strong><br /></p>
-            <p>&nbsp;</p>
-            <p style="text-align: left; font-size: 16px;"><strong>EXMO(A). SR(A).</strong><br /><strong>DELEGADO(A) DE POL&Iacute;CIA</strong><br />** {delegacia_para_onde_o_procedimento_sera_remetido}***</p>
-            <p>&nbsp;</p>
-            <p style="text-align: left; font-size: 16px;">Senhor(a) Delegado(a),</p>
-            <p style="text-align: justify; font-size: 16px;">Cumprimentando-o(a) inicialmente, sirvo-me da presente para encaminhar a V.Ex.&ordf;, o(a)&nbsp;<strong>{tipo_de_procedimento}</strong>&nbsp;de n&ordm;&nbsp;<strong>{numero_do_procedimento}</strong>, instaurado(a) mediante o BOE (Boletim de Ocorr&ecirc;ncia) de n&ordm;&nbsp;<strong>{numero_do_bo}</strong>, em desfavor de <strong>{qualificacao_completa_do_imputado}</strong>, e tendo como v&iacute;tima <strong>{nome_da_vitima}</strong>, fato ocorrido no dia {data_do_fato}, na(o) {endereco_onde_ocorreu_o_fato}, nos termos do&nbsp;<strong>{incidencia_penal}</strong>.</p>
-            <p>&nbsp;</p>
-            <p style="text-align: center; font-size: 16px;">Atenciosamente,</p>
-            <p>&nbsp;</p>
-            <p style="text-align: center; font-size: 16px;"><strong>{nome_do_delegado}</strong><br />Delegado(a) de Pol&iacute;cia</p>
-            <p>&nbsp;</p>
+           <p style="text-align: right; font-size: 16px;">{cidade_onde_o_procedimento_esta_sendo_realizado}, {data_mes_e_ano}</p>
+          <p>&nbsp;</p>
+          <p style="text-align: left; font-size: 16px;"Comunica&ccedil;&atilde;o Interna n&deg;</p>
+          <p>&nbsp;</p>
+          <p style="text-align: left; font-size: 16px;">EXMO(A). SR(A).<br />DELEGADO(A) DE POL&Iacute;CIA<br />{delegacia_para_onde_o_procedimento_sera_remetido}</p>
+          <p>&nbsp;</p>
+          <p style="text-align: left; font-size: 16px;">Senhor(a) Delegado(a),</p>
+          <p style="text-align: justify; font-size: 16px;">Cumprimentando-o(a) inicialmente, sirvo-me da presente para encaminhar a V.Ex.&ordf;, o(a)&nbsp;<strong>{tipo_de_procedimento}</strong>&nbsp;de n&ordm;&nbsp;<strong>{numero_do_procedimento}</strong>, instaurado(a) mediante o BOE (Boletim de Ocorr&ecirc;ncia) de n&ordm;&nbsp;<strong>{numero_do_bo}</strong>, em desfavor de&nbsp;<strong>{qualificacao_completa_do_imputado}</strong>, e tendo como v&iacute;tima&nbsp;<strong>{nome_da_vitima}</strong>, fato ocorrido no dia {data_do_fato}, na(o) {endereco_onde_ocorreu_o_fato}, nos termos do&nbsp;{incidencia_penal}.</p>
+          <p>&nbsp;</p>
+          <p style="text-align: center; font-size: 16px;">Atenciosamente,</p>
+          <p>&nbsp;</p>
+          <p style="text-align: center; font-size: 16px;"><strong>{nome_do_delegado}</strong><br />Delegado(a) de Pol&iacute;cia</p>
+          <p>&nbsp;</p>
       `,
     ativo: true,
     tags: ["autuados", "vitimas"],

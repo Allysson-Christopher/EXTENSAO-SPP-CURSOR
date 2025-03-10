@@ -6,7 +6,6 @@ async function controllerDadosDosEnvolvidos() {
 
     // Obter dados dos envolvidos
     const dadosEnvolvidos = apiRepository.fetchEnvolvidos(procedimentoId);
-    console.log("dadosEnvolvidos", dadosEnvolvidos);
     const mapaNomeEnvolvimento = extrairMapaNomeEnvolvimento(dadosEnvolvidos);
 
     const idsPessoaFisica = dadosEnvolvidos.filter(item => item.pessoaFisicaId).map(item => item.pessoaFisicaId);
@@ -19,12 +18,9 @@ async function controllerDadosDosEnvolvidos() {
     const extraidoJuridica = dadosJuridica[0].map(d => extrairDadosPessoaJuridica(d));
     const listaUnificada = [...extraidoFisica, ...extraidoJuridica];
     const listaFormatada = listaDeObjetosParaStrings(listaUnificada);
-    console.log("listaFormatada", listaFormatada);
 
     const autores = filtrarPorEnvolvimento(listaFormatada, mapaNomeEnvolvimento, "Autor");
-    console.log("autores", autores);
     const vitimas = filtrarPorEnvolvimento(listaFormatada, mapaNomeEnvolvimento, "Vítima");
-    console.log("vitimas", vitimas);
 
     const autorFormatado = formatarListaComE(autores.map(a => a.split(", ")[0].split(": ")[1]));
     const vitimaFormatado = formatarListaComE(vitimas.map(v => v.split(", ")[0].split(": ")[1]));
@@ -34,7 +30,6 @@ async function controllerDadosDosEnvolvidos() {
     // Obter dados do procedimento
     const dadosProcedimento = await apiRepository.fetchProcedimento(procedimentoId);
     const extraidoProcedimento = extrairDadosProcedimento(dadosProcedimento);
-    console.log("extraidoProcedimento", extraidoProcedimento);
     const numeroTombo = formatarNumero16Digitos(extraidoProcedimento.numeroTombo);
     const qualificacaoTestemunha = formatarStringsDasQualificacoes(filtrarPorEnvolvimento(listaFormatada, mapaNomeEnvolvimento, "Testemunha"));
     const qualificacaoNoticiante = formatarStringsDasQualificacoes(filtrarPorEnvolvimento(listaFormatada, mapaNomeEnvolvimento, "Noticiante"));

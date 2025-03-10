@@ -7,10 +7,19 @@ async function handleKitSelection() {
 
   // Adiciona elementos à sidebar
   // adicionar um id ao item abaixo
-  const title = document.createElement("h4");
-  title.id = "title-sidebar";
-  title.textContent = "Automação";
-  sidebar.appendChild(title);
+  // Cria uma div para o cabeçalho
+const headerDiv = document.createElement("div");
+headerDiv.classList.add("sidebar-header");
+
+// Cria o título
+const title = document.createElement("h4");
+title.id = "title-sidebar";
+title.textContent = "Automação";
+
+// Insere o título dentro da div de cabeçalho e depois na sidebar
+headerDiv.appendChild(title);
+sidebar.appendChild(headerDiv);
+
   sidebar.appendChild(createDropdown(kits)); // Função fictícia que cria o dropdown
   sidebar.appendChild(
     createButton("add-more-pieces", "Adicionar Mais Peças ao Kit")
@@ -56,7 +65,9 @@ async function handleKitSelection() {
   });
 
   const startButton = document.querySelector("#start-button");
-  startButton.addEventListener("click", () => {
+  startButton.addEventListener("click", async () => {
+    predefinidos = await controllerDadosDosEnvolvidos();
+    window.predefinidos = predefinidos;
     // Se não houver peças selecionadas, exibe uma mensagem de erro
     if (!kits[selectedKitName] || kits[selectedKitName].length === 0) {
       status.textContent =
@@ -78,7 +89,7 @@ function createStatusElement() {
   const status = document.createElement("p");
   status.id = "status";
   status.style.marginTop = "10px";
-  status.style.color = "red";
+  status.style.color = "black";
   return status;
 }
 

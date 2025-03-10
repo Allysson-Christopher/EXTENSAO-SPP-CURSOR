@@ -268,7 +268,6 @@ function formatarStringsDasQualificacoes(arrayDeStrings) {
       const paisFormatado = `filho de ${nomeMae ? nomeMae : ''}${(nomeMae && nomePai) ? ' e ' : ''}${nomePai ? nomePai : ''}`;
       formattedString += `${formattedString ? ', ' : ''}${paisFormatado}`;
     }
-    console.log("formattedString", formattedString);
 
     // Substituições para os demais campos
     const substituicoes = {
@@ -306,7 +305,6 @@ function formatarStringsDasQualificacoes(arrayDeStrings) {
 
     // Limpeza final de vírgulas e espaços extras
     formattedString = formattedString.trim().replace(/^, /, '').replace(/, $/, '');
-    console.log("formattedString", formattedString);
 
     // Retorna a string formatada (ou a original caso nada seja formatado)
     return formattedString || strOriginal;

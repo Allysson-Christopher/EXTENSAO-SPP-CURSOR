@@ -1,20 +1,15 @@
 function Placeholders() {
   // Usa a variável global finalSelectedPieces
   const selectedPiecesId = window.finalSelectedPieces;
-  console.log("selectedPiecesId", selectedPiecesId);
   const placeholders = extrairPlaceholders(selectedPiecesId);
-  console.log("placeholders", placeholders);
   const predefinidos = window.predefinidos;
-  console.log("predefinidos", predefinidos);
   let placeholdersToFill = filtrarPlaceholders(placeholders, predefinidos);
-  console.log("placeholdersToFill", placeholdersToFill);
 
   const multiAuthorPlaceholders = [
     "qualificacao_completa_do_imputado",
     "nome_da_pessoa_da_familia_do_preso_que_vai_receber_a_comunicacao",
     "grau_de_parentesco_da_pessoa_da_familia_que_vai_receber_a_comunicacao",
   ];
- 
 
   // Só gera placeholders múltiplos se houver mais de um imputado e se os placeholders originais existirem
   if (predefinidos.qualificacao_completa_do_imputado_.length > 1) {
@@ -26,11 +21,9 @@ function Placeholders() {
       placeholders,
       multiAuthorPlaceholders
     );
-    console.log("placeholdersMultiplos", placeholdersMultiplos);
     placeholdersToFill = placeholdersToFill.concat(placeholdersMultiplos);
   }
 
-  console.log("placeholdersToFill", placeholdersToFill);
   criarFormulario(placeholdersToFill, predefinidos);
 }
 
@@ -68,7 +61,7 @@ function filtrarPlaceholders(placeholders, predefinidos) {
 
 // Extrai placeholders múltiplos apenas se estiverem presentes nas peças selecionadas
 function extrairPlaceholdersMultiplos(placeholders, multiAuthorPlaceholders) {
-  const piecesSeparateIds = [102, 24, 3, 160, 22];
+  const piecesSeparateIds = [102, 24, 3, 160, 22, 28];
   let placeholdersMultiplos = new Set();
 
   // Verifica se as peças selecionadas incluem as que requerem placeholders múltiplos
@@ -108,7 +101,7 @@ function criarFormulario(listaParaInputs, predefinidos) {
   if (statusEl) statusEl.style.display = "none";
   if (addMorePieces) addMorePieces.style.display = "none";
   if (startButton) startButton.style.display = "none";
-  if (titleSidebar) titleSidebar.style.display = "none";
+  if (titleSidebar) titleSidebar.textContent = "Preencha os campos abaixo";
 
   const minhaSidebar = document.querySelector(".minha-sidebar");
   if (!minhaSidebar) {
@@ -123,7 +116,7 @@ function criarFormulario(listaParaInputs, predefinidos) {
   if (!dynamicFormContainer) {
     dynamicFormContainer = document.createElement("div");
     dynamicFormContainer.id = "dynamic-form";
-    dynamicFormContainer.style.marginTop = "20px";
+    // dynamicFormContainer.style.marginTop = "20px";
     minhaSidebar.appendChild(dynamicFormContainer);
   }
   dynamicFormContainer.innerHTML = "";
@@ -171,12 +164,12 @@ function criarFormulario(listaParaInputs, predefinidos) {
     const input = document.createElement("textarea");
     input.id = `input-${placeholder}`;
     input.name = placeholder;
-    input.style.width = INPUT_WIDTH + "px";
-    input.style.whiteSpace = "pre-wrap";
-    input.style.wordWrap = "break-word";
-    input.style.resize = "none";
-    input.style.overflow = "hidden";
-    input.style.fontSize = "10px";
+    // input.style.width = "100%";
+    // input.style.whiteSpace = "pre-wrap";
+    // input.style.wordWrap = "break-word";
+    // input.style.resize = "none";
+    // input.style.overflow = "hidden";
+    // input.style.fontSize = "10px";
 
     if (placeholder.includes("qualificacao_do_condutor")) {
       input.value = predefinidos.qualificacao_do_condutor_[0].toUpperCase();
@@ -213,13 +206,33 @@ function criarFormulario(listaParaInputs, predefinidos) {
   });
 
   dynamicFormContainer.appendChild(form);
-  dynamicFormContainer.appendChild(createButton("execute-button", "Executar"));
 
-  const botaoExecutar = document.getElementById("execute-button");
+  // Cria um container para os botões e define o layout em flex
+  const buttonContainer = document.createElement("div");
+  buttonContainer.style.display = "flex";
+  buttonContainer.style.justifyContent = "center"; // ou "space-between", conforme preferir
+  buttonContainer.style.gap = "10px"; // espaçamento entre os botões
+
+  // Cria o botão Executar
+  const botaoExecutar = createButton("execute-button", "Executar");
   botaoExecutar.addEventListener("click", function (e) {
     e.preventDefault();
     extrairListaFinalDePlaceholders();
+    toggleSidebar();
   });
+  buttonContainer.appendChild(botaoExecutar);
+
+  // Cria o botão Cancelar
+  const botaoCancelar = createButton("cancel-button", "Cancelar");
+  botaoCancelar.classList.add("button-cancel");
+  botaoCancelar.addEventListener("click", function (e) {
+    e.preventDefault();
+    toggleSidebar();
+  });
+  buttonContainer.appendChild(botaoCancelar);
+
+  // Adiciona o container dos botões ao dynamicFormContainer
+  dynamicFormContainer.appendChild(buttonContainer);
 }
 
 // Função auxiliar para criar botões (assumindo que existe no seu código)

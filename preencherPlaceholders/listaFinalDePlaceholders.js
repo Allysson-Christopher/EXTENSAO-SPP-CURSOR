@@ -1,12 +1,10 @@
 function extrairListaFinalDePlaceholders() {
   let objetoFiltrado = removerChavesComUnderline(window.predefinidos);
-  const objetoQualificacaoCompletaDosImputados = {qualificacao_completa_do_imputado: window.predefinidos.qualificacao_completa_do_imputado_};
+  const objetoQualificacaoCompletaDosImputados = {qualificacao_completa_do_imputado: formatarListaComE(window.predefinidos.qualificacao_completa_do_imputado_)};
   let inputs = extrairInputsDoFormulario();
   const listaFinalDePlaceholders = { ...objetoFiltrado, ...inputs, ...objetoQualificacaoCompletaDosImputados };
   window.listaFinalDePlaceholders = listaFinalDePlaceholders;
   const finalSelectedPieces = window.finalSelectedPieces;
-  console.log("listaFinalDePlaceholders = ", listaFinalDePlaceholders);
-  console.log(window.finalSelectedPieces);
   mudarHtmlDaPeca(finalSelectedPieces, listaFinalDePlaceholders); 
   return listaFinalDePlaceholders;
 }
