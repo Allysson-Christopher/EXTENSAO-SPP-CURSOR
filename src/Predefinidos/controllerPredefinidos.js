@@ -8,36 +8,73 @@ async function controllerDadosDosEnvolvidos() {
     const dadosEnvolvidos = apiRepository.fetchEnvolvidos(procedimentoId);
     const mapaNomeEnvolvimento = extrairMapaNomeEnvolvimento(dadosEnvolvidos);
 
-    const idsPessoaFisica = dadosEnvolvidos.filter(item => item.pessoaFisicaId).map(item => item.pessoaFisicaId);
-    const idsPessoaJuridica = dadosEnvolvidos.filter(item => item.pessoaJuridicaId).map(item => item.pessoaJuridicaId);
+    const idsPessoaFisica = dadosEnvolvidos
+      .filter((item) => item.pessoaFisicaId)
+      .map((item) => item.pessoaFisicaId);
+    const idsPessoaJuridica = dadosEnvolvidos
+      .filter((item) => item.pessoaJuridicaId)
+      .map((item) => item.pessoaJuridicaId);
 
-    const dadosFisica = await buscarDadosEnvolvidos(idsPessoaFisica, "fisica", apiRepository);
-    const dadosJuridica = await buscarDadosEnvolvidos(idsPessoaJuridica, "juridica", apiRepository);
+    const dadosFisica = await buscarDadosEnvolvidos(
+      idsPessoaFisica,
+      "fisica",
+      apiRepository
+    );
+    const dadosJuridica = await buscarDadosEnvolvidos(
+      idsPessoaJuridica,
+      "juridica",
+      apiRepository
+    );
+    console.log(dadosJuridica);
 
-    const extraidoFisica = dadosFisica.map(d => extrairDadosPessoaFisica(d));
-    const extraidoJuridica = dadosJuridica[0].map(d => extrairDadosPessoaJuridica(d));
+    const extraidoFisica = dadosFisica.map((d) => extrairDadosPessoaFisica(d));
+
+    const extraidoJuridica =
+      dadosJuridica && Array.isArray(dadosJuridica[0])
+        ? dadosJuridica[0].map((d) => extrairDadosPessoaJuridica(d))
+        : [];
+
     const listaUnificada = [...extraidoFisica, ...extraidoJuridica];
     const listaFormatada = listaDeObjetosParaStrings(listaUnificada);
 
-    const autores = filtrarPorEnvolvimento(listaFormatada, mapaNomeEnvolvimento, "Autor");
-    const vitimas = filtrarPorEnvolvimento(listaFormatada, mapaNomeEnvolvimento, "Vítima");
+    const autores = filtrarPorEnvolvimento(
+      listaFormatada,
+      mapaNomeEnvolvimento,
+      ["Capturado", "Autor"]
+    );
+    const vitimas = filtrarPorEnvolvimento(
+      listaFormatada,
+      mapaNomeEnvolvimento,
+      ["Vítima"]
+    );
 
-    const autorFormatado = formatarListaComE(autores.map(a => a.split(", ")[0].split(": ")[1]));
-    const vitimaFormatado = formatarListaComE(vitimas.map(v => v.split(", ")[0].split(": ")[1]));
+    const autorFormatado = formatarListaComE(
+      autores.map((a) => a.split(", ")[0].split(": ")[1])
+    );
+    const vitimaFormatado = formatarListaComE(
+      vitimas.map((v) => v.split(", ")[0].split(": ")[1])
+    );
 
     const autoresQualificacoes = formatarStringsDasQualificacoes(autores);
     const vitimasQualificacoes = formatarStringsDasQualificacoes(vitimas);
     // Obter dados do procedimento
-    const dadosProcedimento = await apiRepository.fetchProcedimento(procedimentoId);
+    const dadosProcedimento = await apiRepository.fetchProcedimento(
+      procedimentoId
+    );
     const extraidoProcedimento = extrairDadosProcedimento(dadosProcedimento);
-    const numeroTombo = formatarNumero16Digitos(extraidoProcedimento.numeroTombo);
-    const qualificacaoTestemunha = formatarStringsDasQualificacoes(filtrarPorEnvolvimento(listaFormatada, mapaNomeEnvolvimento, "Testemunha"));
-    const qualificacaoNoticiante = formatarStringsDasQualificacoes(filtrarPorEnvolvimento(listaFormatada, mapaNomeEnvolvimento, "Noticiante"));
+    const numeroTombo = formatarNumero16Digitos(
+      extraidoProcedimento.numeroTombo
+    );
+    const qualificacaoTestemunha = formatarStringsDasQualificacoes(
+      filtrarPorEnvolvimento(listaFormatada, mapaNomeEnvolvimento, "Testemunha")
+    );
+    const qualificacaoNoticiante = formatarStringsDasQualificacoes(
+      filtrarPorEnvolvimento(listaFormatada, mapaNomeEnvolvimento, "Noticiante")
+    );
 
     const hora_atual = getCurrentTime();
     const data_mes_e_ano = getCurrentDate();
     const data_e_hora_do_fato = `${extraidoProcedimento.dataDoFato} - ${extraidoProcedimento.horaDoFato}`;
-
 
     // Montar predefinidos
     const predefinidos = {
@@ -52,10 +89,13 @@ async function controllerDadosDosEnvolvidos() {
       data_do_fato: extraidoProcedimento.dataDoFato || null,
       hora_do_fato: extraidoProcedimento.horaDoFato || null,
       endereco_onde_ocorreu_o_fato: extraidoProcedimento.enderecoDoFato || null,
-      tipo_de_procedimento: extraidoProcedimento.procedimentoInstauracao?.descricao || null,
-      tipoProcedimentoSigla: extraidoProcedimento.procedimentoInstauracao?.sigla || null,
+      tipo_de_procedimento:
+        extraidoProcedimento.procedimentoInstauracao?.descricao || null,
+      tipoProcedimentoSigla:
+        extraidoProcedimento.procedimentoInstauracao?.sigla || null,
       numero_do_procedimento: numeroTombo || null,
-      cidade_onde_o_procedimento_esta_sendo_realizado_: extraidoProcedimento.comarca || null,
+      cidade_onde_o_procedimento_esta_sendo_realizado_:
+        extraidoProcedimento.comarca || null,
       incidencia_penal: extraidoProcedimento.incidenciaPenal || null,
       nome_do_imputado: autorFormatado || null,
       nome_da_vitima: vitimaFormatado || null,
@@ -66,7 +106,6 @@ async function controllerDadosDosEnvolvidos() {
       hora_atual: hora_atual || null,
       data_mes_e_ano: data_mes_e_ano || null,
       data_e_hora_do_fato: data_e_hora_do_fato || null,
-
     };
     //COMO COLOCAR GLOBALMENTE?
     return predefinidos;
@@ -87,15 +126,15 @@ function extrairDadosProcedimento(dados) {
     "procedimentoInstauracao",
     "numeroTombo",
     "comarca",
-    "incidenciaPenal"
+    "incidenciaPenal",
   ];
   return DataAdapter.adapt(dados, keys);
 }
 
 /**
-   * Função para obter o horário atual no formato hh:mm
-   * @returns {string} - Horário atual
-   */
+ * Função para obter o horário atual no formato hh:mm
+ * @returns {string} - Horário atual
+ */
 getCurrentTime: function getCurrentTime() {
   const now = new Date();
   let hours = now.getHours();

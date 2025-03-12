@@ -153,11 +153,11 @@ function listaDeObjetosParaStrings(lista) {
   });
 }
 
-function filtrarPorEnvolvimento(listaFormatada, mapaEnvolvimento, tipo) {
+function filtrarPorEnvolvimento(listaFormatada, mapaEnvolvimento, tipos) {
   return listaFormatada.filter((item) => {
     const nomeMatch = item.match(/nome: ([^,]+)/);
     const nome = nomeMatch ? nomeMatch[1] : "";
-    return mapaEnvolvimento[nome] === tipo;
+    return tipos.includes(mapaEnvolvimento[nome]);
   });
 }
 
