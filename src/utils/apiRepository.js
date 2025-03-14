@@ -63,6 +63,16 @@ class ApiRepository {
     return this._fetch(url);
   }
 
+  async fetchIdDocumentos(procedimentoId) {
+    const url = UrlFactory.create("documentosId", null, procedimentoId);
+    return this._fetch(url);
+  }
+
+  async fetchTextoDocumentos(Id) {
+    const url = UrlFactory.create("textoDcumentos", Id);
+    return this._fetch(url);
+  }
+
   async _fetch(url, additionalHeaders = {}) {
     if (this.cache.has(url)) {
       return this.cache.get(url);

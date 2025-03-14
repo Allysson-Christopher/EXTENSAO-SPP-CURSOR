@@ -2196,4 +2196,68 @@ const pecas = [
     ativo: true,
     tags: ["condutores", "autuados", "vitimas", "testemunhas"],
   },
+  {
+    id: 216,
+    nomePeca: "Relatório conclusivo inquérito policia",
+    htmlContent: `
+            <p style="text-align: justify;">EXCELENT&Iacute;SSIMO (A) SENHOR (A) JUIZ (A) DE DIREITO DA ____ VARA CRIMINAL DA COMARCA DE CARUARU/PE</p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify;">Ref.: INQU&Eacute;RITO POLICIAL N&ordm;&nbsp;<strong>{numero_do_procedimento}</strong></p>
+            <p style="text-align: justify;">INVESTIGADO(S):&nbsp;<strong>{nome_do_imputado}</strong></p>
+            <p style="text-align: justify;">V&Iacute;TIMA(S):&nbsp;<strong>{nome_da_vitima}</strong></p>
+            <p style="text-align: justify;">INCID&Ecirc;NCIA PENAL:&nbsp;<strong>{incidencia_penal}</strong></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify;"><strong>A POL&Iacute;CIA CIVIL DO ESTADO DE PERNAMBUCO</strong>, institui&ccedil;&atilde;o permanente, integrante do Sistema Estadual de Seguran&ccedil;a P&uacute;blica, por interm&eacute;dio do Delegado de Pol&iacute;cia Civil que a esta subscreve, lotado na 90&ordf; Circunscri&ccedil;&atilde;o situada no munic&iacute;pio de Caruaru &ndash; PE, no efetivo desempenho de suas atribui&ccedil;&otilde;es legais e constitucionais, e com base no disposto no art. 10 do C&oacute;digo de Processo Penal e no art. 2&ordm;, &sect;6&ordm;, da Lei Federal n&ordm; 12.830/2013, vem &agrave; presen&ccedil;a de Vossa Excel&ecirc;ncia apresentar</p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: center;"><strong>RELAT&Oacute;RIO FINAL</strong></p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify;">e conclus&atilde;o de inqu&eacute;rito policial, referente ao procedimento criminal tombado sob o n&uacute;mero em ep&iacute;grafe, pelos motivos de fato e de direito a seguir expostos:</p>
+            <p style="text-align: justify;">&nbsp;<strong>I-&nbsp; &nbsp;&nbsp;DA QUALIFICA&Ccedil;&Atilde;O DO(S) INVESTIGADO(S)</strong></p>
+            <table>
+            <tbody>
+            <tr>
+            <td style="width: 70%; border: solid 1px black; padding: 15px; padding-bottom: 10px; margin: auto; margin-top: 30px;">
+            <p>{qualificacao_completa_do_imputado}</p>
+            </td>
+            </tr>
+            </tbody>
+            </table>
+            <p style="text-align: justify;"><strong>II-&nbsp; &nbsp; DO PROCEDIMENTO CRIMINAL PRELIMINAR APURAT&Oacute;RIO</strong></p>
+            <p style="text-align: justify;">Trata-se de Inqu&eacute;rito Policial, instaurado por meio de Portaria/Auto de Pris&atilde;o em Flagrante n&deg;&nbsp;<strong>{numero_do_procedimento}</strong>, em&nbsp;<strong>{data_de_instauracao}</strong>, para apurar a suposta ocorr&ecirc;ncia do crime previsto no&nbsp;<strong>{incidencia_penal}</strong>, ocorrido nesta cidade, tendo como autor(es) a(s) pessoa(s) de&nbsp;<strong>{nome_do_imputado}</strong>&nbsp;e figurando como v&iacute;tima(s)&nbsp;<strong>{nome_da_vitima}</strong>, conforme relato do boletim de ocorr&ecirc;ncia de n&ordm;&nbsp;<strong>{numero_do_bo}</strong></p>
+            <p style="text-align: justify;"><strong>III-&nbsp; &nbsp; DOS FATOS OBJETO DA INVESTIGA&Ccedil;&Atilde;O E SUAS CIRCUNST&Acirc;NCIAS</strong></p>
+            <p style="text-align: justify;">Conforme ser&aacute; detalhado nas &iacute;ntegras dos depoimentos abaixo colacionados, {resumo_dos_fatos}.</p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify;">O condutor da ocorr&ecirc;ncia,&nbsp;{qualificacao_do_condutor}, declarou:</p>
+            <p style="text-align: justify; padding-left: 120px;">&ldquo;{depoimento_do_condutor_para_relatorio}&rdquo;</p>
+            <p style="text-align: justify;">A segunda testemunha,&nbsp;{qualificacao_da_primeira_testemunha} corroborou integralmente as declara&ccedil;&otilde;es do condutor.</p>
+            <p style="text-align: justify;">Em sede de interrogat&oacute;rio policial, o imputado prestou sua vers&atilde;o dos fatos nos seguintes termos:</p>
+            <p style="text-align: justify; padding-left: 120px;">"{interrogatorio_do_imputado}"</p>
+            <p style="text-align: justify;">&Eacute; o breve relato.</p>
+            <p style="text-align: justify;"><strong>IV-&nbsp; &nbsp; DA FUNDAMENTA&Ccedil;&Atilde;O</strong></p>
+            <p style="text-align: justify;">Por meio de uma an&aacute;lise t&eacute;cnico-jur&iacute;dica dos fatos objetos de apura&ccedil;&atilde;o do procedimento investigat&oacute;rio criminal em refer&ecirc;ncia, estabeleceu-se a opinio delicti preliminar acerca do evento delitivo, que segue adiante exposta.</p>
+            <p style="text-align: justify;">Analisando-se atentamente todo o contexto factual, resta comprovada a materialidade delitiva e h&aacute; ind&iacute;cios suficientes de autoria que recaem sobre a(s) pessoa(s) de&nbsp;<strong>{nome_do_imputado}.</strong></p>
+            <p style="text-align: justify;">A materialidade delitiva e os ind&iacute;cios de autoria se baseiam na colheita das provas orais, em especial depoimentos do condutor, da v&iacute;tima, das testemunhas, interrogat&oacute;rio do imputado, dentre outras dilig&ecirc;ncias.</p>
+            <p style="text-align: justify;">Pelo substrato f&aacute;tico at&eacute; aqui apresentado, tem-se que as condutas do imputado amoldam-se ao tipo previsto no&nbsp;<strong>{incidencia_penal}</strong>.</p>
+            <p style="text-align: justify;"><strong>V-&nbsp; &nbsp; DO INDICIAMENTO</strong></p>
+            <p style="text-align: justify;">Assim, tendo em vista os elementos informativos e as provas produzidas em sede de investiga&ccedil;&atilde;o preliminar e preparat&oacute;ria, bem como indicada a autoria, a materialidade e as circunst&acirc;ncias da pr&aacute;tica delitiva, procedo ao&nbsp;<strong>INDICIAMENTO</strong>&nbsp;de&nbsp;<strong>{nome_do_imputado}</strong>, j&aacute; qualificado(s) nos autos, como incurso(s) no crime previsto no&nbsp;<strong>{incidencia_penal}</strong>.</p>
+            <p style="text-align: justify;"><strong>VI-&nbsp; &nbsp; DA CONCLUS&Atilde;O</strong></p>
+            <p style="text-align: justify;">Por fim, foram carreados ao caderno investigat&oacute;rio elementos informativos que apontam &agrave; materialidade e autoria dos fatos, dou por encerrados os trabalhos investigat&oacute;rios de pol&iacute;cia judici&aacute;ria.</p>
+            <p style="text-align: justify;">&Eacute; o Relat&oacute;rio Final.</p>
+            <p style="text-align: justify;">Remeto os autos para aprecia&ccedil;&atilde;o de Vossa Excel&ecirc;ncia.</p>
+            <p style="text-align: justify;">&Agrave; disposi&ccedil;&atilde;o para realiza&ccedil;&atilde;o de outras dilig&ecirc;ncias julgadas pertinentes, conforme disposto no art. 13, II, e art. 16, ambos do C&oacute;digo de Processo Penal.</p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: justify;"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong></p>
+            <p style="text-align: right;">{cidade_onde_o_procedimento_esta_sendo_realizado}, {data_mes_e_ano}.</p>
+            <p style="text-align: justify;">&nbsp;</p>
+            <p style="text-align: center;"><strong>{nome_do_delegado}</strong></p>
+            <p style="text-align: center;"><strong>Delegado(a) de Pol&iacute;cia Civil</strong></p>
+            `,
+    ativo: true,
+    tags: ["condutores", "autuados", "vitimas", "testemunhas"],
+  },
 ];

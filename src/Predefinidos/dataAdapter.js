@@ -310,3 +310,53 @@ function formatarStringsDasQualificacoes(arrayDeStrings) {
     return formattedString || strOriginal;
   });
 }
+
+function extrairTrecho(htmlResponse, tipoParte) {
+  // Converter o HTML para texto puro usando DOMParser
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(htmlResponse, 'text/html');
+  const plainText = doc.body.textContent;
+  let inicio;
+  let fim;
+
+  // Definir as frases que delimitam o trecho desejado
+  if(tipoParte === "condutor"){
+    inicio = "expor:";
+    fim = "Nada mais disse nem lhe foi perguntado";
+  } else {
+    inicio = "Interrogado na forma do Art. 187, §§ 1º e 2º do Código de Processo Penal, RESPONDEU:";
+    fim = "Nada mais disse, nem lhe foi perguntado";
+
+  }
+
+  // Encontrar a posição da frase de início
+  const posInicio = plainText.indexOf(inicio);
+  if (posInicio !== -1) {
+    const posInicioTrecho = posInicio + inicio.length;
+    // Encontrar a posição da frase de fim, a partir do início do trecho
+    const posFim = plainText.indexOf(fim, posInicioTrecho);
+    if (posFim !== -1) {
+      // Extrair e retornar o trecho desejado, removendo espaços em branco extras
+      return plainText.substring(posInicioTrecho, posFim).trim();
+    } else {
+      console.log("Frase final não encontrada.");
+      return "";
+    }
+  } else {
+    console.log("Frase de início não encontrada.");
+    return "";
+  }
+}
+
+
+async function obterIdDocumentos(apiRepository, procedimentoId, nomePeca) {
+  const dadosDocumentos = await apiRepository.fetchIdDocumentos(
+      procedimentoId
+    );
+  for (let item of dadosDocumentos) {
+        if (item.pecaDescricao.includes(nomePeca)) {
+          return item.pecaId;
+        }
+      }
+      return null; // Retorna null ou outro valor se não encontrar
+    }

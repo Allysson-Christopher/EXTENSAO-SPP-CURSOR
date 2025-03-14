@@ -1,5 +1,5 @@
 async function handleKitSelection() {
-  const kits = await fetchKits(); 
+  const kits = await fetchKits();
 
   // Cria uma cópia dos kits originais para preservar o estado inicial
   const originalKits = JSON.parse(JSON.stringify(kits));
@@ -8,17 +8,17 @@ async function handleKitSelection() {
   // Adiciona elementos à sidebar
   // adicionar um id ao item abaixo
   // Cria uma div para o cabeçalho
-const headerDiv = document.createElement("div");
-headerDiv.classList.add("sidebar-header");
+  const headerDiv = document.createElement("div");
+  headerDiv.classList.add("sidebar-header");
 
-// Cria o título
-const title = document.createElement("h4");
-title.id = "title-sidebar";
-title.textContent = "Automação";
+  // Cria o título
+  const title = document.createElement("h4");
+  title.id = "title-sidebar";
+  title.textContent = "Automação";
 
-// Insere o título dentro da div de cabeçalho e depois na sidebar
-headerDiv.appendChild(title);
-sidebar.appendChild(headerDiv);
+  // Insere o título dentro da div de cabeçalho e depois na sidebar
+  headerDiv.appendChild(title);
+  sidebar.appendChild(headerDiv);
 
   sidebar.appendChild(createDropdown(kits)); // Função fictícia que cria o dropdown
   sidebar.appendChild(
@@ -29,7 +29,7 @@ sidebar.appendChild(headerDiv);
 
   const kitSelect = sidebar.querySelector("#kit-select");
   const status = sidebar.querySelector("#status"); // quero colocar status no win
-  
+
   if (!kitSelect || !status) return;
 
   let selectedKitName = null;
@@ -66,8 +66,13 @@ sidebar.appendChild(headerDiv);
 
   const startButton = document.querySelector("#start-button");
   startButton.addEventListener("click", async () => {
-    predefinidos = await controllerDadosDosEnvolvidos();
+    if (kits[selectedKitName][0] === 216) {
+      predefinidos = await controllerDadosDosEnvolvidos((ehRelatorio = true));
+    } else {
+      predefinidos = await controllerDadosDosEnvolvidos((ehRelatorio = false));
+    }
     window.predefinidos = predefinidos;
+    console.log("kits[selectedKitName]", kits[selectedKitName]);
     // Se não houver peças selecionadas, exibe uma mensagem de erro
     if (!kits[selectedKitName] || kits[selectedKitName].length === 0) {
       status.textContent =

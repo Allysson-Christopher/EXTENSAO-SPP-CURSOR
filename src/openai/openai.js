@@ -15,7 +15,7 @@ async function reescreverTextoComOpenAI(textoOriginal, instrucoes, apiKey) {
       }
     ],
     temperature: 0.7,
-    max_tokens: 1000
+    max_tokens: 3000
   };
 
   const opcoes = {
@@ -67,6 +67,50 @@ async function reescreverTextoComOpenAI(textoOriginal, instrucoes, apiKey) {
     // Armazena cada depoimento em uma variável e retorna um array com ambos
     const [depoimento1, depoimento2] = depoimentos;
     return [depoimento1, depoimento2];
+  } catch (erro) {
+    console.error('Erro ao chamar a API da OpenAI:', erro);
+    throw erro;
+  }
+}
+
+
+async function reescreverResumoDosFatos(textoOriginal, instrucoes, apiKey) {
+  const url = 'https://api.openai.com/v1/chat/completions';
+  const dados = {
+    model: "gpt-3.5-turbo",
+    messages: [
+      {
+        role: "system",
+        content: `Você é um assistente especializado em reescrever textos. ${instrucoes} Retorne a resposta como um texto simples.`
+      },
+      {
+        role: "user",
+        content: `Reescreva o seguinte texto: ${textoOriginal}`
+      }
+    ],
+    temperature: 0.7,
+    max_tokens: 3000
+  };
+
+  const opcoes = {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${apiKey}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(dados)
+  };
+
+  try {
+    const resposta = await fetch(url, opcoes);
+    if (!resposta.ok) {
+      const erro = await resposta.json();
+      throw new Error(`Erro ${resposta.status}: ${JSON.stringify(erro)}`);
+    }
+    
+    const resultado = await resposta.json();
+    const respostaText = resultado.choices[0].message.content.trim();
+    return respostaText;
   } catch (erro) {
     console.error('Erro ao chamar a API da OpenAI:', erro);
     throw erro;

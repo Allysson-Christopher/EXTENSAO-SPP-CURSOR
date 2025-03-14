@@ -11,6 +11,10 @@ class UrlFactory {
           return `https://spp.pc.pe.gov.br/b/api/pessoa-juridicas-pesquisa?&id=${id}`;
         case "procedimento":
           return `${baseUrl}/procedimento-informacoes/${procedimentoId}?includes=naturezaMotivacao${cacheBuster}`;
+        case "documentosId":
+          return `https://spp.pc.pe.gov.br/b/api/v1/procedimento/${procedimentoId}/documentos${cacheBuster}`;
+        case "textoDcumentos":
+          return `https://spp.pc.pe.gov.br/b/api/v1/documentos/${id}${cacheBuster}`;
         default:
           throw new Error(`Endpoint type "${endpointType}" not supported.`);
       }
