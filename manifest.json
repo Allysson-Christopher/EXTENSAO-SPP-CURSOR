@@ -18,6 +18,7 @@
         "src/Predefinidos/extrairIdDoProcedimento.js",
         "src/utils/urlFactory.js",
         "src/utils/apiRepository.js",
+        "src/openai/openai.js",
         "src/Predefinidos/dataAdapter.js",
         "src/Predefinidos/controllerPredefinidos.js",
         "src/front/observarBotao.js",

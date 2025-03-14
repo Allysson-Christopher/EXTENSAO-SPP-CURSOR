@@ -8,36 +8,90 @@ async function controllerDadosDosEnvolvidos() {
     const dadosEnvolvidos = apiRepository.fetchEnvolvidos(procedimentoId);
     const mapaNomeEnvolvimento = extrairMapaNomeEnvolvimento(dadosEnvolvidos);
 
-    const idsPessoaFisica = dadosEnvolvidos.filter(item => item.pessoaFisicaId).map(item => item.pessoaFisicaId);
-    const idsPessoaJuridica = dadosEnvolvidos.filter(item => item.pessoaJuridicaId).map(item => item.pessoaJuridicaId);
+    const idsPessoaFisica = dadosEnvolvidos
+      .filter((item) => item.pessoaFisicaId)
+      .map((item) => item.pessoaFisicaId);
+    const idsPessoaJuridica = dadosEnvolvidos
+      .filter((item) => item.pessoaJuridicaId)
+      .map((item) => item.pessoaJuridicaId);
 
-    const dadosFisica = await buscarDadosEnvolvidos(idsPessoaFisica, "fisica", apiRepository);
-    const dadosJuridica = await buscarDadosEnvolvidos(idsPessoaJuridica, "juridica", apiRepository);
+    const dadosFisica = await buscarDadosEnvolvidos(
+      idsPessoaFisica,
+      "fisica",
+      apiRepository
+    );
+    const dadosJuridica = await buscarDadosEnvolvidos(
+      idsPessoaJuridica,
+      "juridica",
+      apiRepository
+    );
 
-    const extraidoFisica = dadosFisica.map(d => extrairDadosPessoaFisica(d));
-    const extraidoJuridica = dadosJuridica[0].map(d => extrairDadosPessoaJuridica(d));
+    const extraidoFisica = dadosFisica.map((d) => extrairDadosPessoaFisica(d));
+    const extraidoJuridica = dadosJuridica[0].map((d) =>
+      extrairDadosPessoaJuridica(d)
+    );
     const listaUnificada = [...extraidoFisica, ...extraidoJuridica];
     const listaFormatada = listaDeObjetosParaStrings(listaUnificada);
 
-    const autores = filtrarPorEnvolvimento(listaFormatada, mapaNomeEnvolvimento, "Autor");
-    const vitimas = filtrarPorEnvolvimento(listaFormatada, mapaNomeEnvolvimento, "Vítima");
+    const autores = filtrarPorEnvolvimento(
+      listaFormatada,
+      mapaNomeEnvolvimento,
+      "Autor"
+    );
+    const vitimas = filtrarPorEnvolvimento(
+      listaFormatada,
+      mapaNomeEnvolvimento,
+      "Vítima"
+    );
 
-    const autorFormatado = formatarListaComE(autores.map(a => a.split(", ")[0].split(": ")[1]));
-    const vitimaFormatado = formatarListaComE(vitimas.map(v => v.split(", ")[0].split(": ")[1]));
+    const autorFormatado = formatarListaComE(
+      autores.map((a) => a.split(", ")[0].split(": ")[1])
+    );
+    const vitimaFormatado = formatarListaComE(
+      vitimas.map((v) => v.split(", ")[0].split(": ")[1])
+    );
 
     const autoresQualificacoes = formatarStringsDasQualificacoes(autores);
     const vitimasQualificacoes = formatarStringsDasQualificacoes(vitimas);
     // Obter dados do procedimento
-    const dadosProcedimento = await apiRepository.fetchProcedimento(procedimentoId);
+    const dadosProcedimento = await apiRepository.fetchProcedimento(
+      procedimentoId
+    );
     const extraidoProcedimento = extrairDadosProcedimento(dadosProcedimento);
-    const numeroTombo = formatarNumero16Digitos(extraidoProcedimento.numeroTombo);
-    const qualificacaoTestemunha = formatarStringsDasQualificacoes(filtrarPorEnvolvimento(listaFormatada, mapaNomeEnvolvimento, "Testemunha"));
-    const qualificacaoNoticiante = formatarStringsDasQualificacoes(filtrarPorEnvolvimento(listaFormatada, mapaNomeEnvolvimento, "Noticiante"));
+    const numeroTombo = formatarNumero16Digitos(
+      extraidoProcedimento.numeroTombo
+    );
+    const qualificacaoTestemunha = formatarStringsDasQualificacoes(
+      filtrarPorEnvolvimento(listaFormatada, mapaNomeEnvolvimento, "Testemunha")
+    );
+    const qualificacaoNoticiante = formatarStringsDasQualificacoes(
+      filtrarPorEnvolvimento(listaFormatada, mapaNomeEnvolvimento, "Noticiante")
+    );
 
     const hora_atual = getCurrentTime();
     const data_mes_e_ano = getCurrentDate();
     const data_e_hora_do_fato = `${extraidoProcedimento.dataDoFato} - ${extraidoProcedimento.horaDoFato}`;
 
+    textoOriginal = extraidoProcedimento.conteudoDoBO;
+    instrucoes =
+      "reescreva o texto como se fosse o depoimento do policial que foi o condutor dessa ocorrência. separe o depoimento em partes e coloque a expressão QUE {parte do depoimento}; QUE QUE {parte do depoimento}; QUE {parte do depoimento}... perceba que as frase são separadas por ponto e vírgula ';' depois disso crie um novo depoimento semelhante mas mudando um pouco a estrutura e o conteúdo para que seja mais natural e não tão repetitivo.esse segundo depoimento também deve ter a estrutura QUE {parte do depoimento}; QUE QUE {parte do depoimento}; QUE {parte do depoimento}.  quero  que você me retorne um array com os dois depoimentos.";
+    apiKey =
+      REDACTED_API_KEY"==";
+
+    let depoimento1Global;
+    let depoimento2Global;
+    // Chamando a função de reescrita
+
+    await reescreverTextoComOpenAI(textoOriginal, instrucoes, apiKey)
+      .then(([depoimento1, depoimento2]) => {
+        console.log("Depoimento 1:", depoimento1);
+        depoimento1Global = depoimento1;
+        console.log("Depoimento 2:", depoimento2);
+        depoimento2Global = depoimento2;
+      })
+      .catch((erro) => {
+        console.error("Erro:", erro);
+      });
 
     // Montar predefinidos
     const predefinidos = {
@@ -52,10 +106,13 @@ async function controllerDadosDosEnvolvidos() {
       data_do_fato: extraidoProcedimento.dataDoFato || null,
       hora_do_fato: extraidoProcedimento.horaDoFato || null,
       endereco_onde_ocorreu_o_fato: extraidoProcedimento.enderecoDoFato || null,
-      tipo_de_procedimento: extraidoProcedimento.procedimentoInstauracao?.descricao || null,
-      tipoProcedimentoSigla: extraidoProcedimento.procedimentoInstauracao?.sigla || null,
+      tipo_de_procedimento:
+        extraidoProcedimento.procedimentoInstauracao?.descricao || null,
+      tipoProcedimentoSigla:
+        extraidoProcedimento.procedimentoInstauracao?.sigla || null,
       numero_do_procedimento: numeroTombo || null,
-      cidade_onde_o_procedimento_esta_sendo_realizado_: extraidoProcedimento.comarca || null,
+      cidade_onde_o_procedimento_esta_sendo_realizado_:
+        extraidoProcedimento.comarca || null,
       incidencia_penal: extraidoProcedimento.incidenciaPenal || null,
       nome_do_imputado: autorFormatado || null,
       nome_da_vitima: vitimaFormatado || null,
@@ -63,10 +120,11 @@ async function controllerDadosDosEnvolvidos() {
       qualificacao_da_vitima_: vitimasQualificacoes || null,
       qualificacao_da_primeira_testemunha_: qualificacaoTestemunha || null,
       qualificacao_do_condutor_: qualificacaoNoticiante || null,
+      depoimento_do_condutor: depoimento1Global || null,
+      depoimento_da_testemunha: depoimento2Global || null,
       hora_atual: hora_atual || null,
       data_mes_e_ano: data_mes_e_ano || null,
       data_e_hora_do_fato: data_e_hora_do_fato || null,
-
     };
     //COMO COLOCAR GLOBALMENTE?
     return predefinidos;
@@ -87,15 +145,15 @@ function extrairDadosProcedimento(dados) {
     "procedimentoInstauracao",
     "numeroTombo",
     "comarca",
-    "incidenciaPenal"
+    "incidenciaPenal",
   ];
   return DataAdapter.adapt(dados, keys);
 }
 
 /**
-   * Função para obter o horário atual no formato hh:mm
-   * @returns {string} - Horário atual
-   */
+ * Função para obter o horário atual no formato hh:mm
+ * @returns {string} - Horário atual
+ */
 getCurrentTime: function getCurrentTime() {
   const now = new Date();
   let hours = now.getHours();
