@@ -80,8 +80,8 @@ async function controllerDadosDosEnvolvidos(ehRelatorio = False) {
       "reescreva o texto como se fosse o depoimento do policial que foi o condutor dessa ocorrência. separe o depoimento em partes e coloque a expressão QUE {parte do depoimento}; QUE QUE {parte do depoimento}; QUE {parte do depoimento}... perceba que as frase são separadas por ponto e vírgula ';' depois disso crie um novo depoimento semelhante mas mudando um pouco a estrutura e o conteúdo para que seja mais natural e não tão repetitivo.esse segundo depoimento também deve ter a estrutura QUE {parte do depoimento}; QUE QUE {parte do depoimento}; QUE {parte do depoimento}.  quero  que você me retorne um array com os dois depoimentos.";
     instrucoesParaResumoDosFatos =
       "reescreva o texto em terceira pessoa e em linguem formal, culta e policial, reescreva como se você fosse o delegado que está relatando o inquérito policial e está citando o depoimento do condutor.";
-    apiKey =
-      REDACTED_API_KEY"==";
+    apiKey = APIKEY
+      
 
     let depoimento1Global;
     let depoimento2Global;
